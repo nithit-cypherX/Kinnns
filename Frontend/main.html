@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Landing Page</title>
+
+    <!--Import bulma.min.css-->
+    <link type="text/css" rel="stylesheet" href="node_modules/bulma/css/bulma.min.css"
+        media="screen,projection" />
+
+    <link rel="stylesheet" href="customize_styles.css">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.min.css"
+        media="screen,projection" />
+</head>
+
+<body>
+
+    <nav class="navbar mb-4" id="nav" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+
+            <a class="navbar-burger" role="button" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+
+        </div>
+
+        <!-- This is the menu you need to toggle -->
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item">
+                    Home
+                </a>
+
+                <a class="navbar-item">
+                    Documentation
+                </a>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        More
+                    </a>
+
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item">
+                            About
+                        </a>
+                        <a class="navbar-item is-selected">
+                            Jobs
+                        </a>
+                        <a class="navbar-item">
+                            Contact
+                        </a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item">
+                            Report an issue
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-primary">
+                            <strong>Sign up</strong>
+                        </a>
+                        <a class="button is-light">
+                            Log in
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </nav>
+
+    <section id="hero" class="section">
+        <h1>Welcome to My Website</h1>
+    </section>
+
+    <section id="section1" class="section">
+        <h2>Section 1</h2>
+    </section>
+
+    <section id="section2" class="section">
+        <h2>Section 2</h2>
+    </section>
+
+    <section id="section3" class="section">
+        <h2>Section 3</h2>
+    </section>
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="node_modules/materialize-css/dist/js/materialize.min.js">
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll(".nav-links a").forEach(anchor => {
+                anchor.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    document.querySelector(this.getAttribute("href")).scrollIntoView({
+                        behavior: "smooth"
+                    });
+                });
+            });
+
+            const navbar_burger = document.querySelector(".nav-bar-burger");
+            const navbar_menu = document.querySelector(".nav-bar-menu");
+
+            navbar_burger.addEventListener("click", () => {
+                navbar_burger.classList.toggle("is-active");
+                navbar_menu.classList.toggle("is-active");
+                burger.setAttribute('class', burger.classList.contains('is-active'));
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>
