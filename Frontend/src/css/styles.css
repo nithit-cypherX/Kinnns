@@ -26,6 +26,10 @@ html, body {
     z-index: 1000;
 }
 
+.text-red{
+    color: red
+}
+
 .logo {
     font-size: 24px;
     font-weight: bold;
