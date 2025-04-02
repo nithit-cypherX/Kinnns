@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KINNNS</title>
+
+  <!--Import bulma.min.css-->
+  <link type="text/css" rel="stylesheet" href="./node_modules/bulma/css/bulma.min.css" media="screen,projection" />
+
+  <link rel="stylesheet" href="./src/styles/global.css" />
+  <link rel="stylesheet" href="./src/styles/index.css" />
+  
+
+
+</head>
+
+
+
+<body>
+
+  <nav id="mainNavbar" class="level navbar is-fixed-top background-secondary-color mb-0">
+    <p class="level-item">
+      <a class="navbar-item text-primary-color pt-3 icon is-large">
+        <i class="link fas fa-3x fa-bars "></i>
+      </a>
+    </p>
+    <p class="level-item">
+      <a class="link font-primary is-size-2 text-primary-color">KINNNS</a>
+    </p>
+    <p class="level-item">
+      <a class="navbar-item text-primary-color pt-4 icon is-large">
+        <i class="link fas fa-3x fa-info-circle"></i>
+      </a>
+    </p>
+  </nav>
+
+
+  <!-- Hero Image section -->
+  <section class="hero hero-image is-fullheight">
+
+
+    <div class="hero-head">
+      <nav id="heroNavbar" class="level is-transparent">
+        <p class="level-item">
+          <a class="navbar-item text-primary-color pt-4 icon is-large">
+            <i class="link fas fa-3x fa-bars "></i>
+          </a>
+        </p>
+        <p class="level-item">
+          <a class="link font-primary is-size-3"></a>
+        </p>
+        <p class="level-item">
+          <a class="navbar-item text-primary-color pt-5 icon is-large">
+            <i class="link fas fa-3x fa-info-circle"></i>
+          </a>
+        </p>
+      </nav>
+
+    </div>
+    <!-- Hero content: will be in the middle -->
+    <div class="hero-body">
+      
+      <div class="container has-text-centered">
+        <p class="title">Title</p>
+        <p class="subtitle">Subtitle</p>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- Second Page section -->
+  <section class="hero sectionTwo-image is-fullheight ">
+    <div class="hero-body">
+      <p class="title">Large hero</p>
+      <p class="subtitle">Large subtitle</p>
+    </div>
+  </section>
+
+
+
+
+  <script defer>
+    document.addEventListener("DOMContentLoaded", function () {
+      console.log("JavaScript Loaded!");
+
+      var heroSection = document.querySelector(".hero.hero-image");
+      var heroNavbar = document.getElementById("heroNavbar");
+      var mainNavbar = document.getElementById("mainNavbar");
+
+      if (!heroSection || !heroNavbar || !mainNavbar) {
+        console.error("Error: One or more elements not found.");
+        return;
+      }
+
+      console.log("Elements found!");
+
+      // Initially hide the main navbar smoothly
+      mainNavbar.style.opacity = "0";
+      mainNavbar.style.visibility = "hidden";
+
+      window.addEventListener("scroll", function () {
+        console.log("Scroll position:", window.scrollY);
+
+        if (window.scrollY > heroSection.clientHeight - 50) {
+          console.log("Switching to main navbar");
+          heroNavbar.style.opacity = "0";
+          heroNavbar.style.visibility = "hidden";
+
+          mainNavbar.style.opacity = "1";
+          mainNavbar.style.visibility = "visible";
+        } else {
+          console.log("Showing hero navbar");
+          heroNavbar.style.opacity = "1";
+          heroNavbar.style.visibility = "visible";
+
+          mainNavbar.style.opacity = "0";
+          mainNavbar.style.visibility = "hidden";
+        }
+      });
+    });
+  </script>
+
+
+
+</body>
+
+</html>

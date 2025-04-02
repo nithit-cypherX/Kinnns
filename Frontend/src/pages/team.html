@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KINNNS</title>
+
+    <!--Import bulma.min.css-->
+    <link type="text/css" rel="stylesheet" href="../../node_modules/bulma/css/bulma.min.css"
+        media="screen,projection" />
+
+    <link rel="stylesheet" href="../styles/global.css" />
+
+
+
+</head>
+
+<body>
+
+    <!-- Hero Image section -->
+    <section class="hero is-fullheight">
+
+
+        <div class="hero-head">
+            <nav id="heroNavbar" class="level is-transparent">
+                <p class="level-item">
+                    <a class="navbar-item text-primary-color pt-4 icon is-large">
+                        <i class="link fas fa-3x fa-bars "></i>
+                    </a>
+                </p>
+                <p class="level-item">
+                    <a class="link font-primary is-size-3"></a>
+                </p>
+                <p class="level-item">
+                    <a class="navbar-item text-primary-color pt-5 icon is-large">
+                        <i class="link fas fa-3x fa-info-circle"></i>
+                    </a>
+                </p>
+            </nav>
+
+        </div>
+      
+        <div class="hero-body is-justify-content-center">
+            <section class="section">
+                <div class="container has-text-centered">
+                    <h1 class="title">TEAM</h1>
+                    
+                    <div class="carousel">
+                        <button id="prev" class="button is-dark">❮</button>
+                        
+                        <div class="carousel-container">
+                            <div class="carousel-item">
+                                <img src="person1.jpg" alt="Person 1">
+                                <p><strong>Name</strong></p>
+                                <p>Job</p>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="person2.jpg" alt="Person 2">
+                                <p><strong>Passakorn P.</strong></p>
+                                <p>UX/UI Design</p>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="person3.jpg" alt="Person 3">
+                                <p><strong>Name</strong></p>
+                                <p>Job</p>
+                            </div>
+                        </div>
+                        
+                        <button id="next" class="button is-dark">❯</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </section>
+
+    <script src="../js/carousel.js"></script>
+
+   
+</body>
+
+</html>
