@@ -1,41 +1,333 @@
 a:hover {
-    opacity: 0 !important;
+  opacity: 0 !important;
 }
 
-nav{
-    background-color: transparent !important; /* Set to transparent by default */
-    background-image: none !important;
-    transition: background-color 0.3s ease, background-image 0.3s ease !important;
+nav {
+  background-color: transparent !important; /* Set to transparent by default */
+  background-image: none !important;
+  transition: background-color 0.3s ease, background-image 0.3s ease !important;
 }
 
-
-#heroNavbar, #mainNavbar {
-    transition: opacity 0.25s ease-in-out, visibility 0.25s;
-    position: fixed; 
-    top: 0; 
-    width: 100%;
+#heroNavbar,
+#mainNavbar {
+  transition: opacity 0.25s ease-in-out, visibility 0.25s;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 #heroNavbar {
-    opacity: 1;
-    visibility: visible;
+  opacity: 1;
+  visibility: visible;
 }
 
 #mainNavbar {
-    opacity: 0;
-    visibility: hidden;
+  opacity: 0;
+  visibility: hidden;
 }
 
-.hero-image{
-    background-image: url(../assets/images/hero_image.png);
-    width: 100vw;  /* Full screen width */
-    height: 100vh; /* Full screen height */
-    object-fit: cover; /* Ensures it covers the screen without distortion */
+.hero-image {
+  background-image: url(../assets/images/hero_image.png);
+  width: 100vw; /* Full screen width */
+  height: 100vh; /* Full screen height */
+  background-size: cover;
+  background-position: center;
 }
 
-.sectionTwo-image{
-    background-image: url(../assets/images/sectionTwo_image.png);
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
+.sectionTwo-image {
+  background-image: url(../assets/images/sectionTwo_image.png);
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.kinnns-title {
+  font-size: 5rem;
+  letter-spacing: 0.8rem;
+  color: white;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.title-reserve-button {
+  font-size: 24px;
+  color: white;
+  border: 2px solid white;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+}
+
+.title-reserve-button:hover {
+  background: white;
+  color: black;
+}
+
+.pageTwo-title {
+  margin-top: 180px;
+  margin-left: 167px;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 47px;
+}
+
+.pageTwo-body {
+  width: 695px;
+  margin-top: 25px;
+  margin-left: 167px;
+  font-size: 24px;
+  line-height: 47px;
+  font-weight: 300;
+  word-wrap: break-word;
+}
+
+.pageThree-title {
+  margin-top: 110px;
+  font-weight: 600;
+  font-size: 75px;
+  text-align: center;
+}
+
+.pageThree-content {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.pageThree-img-box {
+  width: 40vw;
+  height: 70vh;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.pageThree-description-box {
+  width: 40vw;
+  height: 70vh;
+  border-radius: 20px;
+  padding-inline: 60px;
+  display: flex;
+  font-size: 28px;
+  align-items: center;
+}
+.carousel-image {
+  object-fit: cover;
+}
+
+.section3-carousel-image {
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  opacity: 1;
+}
+
+.pageFour-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 70px;
+}
+.pageFour-content {
+  width: 80vw;
+}
+
+.pageFour-content-image {
+  background-image: url(../assets/images/section4_appetizer.png);
+  background-position: center;
+  background-size: cover;
+  /* height: 420px; */
+  height: 55vh;
+  transition: background-image 0.5s ease-in-out;
+}
+
+.pageFour-content-header {
+  font-size: 64px;
+  font-weight: 500;
+}
+
+.pageFour-content-text {
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.pageFour-footer {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.pageFour-footer-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.pageFour-footer-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 400;
+  font-family: var(--font-heading);
+  cursor: pointer;
+}
+
+.pageFour-footer-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--secondary-color);
+  transition: all 0.3s ease;
+}
+
+.pageFour-footer-circle.selected {
+  background-color: var(--header-color);
+  transform: scale(1.4);
+}
+
+.pageFour-footer-line-segment {
+  flex: 1;
+  height: 2px;
+  margin: 0 10px;
+  background-color: var(--secondary-color);
+}
+
+/* This wraps and centers the entire box */
+.pageFive-section-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  /* height: 100%; */
+}
+
+.pageFive-title {
+  font-weight: 400;
+  font-size: 60px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.pageFive-content-box {
+  width: 75vw;
+  height: 75vh;
+  border-radius: 12px;
+  background-color: #e9dac7;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pageFive-reservation-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.pageFive-reservation-card {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding-top: 25px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 15px;
+  width: 20vw;
+  height: 60vh;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: relative;
+}
+
+.pageFive-card-title {
+  font-family: "Brygada 1918", serif;
+  font-size: 56px;
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.pageFive-card-price {
+  font-family: "Brygada 1918", serif;
+  font-size: 28px;
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.pageFive-card-category h4 {
+  color: var(--header-color);
+  font-family: var(--font-heading);
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.pageFive-card-category p {
+  font-family: var(--font-secondary);
+  font-weight: 300;
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.pageFive-reserve-button {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  font-family: var(--font-heading);
+  font-weight: bold;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  border: none;
+  margin-top: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pageFive-reserve-button:hover {
+  background-color: whitesmoke;
+  color: var(--header-color);
+}
+
+.footer-section-image {
+  background-image: url(../assets/images/footer_image.png);
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px; 
+  margin-top: 40px;
+  box-sizing: border-box;
+  font-size: 28px;
+  font-family: var(--font-heading);
+}
+
+.footer-page-top,
+.footer-page-bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-page-left,
+.footer-page-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-page-right {
+  text-align: right;
 }

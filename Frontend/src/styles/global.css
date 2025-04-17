@@ -1,99 +1,100 @@
 @import url("../assets/fontawesome/css/all.min.css");
 @import url("../assets/fontawesome/css/fontawesome.min.css");
 
-
-
 @font-face {
-    font-family: "New York";
-    src: url("../assets/fonts/Newyork.otf") format("otf");
-}
-
-
-@font-face {
-    font-family: "Balto";
-    src: url("../assets/fonts/Balto-Medium.woff") format("woff");
+  font-family: "New York";
+  src: url("../assets/fonts/Newyork.otf") format("otf");
 }
 
 @font-face {
-    font-family: "TestTiempos";
-    src: url("../assets/fonts/TestTiemposHeadline-Medium-.otf") format("otf");
+  font-family: "Balto";
+  src: url("../assets/fonts/Balto-Medium.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Balto";
+  src: url("../assets/fonts/Balto-Book.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Balto";
+  src: url("../assets/fonts/Balto-Thin.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "TestTiempos";
+  src: url("../assets/fonts/TestTiemposHeadline-Medium-.otf") format("otf");
 }
 
 :root {
-    /* 🎨 Colors */
-    --primary-color: #E9DAC7;  
-    --secondary-color: #522424;
-    --header-color: #DE962A; 
+  /* 🎨 Colors */
+  --primary-color: #e9dac7;
+  --secondary-color: #522424;
+  --header-color: #de962a;
 
-  
-    /* 🖋 Typography */
-    --font-primary: "New York", sans-serif;
-    --font-secondary: "Balto", sans-serif;
-    --font-heading: "TestTiempos", sans-serif;
-    --font-size-base: 16px;
-    --font-weight-normal: 400;
-    --font-weight-bold: 700;
-
-  }
-  
+  /* 🖋 Typography */
+  --font-primary: "NewYork", sans-serif;
+  --font-secondary: "Balto", sans-serif;
+  --font-heading: "Test Tiempos Headline", sans-serif;
+  --font-size-base: 16px;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+}
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-html, body {
-    scroll-behavior: smooth;
-    font-family: var(--font-secondary);
-    min-height: 100%;
-    overflow-x: hidden;
+html,
+body {
+  scroll-behavior: smooth;
+  font-family: var(--font-secondary);
+  min-height: 100%;
+  overflow-x: hidden;
 }
 
-.font-primary{
-    font-family: var(--font-primary);
+.font-primary {
+  font-family: var(--font-primary);
 }
 
-.font-secondary{
-    font-family: var(--font-secondary);
+.font-secondary {
+  font-family: var(--font-secondary);
 }
 
-.font-header{
-    font-family: var(--font-heading);
+.font-header {
+  font-family: var(--font-heading);
 }
 
-
-
-
-.text-primary-color{
-    color : var(--primary-color) !important;
+.text-primary-color {
+  color: var(--primary-color) !important;
 }
 
-.text-secondary-color{
-    color: var(--secondary-color) !important;
+.text-secondary-color {
+  color: var(--secondary-color) !important;
 }
 
-.text-header-color{
-    color: var(--header-color) !important;
+.text-header-color {
+  color: var(--header-color) !important;
 }
 
-.background-primary-color{
-    background-color : var(--primary-color) !important;
+.background-primary-color {
+  background-color: var(--primary-color) !important;
 }
 
-.background-secondary-color{
-    background-color: var(--secondary-color) !important;
+.background-secondary-color {
+  background-color: var(--secondary-color) !important;
 }
 
-.background-header-color{
-    background-color: var(--header-color) !important;
+.background-header-color {
+  background-color: var(--header-color) !important;
 }
 
-.is-full-height{
-    height: 100%;
+.is-full-height {
+  height: 100%;
 }
-
-
-
-
-
