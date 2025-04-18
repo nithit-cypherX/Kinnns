@@ -14,21 +14,23 @@
 </head>
 
 <body>
-  <nav id="mainNavbar" class="level navbar is-fixed-top background-secondary-color mb-0">
-    <p class="level-item">
-      <a class="navbar-item text-primary-color pt-3 icon is-large">
-        <i class="link fas fa-3x fa-bars"></i>
-      </a>
-    </p>
-    <p class="level-item">
-      <a class="link font-primary is-size-1 text-primary-color">KINNNS</a>
-    </p>
-    <p class="level-item">
-      <a class="navbar-item text-primary-color pt-4 icon is-large">
-        <i class="link fas fa-3x fa-info-circle"></i>
-      </a>
-    </p>
-  </nav>
+  <header>
+    <nav id="mainNavbar" class="level navbar is-fixed-top background-secondary-color mb-0">
+      <p class="level-item">
+        <a class="navbar-item text-primary-color pt-3 icon is-large">
+          <i class="link fas fa-3x fa-bars"></i>
+        </a>
+      </p>
+      <p class="level-item">
+        <a class="link font-primary is-size-1 text-primary-color">KINNNS</a>
+      </p>
+      <p class="level-item">
+        <a class="navbar-item text-primary-color pt-4 icon is-large">
+          <i class="link fas fa-3x fa-info-circle"></i>
+        </a>
+      </p>
+    </nav>
+  </header>
 
   <!-- Hero Image section -->
   <section class="hero hero-image is-fullheight">
@@ -84,10 +86,8 @@
       <div class="pageThree-content">
         <!-- Left: Images  -->
         <div class="pageThree-img-box">
-          <div class="carousel-image">
-            <img id="carouselImage" src="./src/assets/images/section3_image1.png" alt="steak"
-              class="section3-carousel-image" onclick="nextImage()" />
-          </div>
+          <img id="carouselImage" src="./src/assets/images/section3_image1.png" alt="steak"
+            class="section3-carousel-image" onclick="nextImage()" />
         </div>
 
         <!-- Right: Text Box -->
@@ -131,7 +131,7 @@
                 <span class="mt-2">Appetizer</span>
               </div>
               <div class="pageFour-footer pageFour-footer-line-segment"></div>
-              
+
               <!-- Main Course segment -->
               <div class="pageFour-footer-item" data-category="main-course">
                 <div class="pageFour-footer-circle"></div>
@@ -239,7 +239,7 @@
         </div>
         <div class="footer-page-right">
           <p>Sathorn Soi 11 (BTS. Saint Louis)</p>
-          <p>+66 63 123 xxxx</p>
+          <p>+66 63 123 1101</p>
         </div>
       </div>
       <!-- Bottom Part-->
@@ -252,7 +252,7 @@
         </div>
       </div>
     </footer>
-</section>
+  </section>
 
   <script defer>
     document.addEventListener("DOMContentLoaded", function () {
@@ -294,7 +294,7 @@
       });
     });
 
-    // Carousel Image
+    // Image paths for Section3-Carousel
     const imageList = [
       "./src/assets/images/section3_image1.png",
       "./src/assets/images/section3_image2.png",
@@ -304,19 +304,21 @@
     let currentIndex = 0;
     const carouselImg = document.getElementById("carouselImage");
 
+    // Function to change to the next image
     function nextImage() {
       // Fade out
       carouselImg.style.opacity = 0.3;
 
-      // Wait for fade-out to complete before changing the image
+      // After fade-out, change image and fade in
       setTimeout(() => {
         currentIndex = (currentIndex + 1) % imageList.length;
         carouselImg.src = imageList[currentIndex];
-
-        // Fade in
         carouselImg.style.opacity = 1;
-      }, 300); // match the CSS transition duration
+      }, 300); // match the CSS transition
     }
+
+    // Auto change every 3 seconds (3000 milliseconds)
+    setInterval(nextImage, 3000);
 
     // Image, selected-circle, description change Section 4
     const footerItems = document.querySelectorAll('.pageFour-footer-item');
