@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KINNNS</title>
+    <title>KINNNS-Login</title>
 
     <!--Import bulma.min.css-->
     <link type="text/css" rel="stylesheet" href="../../node_modules/bulma/css/bulma.min.css"
@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <!-- Header Section -->
+    <!-- Header Section - Navbar -->
     <header>
         <nav id="mainNavbar" class="level navbar is-fixed-top background-secondary-color mb-0">
             <p class="level-item">
@@ -25,7 +25,7 @@
                 </a>
             </p>
             <p class="level-item">
-                <a class="link font-primary is-size-1 text-primary-color">KINNNS</a>
+                <a class="link font-primary is-size-1 text-primary-color" href="../../index.html">KINNNS</a>
             </p>
             <p class="level-item">
                 <a class="navbar-item text-primary-color pt-4 icon is-large">
@@ -44,12 +44,13 @@
 
                 <!-- Login Form -->
                 <form method="POST">
+                    <!-- Input Email -->
                     <div class="field">
                         <div class="control">
                             <input class="input" type="email" placeholder="Email" required />
                         </div>
                     </div>
-
+                    <!-- Input Password -->
                     <div class="field">
                         <div class="control is-expanded">
                             <input class="input" type="password" placeholder="Password" required />
@@ -60,7 +61,8 @@
                     <!-- Button -->
                     <div class="field mt-5">
                         <div class="control">
-                            <button class="button is-fullwidth ">LOGIN</button>
+                            <button onclick="location.href='../pages/product_management.html'"
+                                class="button is-fullwidth ">LOGIN</button>
                         </div>
                     </div>
                 </form>
