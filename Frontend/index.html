@@ -12,20 +12,24 @@
   <link rel="stylesheet" href="./src/styles/global.css" />
   <link rel="stylesheet" href="./src/styles/index.css" />
   <script src="./src/js/index.js" defer></script>
+  <script src="./src/js/global.js" defer></script>
 </head>
 
 <body>
   <!-- Header Section - Navbar -->
   <header id="hero-page">
     <nav id="mainNavbar" class="level navbar is-fixed-top background-secondary-color mb-0">
+      <!-- Navbar burger -->
       <p class="level-item">
-        <a class="navbar-item text-primary-color pt-3 icon is-large">
+        <a class="sidebarToggle navbar-item text-primary-color pt-3 icon is-large">
           <i class="link fas fa-3x fa-bars"></i>
         </a>
       </p>
+      <!-- Title Name -->
       <p class="level-item">
         <a class="link font-primary is-size-1 text-primary-color" href="#hero-page">KINNNS</a>
       </p>
+      <!-- Info Icon -->
       <p class="level-item">
         <a class="navbar-item text-primary-color pt-4 icon is-large">
           <i class="link fas fa-3x fa-info-circle"></i>
@@ -34,12 +38,22 @@
     </nav>
   </header>
 
+  <!-- Sidebar -->
+  <aside id="sidebar" class="sidebar hidden">
+    <ul>
+      <li><a href="./index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="./src/pages/searching.html"><i class="fas fa-search"></i> Search</a></li>
+      <li><a href="./src/pages/team.html"><i class="fas fa-users"></i> Team</a></li>
+      <li><a href="./src/pages/login.html"><i class="fas fa-address-book"></i> Administrator</a></li>
+    </ul>
+  </aside>
+
   <!-- Hero Image section -->
   <section class="hero hero-image is-fullheight">
     <div class="hero-head">
       <nav id="heroNavbar" class="level is-transparent">
         <p class="level-item">
-          <a class="navbar-item text-primary-color pt-4 icon is-large">
+          <a class="sidebarToggle navbar-item text-primary-color pt-4 icon is-large">
             <i class="link fas fa-3x fa-bars"></i>
           </a>
         </p>
@@ -53,6 +67,7 @@
         </p>
       </nav>
     </div>
+
     <!-- Hero content: will be in the middle -->
     <div class="hero-body">
       <div class="container has-text-centered">
