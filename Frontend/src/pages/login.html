@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KINNNS-Login</title>
+
+    <!--Import bulma.min.css-->
+    <link type="text/css" rel="stylesheet" href="../../node_modules/bulma/css/bulma.min.css"
+        media="screen,projection" />
+
+
+    <link rel="stylesheet" href="../styles/global.css" />
+    <link rel="stylesheet" href="../styles/login-page.css" />
+    <script src="../js/global.js" defer></script>
+</head>
+
+<body>
+    <!-- Header Section - Navbar -->
+    <header>
+        <nav id="mainNavbar" class="level navbar is-fixed-top background-secondary-color mb-0">
+            <!-- Navbar burger -->
+            <p class="level-item">
+                <a class="sidebarToggle navbar-item text-primary-color pt-3 icon is-large">
+                    <i class="link fas fa-3x fa-bars"></i>
+                </a>
+            </p>
+            <!-- Title Name -->
+            <p class="level-item">
+                <a class="link font-primary is-size-1 text-primary-color" href="../../index.html">KINNNS</a>
+            </p>
+            <!-- Info Icon -->
+            <p class="level-item">
+                <a class="navbar-item text-primary-color pt-4 icon is-large">
+                    <i class="link fas fa-3x fa-info-circle"></i>
+                </a>
+            </p>
+        </nav>
+    </header>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar hidden">
+        <ul>
+            <li><a href="../../index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="./searching.html"><i class="fas fa-search"></i> Search</a></li>
+            <li><a href="./team.html"><i class="fas fa-users"></i> Team</a></li>
+            <li><a href="./login.html"><i class="fas fa-address-book"></i> Administrator</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <section class="hero is-fullheight background-primary-color">
+        <div class="hero-body is-justify-content-center is-align-items-center">
+            <div class="box custom-box px-6 py-5">
+                <h1 class="title has-text-centered mb-4 has-text-black font-header">Login</h1>
+                <p class="has-text-centered mb-5">Enter your email and password to login:</p>
+
+                <!-- Login Form -->
+                <form method="POST">
+                    <!-- Input Email -->
+                    <div class="field">
+                        <div class="control">
+                            <input class="input" type="email" placeholder="Email" required />
+                        </div>
+                    </div>
+                    <!-- Input Password -->
+                    <div class="field">
+                        <div class="control is-expanded">
+                            <input class="input" type="password" placeholder="Password" required />
+                        </div>
+                        <a class="is-size-7 ml-3 has-text-grey">Forgot your password?</a>
+                    </div>
+
+                    <!-- Button -->
+                    <div class="field mt-5">
+                        <div class="control">
+                            <button onclick="location.href='../pages/product_management.html'"
+                                class="button is-fullwidth ">LOGIN</button>
+                        </div>
+                    </div>
+                </form>
+
+                <p class="has-text-centered mt-4 is-size-7">
+                    Don’t have an account? <a href="#">Sign up</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

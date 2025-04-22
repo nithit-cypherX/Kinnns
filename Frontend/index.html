@@ -11,41 +11,50 @@
 
   <link rel="stylesheet" href="./src/styles/global.css" />
   <link rel="stylesheet" href="./src/styles/index.css" />
-  
-
-
+  <script src="./src/js/index.js" defer></script>
+  <script src="./src/js/global.js" defer></script>
 </head>
 
-
-
 <body>
+  <!-- Header Section - Navbar -->
+  <header id="hero-page">
+    <nav id="mainNavbar" class="level navbar is-fixed-top background-secondary-color mb-0">
+      <!-- Navbar burger -->
+      <p class="level-item">
+        <a class="sidebarToggle navbar-item text-primary-color pt-3 icon is-large">
+          <i class="link fas fa-3x fa-bars"></i>
+        </a>
+      </p>
+      <!-- Title Name -->
+      <p class="level-item">
+        <a class="link font-primary is-size-1 text-primary-color" href="#hero-page">KINNNS</a>
+      </p>
+      <!-- Info Icon -->
+      <p class="level-item">
+        <a class="navbar-item text-primary-color pt-4 icon is-large">
+          <i class="link fas fa-3x fa-info-circle"></i>
+        </a>
+      </p>
+    </nav>
+  </header>
 
-  <nav id="mainNavbar" class="level navbar is-fixed-top background-secondary-color mb-0">
-    <p class="level-item">
-      <a class="navbar-item text-primary-color pt-3 icon is-large">
-        <i class="link fas fa-3x fa-bars "></i>
-      </a>
-    </p>
-    <p class="level-item">
-      <a class="link font-primary is-size-2 text-primary-color">KINNNS</a>
-    </p>
-    <p class="level-item">
-      <a class="navbar-item text-primary-color pt-4 icon is-large">
-        <i class="link fas fa-3x fa-info-circle"></i>
-      </a>
-    </p>
-  </nav>
-
+  <!-- Sidebar -->
+  <aside id="sidebar" class="sidebar hidden">
+    <ul>
+      <li><a href="./index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="./src/pages/searching.html"><i class="fas fa-search"></i> Search</a></li>
+      <li><a href="./src/pages/team.html"><i class="fas fa-users"></i> Team</a></li>
+      <li><a href="./src/pages/login.html"><i class="fas fa-address-book"></i> Administrator</a></li>
+    </ul>
+  </aside>
 
   <!-- Hero Image section -->
   <section class="hero hero-image is-fullheight">
-
-
     <div class="hero-head">
       <nav id="heroNavbar" class="level is-transparent">
         <p class="level-item">
-          <a class="navbar-item text-primary-color pt-4 icon is-large">
-            <i class="link fas fa-3x fa-bars "></i>
+          <a class="sidebarToggle navbar-item text-primary-color pt-4 icon is-large">
+            <i class="link fas fa-3x fa-bars"></i>
           </a>
         </p>
         <p class="level-item">
@@ -57,73 +66,216 @@
           </a>
         </p>
       </nav>
-
     </div>
+
     <!-- Hero content: will be in the middle -->
     <div class="hero-body">
-      
       <div class="container has-text-centered">
-        <p class="title">Title</p>
-        <p class="subtitle">Subtitle</p>
+        <h1 class="kinnns-title font-primary">KINNNS</h1>
+        <a href="#reservation" class="title-reserve-button font-primary">RESERVE NOW</a>
       </div>
     </div>
-
   </section>
 
-
   <!-- Second Page section -->
-  <section class="hero sectionTwo-image is-fullheight ">
-    <div class="hero-body">
-      <p class="title">Large hero</p>
-      <p class="subtitle">Large subtitle</p>
+  <!-- OUR STORY -->
+  <section class="hero sectionTwo-image is-fullheight">
+    <div class="text-primary-color">
+      <article>
+        <h1 class="pageTwo-title font-header">Our Story</h1>
+        <p class="pageTwo-body">
+          The European languages are members of the same family. Their
+          separate existence is a myth. For science, music, sport, etc, Europe
+          uses the same vocabulary. The languages only differ in
+        </p>
+      </article>
     </div>
   </section>
 
+  <!-- Third Page section -->
+  <!-- Signature Dishes -->
+  <section class="hero is-fullheight background-primary-color">
+    <!-- Section Title -->
+    <div>
+      <p class="text-header-color font-header pageThree-title">
+        Signature Dishes
+      </p>
 
+      <!-- Columns for Image and Text -->
+      <div class="pageThree-content">
+        <!-- Left: Images  -->
+        <div class="pageThree-img-box">
+          <img id="carouselImage" src="./src/assets/images/section3_image1.png" alt="steak"
+            class="section3-carousel-image" onclick="nextImage()" />
+        </div>
 
+        <!-- Right: Text Box -->
+        <div class="pageThree-description-box text-primary-color background-secondary-color">
+          <article>
+            <p>
+              The European languages are members of the same family. Their
+              separate existence is a myth. For science, music, sport, etc,
+              Europe uses the same vocabulary. The languages only differ in
+              their grammar, their pronunciation and their most common words.
+              Everyone realizes why a new common language would be desirable:
+              one
+            </p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <script defer>
-    document.addEventListener("DOMContentLoaded", function () {
-      console.log("JavaScript Loaded!");
+  <!-- Fourth Page section -->
+  <!-- Show Example Of Course -->
+  <section class="hero is-fullheight background-primary-color">
+    <div class="pageFour-section">
+      <div class="pageFour-content">
+        <div class="pageFour-content-image"></div>
+        <article>
+          <h2 class="pageFour-content-header text-secondary-color font-header">
+            DINNER ZONE
+          </h2>
+          <p class="pageFour-content-text text-secondary-color font-secondary" id="pageFour-description">
+            Enjoy the endless expanse of the infinity pool and let the water
+            carry you as you admire the breathtaking scenery in the morning
+            light.
+          </p>
+        </article>
+        <!-- Appetizer segment -->
+        <div class="text-secondary-color">
+          <div class="pageFour-footer">
+            <div class="pageFour-footer-line">
+              <div class="pageFour-footer-item" data-category="appetizer">
+                <div class="pageFour-footer-circle"></div>
+                <span class="mt-2">Appetizer</span>
+              </div>
+              <div class="pageFour-footer pageFour-footer-line-segment"></div>
 
-      var heroSection = document.querySelector(".hero.hero-image");
-      var heroNavbar = document.getElementById("heroNavbar");
-      var mainNavbar = document.getElementById("mainNavbar");
+              <!-- Main Course segment -->
+              <div class="pageFour-footer-item" data-category="main-course">
+                <div class="pageFour-footer-circle"></div>
+                <span class="mt-2">Main Course</span>
+              </div>
+              <div class="pageFour-footer pageFour-footer-line-segment"></div>
 
-      if (!heroSection || !heroNavbar || !mainNavbar) {
-        console.error("Error: One or more elements not found.");
-        return;
-      }
+              <!-- Ingredient segment -->
+              <div class="pageFour-footer-item" data-category="ingredient">
+                <div class="pageFour-footer-circle"></div>
+                <span class="mt-2">Ingredient</span>
+              </div>
+              <div class="pageFour-footer pageFour-footer-line-segment"></div>
 
-      console.log("Elements found!");
+              <!-- Place segment -->
+              <div class="pageFour-footer-item" data-category="place">
+                <div class="pageFour-footer-circle"></div>
+                <span class="mt-2">Place</span>
+              </div>
+              <div class="pageFour-footer pageFour-footer-line-segment"></div>
 
-      // Initially hide the main navbar smoothly
-      mainNavbar.style.opacity = "0";
-      mainNavbar.style.visibility = "hidden";
+              <!-- Dessert segment -->
+              <div class="pageFour-footer-item" data-category="dessert">
+                <div class="pageFour-footer-circle"></div>
+                <span class="mt-2">Dessert</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      window.addEventListener("scroll", function () {
-        console.log("Scroll position:", window.scrollY);
+  <!-- Fifth Page Reserve Card -->
+  <section id="reservation" class="hero is-fullheight background-primary-color">
+    <div>
+      <div class="pageFive-section-wrapper">
+        <h1 class="pageFive-title text-header-color font-header">Reservation</h1>
+        <div class="pageFive-content-box">
+          <div class="pageFive-reservation-cards">
 
-        if (window.scrollY > heroSection.clientHeight - 50) {
-          console.log("Switching to main navbar");
-          heroNavbar.style.opacity = "0";
-          heroNavbar.style.visibility = "hidden";
+            <!-- Standard Card -->
+            <div class="pageFive-reservation-card">
+              <h3 class="pageFive-card-title">Standard</h3>
+              <p class="pageFive-card-price">500$/Person</p>
+              <div class="pageFive-card-category">
+                <h4>Toasted</h4>
+                <p>Lobster, bacon and avocado brioche roll</p>
+                <p>Smoked salmon and cream cheese bagel</p>
+              </div>
+              <div class="pageFive-card-category">
+                <h4>Healthy</h4>
+                <p>Plum tomato, cream cheese and basil bagel</p>
+                <p>Açaí bowl (v) Coconut yoghurt, berries, chia seeds, banana, goji berries, bee pollen</p>
+              </div>
+              <button onclick="location.href='./src/pages/searching.html'" class="pageFive-reserve-button">RESERVE
+                NOW</button>
+            </div>
 
-          mainNavbar.style.opacity = "1";
-          mainNavbar.style.visibility = "visible";
-        } else {
-          console.log("Showing hero navbar");
-          heroNavbar.style.opacity = "1";
-          heroNavbar.style.visibility = "visible";
+            <!-- Gold Card -->
+            <div class="pageFive-reservation-card">
+              <h3 class="pageFive-card-title">Gold</h3>
+              <p class="pageFive-card-price">1000$/Person</p>
+              <div class="pageFive-card-category">
+                <h4>Toasted</h4>
+                <p>Lobster, bacon and avocado brioche roll</p>
+                <p>Smoked salmon and cream cheese bagel</p>
+              </div>
+              <div class="pageFive-card-category">
+                <h4>Healthy</h4>
+                <p>Plum tomato, cream cheese and basil bagel</p>
+                <p>Açaí bowl (v) Coconut yoghurt, berries, chia seeds, banana, goji berries, bee pollen</p>
+              </div>
+              <button onclick="location.href='./src/pages/searching.html'" class="pageFive-reserve-button">RESERVE
+                NOW</button>
+            </div>
 
-          mainNavbar.style.opacity = "0";
-          mainNavbar.style.visibility = "hidden";
-        }
-      });
-    });
-  </script>
+            <!-- Platinum Card -->
+            <div class="pageFive-reservation-card">
+              <h3 class="pageFive-card-title">Platinum</h3>
+              <p class="pageFive-card-price">1500$/Person</p>
+              <div class="pageFive-card-category">
+                <h4>Toasted</h4>
+                <p>Lobster, bacon and avocado brioche roll</p>
+                <p>Smoked salmon and cream cheese bagel</p>
+              </div>
+              <div class="pageFive-card-category">
+                <h4>Healthy</h4>
+                <p>Plum tomato, cream cheese and basil bagel</p>
+                <p>Açaí bowl (v) Coconut yoghurt, berries, chia seeds, banana, goji berries, bee pollen</p>
+              </div>
+              <button onclick="location.href='./src/pages/searching.html'" class="pageFive-reserve-button">RESERVE
+                NOW</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-
+  <!-- Footer Page -->
+  <section class="hero is-fullheight footer-section-image">
+    <footer class="footer-page text-primary-color">
+      <!-- Top Part-->
+      <div class="footer-page-top">
+        <div class="footer-page-left">
+          <p>Opening Hours 10.00 AM - 8.00 PM</p>
+        </div>
+        <div class="footer-page-right">
+          <p>Sathorn Soi 11 (BTS. Saint Louis)</p>
+          <p>+66 63 123 1101</p>
+        </div>
+      </div>
+      <!-- Bottom Part-->
+      <div class="footer-page-bottom">
+        <div class="footer-page-left">
+          <p>© 2025 Kinnns Moments. All Right Reserved</p>
+        </div>
+        <div class="footer-page-right">
+          <p>kinnns.moments@gmail.com</p>
+        </div>
+      </div>
+    </footer>
+  </section>
 
 </body>
 

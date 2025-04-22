@@ -1,0 +1,102 @@
+.menu {
+  margin-top: 20px;
+  font-family: var(--font-heading);
+}
+
+.menu-label {
+  color: var(--header-color);
+  font-size: 18px;
+  margin-top: 36px;
+  margin-bottom: 9px;
+}
+
+.menu-list {
+  color: var(--primary-color);
+  font-size: 17px;
+}
+
+.menu-list li {
+  margin-top: 10px;
+}
+
+.menu-list label {
+  align-items: center;
+  display: flex;
+  gap: 15px;
+}
+
+.title {
+  color: var(--header-color);
+  font-family: var(--font-heading);
+}
+
+.title.has-text-centered {
+  font-size: 60px;
+}
+
+.box {
+  background-color: white;
+}
+.box.has-text-centered h2 {
+  font-size: 28px;
+}
+
+.box.has-text-centered p,
+strong {
+  color: var(--secondary-color);
+  font-family: var(--font-heading);
+  text-align: left;
+  word-wrap: break-word;
+}
+
+.box p.card-price {
+  font-size: 20px;
+  text-align: right;
+}
+
+.box-link {
+  text-decoration: none;
+  display: block;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.box-link:hover .box {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+}
+
+.course-image {
+  border-radius: 8px;
+  height: 28vh;
+  margin-bottom: 10px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.course-image img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+}
+
+.categories {
+  margin-bottom: 6px;
+}
+.category-badge {
+  background-color: var(--secondary-color);
+  border-radius: 8px;
+  color: var(--primary-color);
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  margin: 4px 6px;
+  padding: 6px 12px;
+}
+
+.yellow-line {
+  border-bottom: 3px solid #ffc107;
+  margin: 20px 0px 20px 0px;
+  width: 100%;
+}
