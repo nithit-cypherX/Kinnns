@@ -12,20 +12,25 @@
 
     <link rel="stylesheet" href="../styles/global.css" />
     <link rel="stylesheet" href="../styles/searching-page.css" />
+    <script src="../js/global.js" defer></script>
+
 </head>
 
 <body>
     <!-- Header Section - Navbar -->
     <header>
         <nav id="mainNavbar" class="level navbar is-fixed-top background-secondary-color mb-0">
+            <!-- Navbar burger -->
             <p class="level-item">
-                <a class="navbar-item text-primary-color pt-3 icon is-large">
+                <a class="sidebarToggle navbar-item text-primary-color pt-3 icon is-large">
                     <i class="link fas fa-3x fa-bars"></i>
                 </a>
             </p>
+            <!-- Title Name -->
             <p class="level-item">
                 <a class="link font-primary is-size-1 text-primary-color" href="../../index.html">KINNNS</a>
             </p>
+            <!-- Info Icon -->
             <p class="level-item">
                 <a class="navbar-item text-primary-color pt-4 icon is-large">
                     <i class="link fas fa-3x fa-info-circle"></i>
@@ -33,6 +38,16 @@
             </p>
         </nav>
     </header>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar hidden">
+        <ul>
+            <li><a href="../../index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="./searching.html"><i class="fas fa-search"></i> Search</a></li>
+            <li><a href="./team.html"><i class="fas fa-users"></i> Team</a></li>
+            <li><a href="./login.html"><i class="fas fa-address-book"></i> Administrator</a></li>
+        </ul>
+    </aside>
 
     <section class="hero background-primary-color">
         <div class="columns mt-6 p-3 ">
