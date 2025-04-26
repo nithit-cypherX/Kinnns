@@ -9,212 +9,252 @@
     <link rel="stylesheet" href="../styles/global.css" />
     <link rel="stylesheet" href="../styles/menu_management.css" />
     <link rel="stylesheet" href="../styles/add_product_manage.css" />
-    <script src="../js/global.js" defer></script>
     <style>
+        /* Basic body styling */
         body {
-            background-color: #f9e9df;
-            font-family: 'Segoe UI', sans-serif;
-            overflow-y: scroll; /* added scroll */
+            background-color: #f9e9df; /* สีพื้นหลังชมพูอ่อน */
+            font-family: 'Segoe UI', sans-serif; /* ฟอนต์เริ่มต้น */
+            overflow-y: scroll; /* เพิ่ม scrollbar แนวตั้ง */
         }
 
+        /* Light pink background utility class */
         .background-light-pink {
             background-color: #fff7f2;
-            /* Make sure the background extends to the edges of the viewport */
-            min-height: 100vh;
-            margin-bottom: 0; /* Remove default body margin which can cause extra space */
+            min-height: 100vh; /* ทำให้พื้นหลังเต็มความสูงของ viewport */
+            margin-bottom: 0; /* ลบ margin เริ่มต้นของ body */
         }
 
+        /* Fixed sidebar styling */
         .menu-sidebar {
-            position: fixed;
-            top: 4.5rem;
+            position: fixed; /* ให้ sidebar อยู่กับที่ */
+            top: 4.5rem; /* ตำแหน่งใต้ navbar (สมมติว่า navbar สูง 4.5rem) */
             left: 0;
-            width: 180px;
-            height: calc(100vh - 4.5rem);
-            background-color: #4b1f1f;
-            color: #f9e9df;
+            width: 180px; /* ความกว้างคงที่ */
+            height: calc(100vh - 4.5rem); /* ความสูงเต็มจอ ลบด้วยความสูง navbar */
+            background-color: #4b1f1f; /* สีพื้นหลังน้ำตาลเข้ม */
+            color: #f9e9df; /* สีตัวอักษรอ่อน */
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 1rem 0.5rem;
-            z-index: 10;
-            overflow-y: auto;
+            flex-direction: column; /* จัดเรียง item แนวตั้ง */
+            justify-content: space-between; /* ดัน logout ไปด้านล่าง */
+            padding: 1rem 0.5rem; /* padding บน/ล่าง และ ซ้าย/ขวา */
+            z-index: 10; /* ให้ sidebar อยู่เหนือ content */
+            overflow-y: auto; /* เพิ่ม scrollbar ถ้าเนื้อหาเกิน */
         }
 
+        /* Sidebar link styling */
         .menu-sidebar .menu-label a {
             color: #f9e9df;
             text-decoration: none;
-            display: block;
+            display: block; /* ทำให้ link เต็มความกว้าง */
             font-size: 1.1rem;
             font-weight: bold;
-            margin: 1rem 0;
-            padding: 0.5rem 0.75rem;
-            border-left: 3px solid #ffffff;
-            letter-spacing: 0.5px;
+            margin: 1rem 0; /* ระยะห่างแนวตั้งเริ่มต้น */
+            padding: 0.5rem 0.75rem; /* padding */
+            border-left: 3px solid #ffffff; /* เส้นขอบซ้ายสีขาว */
+            letter-spacing: 0.5px; /* ระยะห่างตัวอักษรเล็กน้อย */
         }
 
+        /* Sidebar link hover effect */
         .menu-sidebar .menu-label a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.1); /* ไฮไลท์เล็กน้อยเมื่อ hover */
         }
 
+        /* --- CSS Modification Start --- */
+        /* Reduce margin for adjacent dashboard/reserve links */
+        .menu-sidebar > div:first-child .menu-label a {
+             margin-top: 0.25rem; /* ลด margin ด้านบน */
+             margin-bottom: 1rem; /* ลด margin ด้านล่าง */
+        }
+        /* Ensure the first link still has some top margin */
+         .menu-sidebar > div:first-child .menu-label:first-child a {
+             margin-top: 1rem; /* คง margin ด้านบนเดิมสำหรับ item แรกสุด */
+         }
+        /* --- CSS Modification End --- */
+
+
+        /* Logout button container */
         .logout-container {
-            margin-top: auto;
-            padding: 0.5rem;
+            margin-top: auto; /* ดันไปด้านล่าง (จำเป็นเมื่อไม่มี justify-content) */
+            padding: 0.5rem; /* padding รอบปุ่ม */
         }
 
+        /* Logout button styling */
         .logout-btn {
-            background-color: #f59e0b;
+            background-color: #f59e0b; /* สีเหลืองอำพัน */
             font-size: 0.9rem;
             font-weight: bold;
             color: white;
         }
 
+        /* Container for the main form */
         .create-menu-container {
-            background-color: #f9e9df;
+            background-color: #f9e9df; /* สีพื้นหลังเดียวกับ body */
             padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin-top: 1.75rem;
-            margin-left: 200px;
-            width: calc(100% - 300px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* เงาเล็กน้อย */
+            margin-top: 1.75rem; /* ระยะห่างจาก navbar */
+            margin-left: 200px; /* ระยะห่างจาก sidebar ด้านซ้าย (ปรับค่าตามความกว้าง sidebar + padding) */
+            width: calc(100% - 220px); /* ความกว้างที่เหลือ (ปรับค่าตามความกว้าง sidebar + padding) */
             /* Ensure the container expands to the available width */
-            min-width: calc(100% - 300px);
+            min-width: calc(100% - 220px); /* ความกว้างขั้นต่ำ */
+            box-sizing: border-box; /* รวม padding และ border ในการคำนวณ width */
         }
 
+        /* Header inside the form container */
         .create-menu-header {
             margin-bottom: 1.5rem;
-            color: #4b1f1f;
-            text-align: center;
+            color: #4b1f1f; /* สีน้ำตาลเข้ม */
+            text-align: center; /* จัดกึ่งกลาง */
         }
 
+        /* Grid layout for the form */
         .form-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            align-items: start;
+            grid-template-columns: 1fr; /* 1 คอลัมน์ในจอเล็ก */
+            gap: 1.5rem; /* ระยะห่างระหว่าง grid items */
+            align-items: start; /* จัดเรียง items ชิดบน */
             margin-top: 1rem;
         }
 
+        /* Styling for form groups (label + input) */
         .form-group {
             display: flex;
-            flex-direction: column;
-            margin-bottom: 0.5rem;
+            flex-direction: column; /* จัดเรียง label เหนือ input */
+            margin-bottom: 0.5rem; /* ระยะห่างเล็กน้อย */
         }
 
+        /* Form labels */
         .form-group label {
             margin-bottom: 0.5rem;
             font-weight: bold;
-            color: #4b1f1f;
-            display: block;
+            color: #4b1f1f; /* สีน้ำตาลเข้ม */
+            display: block; /* ให้ label ขึ้นบรรทัดใหม่ */
         }
 
+        /* Form inputs, select, textarea */
         .form-group input[type="text"],
         .form-group select,
         .form-group textarea {
             padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            border: 1px solid #ddd; /* เส้นขอบเทาอ่อน */
+            border-radius: 5px; /* มุมมน */
             font-size: 1rem;
-            width: 100%;
-            box-sizing: border-box;
+            width: 100%; /* เต็มความกว้าง container */
+            box-sizing: border-box; /* รวม padding และ border ใน width */
         }
 
+        /* Textarea specific styling */
         .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
+            resize: vertical; /* อนุญาตให้ปรับขนาดแนวตั้ง */
+            min-height: 100px; /* ความสูงขั้นต่ำ */
         }
 
+        /* Image upload area styling */
         .image-upload-container {
-            border: 2px dashed #ddd;
+            border: 2px dashed #ddd; /* เส้นประ */
             border-radius: 5px;
             padding: 2rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            cursor: pointer;
-            background-color: #fff;
-            margin-top: 1rem;
+            cursor: pointer; /* เปลี่ยน cursor เป็น pointer */
+            background-color: #fff; /* พื้นหลังสีขาว */
+            margin-top: 1rem; /* ระยะห่างด้านบน */
             width: 100%;
             box-sizing: border-box;
         }
 
+        /* Hide the actual file input */
         .image-upload-container input[type="file"] {
             display: none;
         }
 
+        /* Upload icon styling */
         .upload-icon {
             font-size: 2rem;
-            color: #aaa;
+            color: #aaa; /* สีเทา */
             margin-bottom: 0.5rem;
         }
 
+        /* Upload text styling */
         .upload-text {
-            color: #777;
+            color: #777; /* สีเทาเข้ม */
             font-size: 0.9rem;
             text-align: center;
         }
 
+        /* Uploaded image preview styling */
         .uploaded-image {
-            max-width: 100%;
-            max-height: 150px;
+            max-width: 100%; /* ไม่เกินความกว้าง container */
+            max-height: 150px; /* ความสูงสูงสุด */
             margin-top: 1rem;
             border-radius: 5px;
-            object-fit: contain;
-            display: none;
+            object-fit: contain; /* แสดงรูปภาพเต็มโดยไม่บิดเบี้ยว */
+            display: none; /* ซ่อนไว้เริ่มต้น */
         }
 
+        /* Container for action buttons (Discard, Delete, Add) */
         .action-buttons {
             margin-top: 2rem;
             display: flex;
-            gap: 1rem;
-            justify-content: flex-end;
+            gap: 1rem; /* ระยะห่างระหว่างปุ่ม */
+            justify-content: flex-end; /* จัดปุ่มชิดขวา */
         }
 
+        /* General styling for action buttons */
         .action-buttons button {
             padding: 0.75rem 1.5rem;
             border-radius: 5px;
             font-weight: bold;
             cursor: pointer;
             font-size: 1rem;
+            border: none; /* ไม่มีเส้นขอบ */
         }
 
+        /* Discard button styling */
         .action-buttons .discard-button {
-            background-color: #f59e0b;
+            background-color: #f59e0b; /* สีเหลืองอำพัน */
             color: #ffffff;
-            border: none;
         }
 
         .action-buttons .discard-button:hover {
-            background-color: #d97706;
+            background-color: #d97706; /* สีเข้มขึ้นเมื่อ hover */
         }
 
+        /* Delete button styling */
         .action-buttons .delete-button {
-            background-color: #dc2626;
+            background-color: #dc2626; /* สีแดง */
             color: #ffffff;
-            border: none;
         }
 
         .action-buttons .delete-button:hover {
-            background-color: #b91c1c;
+            background-color: #b91c1c; /* สีเข้มขึ้นเมื่อ hover */
         }
 
+        /* Add Menu button styling */
         .action-buttons .add-menu-button {
-            background-color: #16a34a;
+            background-color: #16a34a; /* สีเขียว */
             color: #ffffff;
-            border: none;
         }
 
         .action-buttons .add-menu-button:hover {
-            background-color: #15803d;
+            background-color: #15803d; /* สีเข้มขึ้นเมื่อ hover */
         }
 
+        /* Responsive grid layout for larger screens */
         @media (min-width: 768px) {
             .form-grid {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr 1fr; /* 2 คอลัมน์ในจอใหญ่ */
+            }
+            .create-menu-container {
+                 /* Adjust margin and width for larger screens if needed */
+                 margin-left: 200px; /* Example adjustment */
+                 width: calc(100% - 220px); /* Example adjustment */
             }
         }
 
-        /* Colors */
+        /* Color consistency (redundant but ensures overrides) */
         .form-group label {
             color: #4b1f1f;
         }
@@ -226,14 +266,16 @@
             border-color: #ddd;
         }
         .image-upload-container:hover {
-            border-color: #aaa;
+            border-color: #aaa; /* สีเข้มขึ้นเมื่อ hover */
         }
     </style>
 </head>
 <body>
     <aside id="permanentSidebar" class="menu-sidebar">
-        <div class="menu-label" style="font-weight: bold;"><a href="./menu_management.html">DASHBOARD</a></div>
-        <div class="menu-label" style="font-weight: bold;"><a href="./reserve.html">RESERVE</a></div>
+        <div>
+            <div class="menu-label" style="font-weight: bold;"><a href="./menu_management.html">DASHBOARD</a></div>
+            <div class="menu-label" style="font-weight: bold;"><a href="./reserve.html">RESERVE</a></div>
+        </div>
         <div class="logout-container">
             <button class="button is-warning is-fullwidth logout-btn">Logout</button>
         </div>
@@ -243,16 +285,14 @@
         <nav id="mainNavbar" class="level navbar is-fixed-top background-secondary-color mb-0">
             <p class="level-item">
                 <a class="sidebarToggle navbar-item text-primary-color pt-3 icon is-large">
-                    <i class="link fas fa-3x fa-bars"></i>
-                </a>
+                    <i class="link fas fa-3x fa-bars"></i> </a>
             </p>
             <p class="level-item">
                 <a class="link font-primary is-size-1 text-primary-color" href="../../index.html">KINNNS</a>
             </p>
             <p class="level-item">
                 <a class="navbar-item text-primary-color pt-4 icon is-large">
-                    <i class="link fas fa-3x fa-info-circle"></i>
-                </a>
+                    <i class="link fas fa-3x fa-info-circle"></i> </a>
             </p>
         </nav>
     </header>
@@ -266,12 +306,9 @@
         </ul>
     </aside>
 
-    <div class="columns is-gapless" style="margin-top: 6rem;"> <div class="column is-2"></div>
-        <div class="column p-6 background-light-pink">
-            <section class="create-menu-container">
+    <div class="columns is-gapless" style="margin-top: 6rem;"> <div class="column is-2"></div> <div class="column p-0 background-light-pink"> <section class="create-menu-container">
                 <h2 class="title is-4 create-menu-header">Create Menu</h2>
-                <p class="subtitle is-6">Design and launch your menus with ease and efficiency</p>
-                <form id="create-menu-form" class="form-grid">
+                <p class="subtitle is-6 has-text-centered">Design and launch your menus with ease and efficiency</p> <form id="create-menu-form" class="form-grid">
                     <div class="form-group">
                         <label for="name">Name Menu</label>
                         <input type="text" id="name" placeholder="Placeholder" required>
@@ -291,101 +328,65 @@
                         <textarea id="description" placeholder="Enter a description..." required></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="image">Upload Image</label>
-                        <div class="image-upload-container" onclick="document.getElementById('image-upload').click();">
+                        <label for="image-upload">Upload Image</label> <div class="image-upload-container" onclick="document.getElementById('image-upload').click();">
                             <input type="file" id="image-upload" accept="image/png, image/jpeg" required>
                             <i class="fas fa-upload upload-icon"></i>
                             <p class="upload-text">Click to upload or drag and drop</p>
                             <p class="upload-text">Max 10mb file size, Only png and jpeg files.</p>
-                            <img id="uploaded-image" class="uploaded-image" style="display: none;" src="#" alt="Uploaded Image">
+                            <img id="uploaded-image" class="uploaded-image" src="#" alt="Uploaded Image">
                         </div>
                     </div>
                 </form>
                 <div class="action-buttons">
                     <button type="button" class="button discard-button">Discard</button>
                     <button type="button" class="button delete-button">Delete</button>
-                    <button type="button" class="button add-menu-button">Add Menu</button>
+                    <button type="submit" form="create-menu-form" class="button add-menu-button">Add Menu</button>
                 </div>
             </section>
         </div>
     </div>
 
     <script>
-        const imageUpload = document.getElementById('image-upload');
-        const uploadedImage = document.getElementById('uploaded-image');
-        const nameInput = document.getElementById('name');
-        const categorySelect = document.getElementById('category');
-        const descriptionInput = document.getElementById('description');
-        const addButton = document.querySelector('.add-menu-button');
-        const discardButton = document.querySelector('.discard-button');
-        const deleteButton = document.querySelector('.delete-button');
+        // Simple image preview script
+        const imageUploadInput = document.getElementById('image-upload');
+        const uploadedImagePreview = document.getElementById('uploaded-image');
 
-
-        imageUpload.addEventListener('change', function() {
-            const file = this.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    uploadedImage.src = e.target.result;
-                    uploadedImage.style.display = 'block';
+        if (imageUploadInput && uploadedImagePreview) {
+            imageUploadInput.addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file && (file.type === "image/png" || file.type === "image/jpeg")) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        uploadedImagePreview.src = e.target.result;
+                        uploadedImagePreview.style.display = 'block'; // Show the image element
+                    }
+                    reader.readAsDataURL(file);
+                } else {
+                    // Reset if the file is not valid
+                    uploadedImagePreview.src = '#';
+                    uploadedImagePreview.style.display = 'none';
+                    // Optionally show an error message
                 }
-                reader.readAsDataURL(file);
-            } else {
-                uploadedImage.style.display = 'none';
-                uploadedImage.src = '#';
-            }
-        });
-
-        addButton.addEventListener('click', function() {
-            const name = nameInput.value;
-            const category = categorySelect.value;
-            const description = descriptionInput.value;
-            const imageFile = imageUpload.files[0];
-
-             if (!name || !category || !description || !imageFile) {
-                alert('Please fill in all fields, including selecting an image.');
-                return;
-             }
-
-            // Here you would typically handle the data submission
-            console.log('Name:', name);
-            console.log('Category:', category);
-            console.log('Description:', description);
-            console.log('Image File:', imageFile);
-
-            // For now, let's just go back to the menu management page
-            window.location.href = './menu_management.html';
-        });
-
-        deleteButton.addEventListener('click', function() {
-            // Handle delete functionality if needed, or just go back
-            window.location.href = './menu_management.html';
-        });
-
-        discardButton.addEventListener('click', function() {
-            // Handle discard functionality, which might involve clearing the form
-            document.getElementById('create-menu-form').reset();
-            uploadedImage.style.display = 'none';
-            uploadedImage.src = '#';
-        });
-
-        // You might want to add logic here to pre-fill the form if it's an edit operation
-        const urlParams = new URLSearchParams(window.location.search);
-        const editIndex = urlParams.get('edit');
-        if (editIndex !== null) {
-            // Fetch the menu item data based on the index and pre-fill the form
-            // For now, let's just log the index
-            console.log('Editing index:', editIndex);
-            // Example of pre-filling (replace with your actual data fetching)
-            // document.getElementById('name').value = menus[editIndex].name;
-            // document.getElementById('category').value = menus[editIndex].category;
-            // document.getElementById('description').value = menus[editIndex].description;
-            // document.getElementById('uploaded-image').src = menus[editIndex].image;
-            // document.getElementById('uploaded-image').style.display = 'block';
-            document.querySelector('.create-menu-header').textContent = 'Edit Menu';
-            document.querySelector('.subtitle').textContent = 'Modify the details of your menu item';
-            document.querySelector('.add-menu-button').textContent = 'Save Menu';
+            });
         }
+
+        // Add event listeners for buttons if needed (e.g., discard, delete)
+        // Example for discard:
+        // const discardButton = document.querySelector('.discard-button');
+        // if (discardButton) {
+        //    discardButton.addEventListener('click', () => {
+        //        if(confirm('Are you sure you want to discard changes?')) {
+        //             document.getElementById('create-menu-form').reset();
+        //             uploadedImagePreview.src = '#';
+        //             uploadedImagePreview.style.display = 'none';
+        //             // Potentially navigate back or clear form state
+        //        }
+        //    });
+        // }
+
+        // Add form submission logic here (e.g., using fetch API for AJAX)
+
     </script>
+
 </body>
 </html>

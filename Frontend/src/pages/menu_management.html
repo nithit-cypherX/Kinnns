@@ -10,145 +10,162 @@
     <link rel="stylesheet" href="../styles/menu_management.css" />
     <script src="../js/global.js" defer></script>
     <style>
+        /* Basic body styling */
         body {
-            background-color: #f9e9df;
-            font-family: 'Segoe UI', sans-serif;
+            background-color: #f9e9df; /* Light pink background */
+            font-family: 'Segoe UI', sans-serif; /* Default font */
         }
 
+        /* Light pink background utility class */
         .background-light-pink {
             background-color: #fff7f2;
         }
 
+        /* Styling for individual menu item containers */
         .menu-item-box {
-            background-color: white;
-            border-left: 5px solid #aa3939;
-            border-radius: 10px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-            margin-bottom: 1rem;
-            padding: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            background-color: white; /* White background for the box */
+            border-left: 5px solid #aa3939; /* Dark red left border */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+            margin-bottom: 1rem; /* Space below each item */
+            padding: 1rem; /* Padding inside the box */
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Vertically align items */
+            justify-content: space-between; /* Space out content and actions */
         }
 
+        /* Container for menu item image and text */
         .menu-item-content {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
-            flex-grow: 1;
+            gap: 1.5rem; /* Space between image and text */
+            flex-grow: 1; /* Allow content to take available space */
         }
 
+        /* Menu item title styling */
         .menu-title {
-            font-weight: 600;
+            font-weight: 600; /* Semi-bold */
             font-size: 1.1rem;
-            margin: 0;
+            margin: 0; /* Remove default margins */
         }
 
+        /* Warning button style override */
         .button.is-warning {
-            background-color: #fcb900;
+            background-color: #fcb900; /* Specific yellow */
             color: black;
             font-weight: bold;
         }
 
+        /* Checkbox styling */
         .checkbox input[type="checkbox"] {
-            transform: scale(1.2);
-            margin-left: 0.5rem;
+            transform: scale(1.2); /* Make checkbox slightly larger */
+            margin-left: 0.5rem; /* Space to the left */
         }
 
+        /* Fixed sidebar styling */
         .menu-sidebar {
-            position: fixed;
-            top: 4.5rem;
+            position: fixed; /* Keep sidebar fixed */
+            top: 4.5rem; /* Position below the navbar (assuming navbar height) */
             left: 0;
-            width: 180px;
-            height: calc(100vh - 4.5rem);
-            background-color: #4b1f1f;
-            color: #f9e9df;
+            width: 180px; /* Fixed width */
+            height: calc(100vh - 4.5rem); /* Full height minus navbar */
+            background-color: #4b1f1f; /* Dark brown background */
+            color: #f9e9df; /* Light text color */
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 1rem 0.5rem;
-            z-index: 10;
+            flex-direction: column; /* Stack items vertically */
+            justify-content: space-between; /* Push logout to bottom */
+            padding: 1rem 0.5rem; /* Padding top/bottom and left/right */
+            z-index: 10; /* Ensure sidebar is above content */
         }
 
+        /* Sidebar link styling */
         .menu-sidebar .menu-label a {
             color: #f9e9df;
             text-decoration: none;
-            display: block;
+            display: block; /* Make links take full width */
             font-size: 1.1rem;
             font-weight: bold;
-            margin: 1rem 0;
-            padding: 0.5rem 0.75rem;
-            border-left: 3px solid #ffffff;
-            letter-spacing: 0.5px;
+            margin: 1rem 0; /* Vertical margin */
+            padding: 0.5rem 0.75rem; /* Padding */
+            border-left: 3px solid #ffffff; /* White left border */
+            letter-spacing: 0.5px; /* Slight letter spacing */
         }
 
+        /* Sidebar link hover effect */
         .menu-sidebar .menu-label a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.1); /* Subtle highlight on hover */
         }
 
+        /* Logout button container */
         .logout-container {
-            margin-top: auto;
-            padding: 0.5rem;
+            /* margin-top: auto; REMOVED - justify-content handles this now */
+            padding: 0.5rem; /* Padding around the button */
         }
 
+        /* Logout button styling */
         .logout-btn {
-            background-color: #f59e0b;
+            background-color: #f59e0b; /* Amber color */
             font-size: 0.9rem;
             font-weight: bold;
             color: white;
         }
 
+        /* Container for action buttons (visibility, edit, delete) */
         .menu-item-actions {
             display: flex;
-            gap: 1rem;
+            gap: 1rem; /* Space between action items */
             align-items: center;
         }
 
-        .image.is-128x128 {
-            height: 100px;
-            width: 100px;
-            border-radius: 10px;
-            object-fit: cover;
-            overflow: hidden;
+        /* Menu item image container */
+        .image.is-128x128 { /* Using Bulma class but overriding size */
+            height: 100px; /* Fixed height */
+            width: 100px; /* Fixed width */
+            border-radius: 10px; /* Rounded corners */
+            object-fit: cover; /* Ensure image covers the area */
+            overflow: hidden; /* Hide parts of image outside the container */
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
+        /* Menu item image */
         .image.is-128x128 img {
-            max-height: 100%;
-            max-width: 100%;
+            max-height: 100%; /* Ensure image fits height */
+            max-width: 100%; /* Ensure image fits width */
         }
 
-        /* Modal Styles */
+        /* Modal Styles (Hidden by default) */
         .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
+            display: none; /* Hidden initially */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.5);
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.5); /* Black background with opacity */
         }
 
+        /* Modal Content Box */
         .modal-content {
-            background-color: #fefefe;
-            margin: 10% auto;
+            background-color: #fefefe; /* White background */
+            margin: 10% auto; /* 10% from top, centered horizontally */
             padding: 2rem;
-            border: 1px solid #888;
-            width: 60%;
-            border-radius: 10px;
-            position: relative;
+            border: 1px solid #888; /* Gray border */
+            width: 60%; /* Modal width */
+            border-radius: 10px; /* Rounded corners */
+            position: relative; /* Needed for absolute positioning of close button */
         }
 
+        /* Modal Header */
         .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1.5rem;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #ddd; /* Separator line */
             padding-bottom: 0.75rem;
         }
 
@@ -157,11 +174,12 @@
             font-size: 1.5rem;
         }
 
+        /* Close Button ('x') */
         .close-button {
-            position: absolute;
+            position: absolute; /* Position relative to modal-content */
             top: 15px;
             right: 15px;
-            color: #aaa;
+            color: #aaa; /* Light gray */
             font-size: 28px;
             font-weight: bold;
             cursor: pointer;
@@ -169,11 +187,11 @@
 
         .close-button:hover,
         .close-button:focus {
-            color: #000;
+            color: #000; /* Black on hover/focus */
             text-decoration: none;
         }
 
-
+        /* Modal Body (for form content) */
         .modal-body {
             margin-bottom: 1.5rem;
         }
@@ -181,29 +199,33 @@
         .modal-body form {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1.5rem; /* Space between form fields */
         }
 
+        /* Remove default bottom margin from Bulma fields inside modal */
         .modal-body form .field {
             margin-bottom: 0;
         }
 
+        /* Modal Footer (for action buttons) */
         .modal-footer {
-            text-align: right;
+            text-align: right; /* Align buttons to the right */
         }
 
         .modal-footer .button {
-            margin-left: 0.75rem;
-            padding: 0.75rem 1.5rem;
-            font-size: 1.1rem;
+            margin-left: 0.75rem; /* Space between buttons */
+            padding: 0.75rem 1.5rem; /* Larger padding */
+            font-size: 1.1rem; /* Larger font size */
         }
 
     </style>
 </head>
 <body>
     <aside id="permanentSidebar" class="menu-sidebar">
-        <div class="menu-label" style="font-weight: bold;"><a href="./menu_management.html">DASHBOARD</a></div>
-        <div class="menu-label" style="font-weight: bold;"><a href="./reserve.html">RESERVE</a></div>
+         <div>
+            <div class="menu-label" style="font-weight: bold;"><a>DASHBOARD</a></div>
+            <div class="menu-label" style="font-weight: bold;"><a href="./reserve.html">RESERVE</a></div>
+        </div>
         <div class="logout-container">
             <button class="button is-warning is-fullwidth logout-btn">Logout</button>
         </div>
@@ -213,16 +235,14 @@
         <nav id="mainNavbar" class="level navbar is-fixed-top background-secondary-color mb-0">
             <p class="level-item">
                 <a class="sidebarToggle navbar-item text-primary-color pt-3 icon is-large">
-                    <i class="link fas fa-3x fa-bars"></i>
-                </a>
+                    <i class="link fas fa-3x fa-bars"></i> </a>
             </p>
             <p class="level-item">
                 <a class="link font-primary is-size-1 text-primary-color" href="../../index.html">KINNNS</a>
             </p>
             <p class="level-item">
                 <a class="navbar-item text-primary-color pt-4 icon is-large">
-                    <i class="link fas fa-3x fa-info-circle"></i>
-                </a>
+                    <i class="link fas fa-3x fa-info-circle"></i> </a>
             </p>
         </nav>
     </header>
@@ -236,97 +256,89 @@
         </ul>
     </aside>
 
-    <div class="columns is-gapless" style="margin-top: 6rem;"> <div class="column is-2"></div>
-
-        <div class="column p-6 background-light-pink">  <div class="is-flex is-justify-content-space-between mb-4">
+    <div class="columns is-gapless" style="margin-top: 6rem;"> <div class="column is-2"></div> <div class="column p-6 background-light-pink">
+            <div class="is-flex is-justify-content-space-between mb-4">
                 <h1 class="title is-4" style="font-weight: bold;">All Menu List</h1>
-                <button id="add-product-button" class="button is-warning">New Product</button>
+                <a id="add-product-button" href="./Add_product_manage.html" class="button is-warning">New Product</a>
             </div>
             <h2 class="subtitle" style="font-weight: bold;">Active Menu: <strong id="menuCount">0</strong> Menu</h2>
 
-            <div id="menuList"></div>
-        </div>
-    </div>
-
-    <script>
-        const menus = [
-            { name: "Roasted Duck Breast", image: "../assets/images/sectionTwo_image.png", category: "Main Course", description: "Delicious roasted duck breast." },
-            { name: "Truffle-Infused Chicken Supreme", image: "../assets/images/sectionTwo_image.png", category: "Main Course", description: "Chicken with truffle infusion." },
-            { name: "Sous Vide Chicken with Herb Butter", image: "../assets/images/sectionTwo_image.png", category: "Main Course", description: "Sous vide chicken with herb butter." },
-            { name: "Lobster Thermidor with Garlic Butter", image: "../assets/images/sectionTwo_image.png", category: "Seafood", description: "Lobster Thermidor with garlic butter." }
-        ];
-
-        const menuList = document.getElementById("menuList");
-        const menuCount = document.getElementById("menuCount");
-        const addProductButton = document.getElementById("add-product-button");
-
-
-        function updateMenuCount() {
-            menuCount.textContent = menus.length;
-        }
-
-        function renderMenuList() {
-            menuList.innerHTML = '';
-            menus.forEach((menu, index) => {
-                const item = document.createElement("div");
-                item.className = "box menu-item-box";
-                item.innerHTML = `
+            <div id="menuList">
+                <div class="box menu-item-box">
                     <div class="menu-item-content">
                         <figure class="image is-128x128">
-                            <img  src="${menu.image}" alt="${menu.name}" />
+                            <img src="../assets/images/sectionTwo_image.png" alt="Roasted Duck Breast"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/100x100/f9e9df/4b1f1f?text=Image';" />
                         </figure>
                         <div class="menu-item-text">
-                            <p class="menu-title">${menu.name}</p>
-                            <p class="menu-category">${menu.category}</p>
-                            <p class="menu-description">${menu.description}</p>
+                            <p class="menu-title">Roasted Duck Breast</p>
+                            <p class="menu-category">Main Course</p>
+                            <p class="menu-description">Delicious roasted duck breast.</p>
                         </div>
                     </div>
                     <div class="menu-item-actions">
                         <label class="checkbox is-flex is-align-items-center">
                             Visibility:
-                            <input type="checkbox" class="ml-2" checked onchange="toggleVisibility(this, ${index})">
+                            <input type="checkbox" class="ml-2" checked >
                         </label>
-                        <a href="./Add_product_manage.html?edit=${index}" class="button is-medium is-info is-light">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <button class="button is-medium is-danger is-light delete-button" data-index="${index}">
-                            <i class="fas fa-trash"></i>
-                        </button>
+                        <a href="./Add_product_manage.html?edit=0" class="button is-medium is-info is-light">
+                            <i class="fas fa-edit"></i> </a>
+                        </div>
+                </div>
+                </div>
+        </div>
+    </div>
+
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add New Product</h2>
+                <span class="close-button">&times;</span> </div>
+            <div class="modal-body">
+                <form id="productForm">
+                    <div class="field">
+                        <label class="label">Product Name</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="e.g., Grilled Salmon" required>
+                        </div>
                     </div>
-                `;
-                menuList.appendChild(item);
+                     <div class="field">
+                        <label class="label">Category</label>
+                        <div class="control">
+                            <div class="select is-fullwidth">
+                              <select>
+                                <option>Appetizer</option>
+                                <option>Main Course</option>
+                                <option>Dessert</option>
+                                <option>Beverage</option>
+                              </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Description</label>
+                        <div class="control">
+                            <textarea class="textarea" placeholder="Describe the product..."></textarea>
+                        </div>
+                    </div>
+                     <div class="field">
+                        <label class="label">Image URL</label>
+                        <div class="control">
+                            <input class="input" type="url" placeholder="https://example.com/image.jpg">
+                        </div>
+                    </div>
+                     <div class="field">
+                        <label class="label">Price</label>
+                        <div class="control">
+                            <input class="input" type="number" step="0.01" placeholder="e.g., 15.99">
+                        </div>
+                    </div>
+                    </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="button close-button-alt">Cancel</button> <button type="submit" form="productForm" class="button is-warning">Save Product</button> </div>
+        </div>
+    </div>
 
-
-                const deleteButton = item.querySelector('.delete-button');
-
-
-                deleteButton.addEventListener('click', () => {
-                    deleteMenuItem(index);
-                });
-            });
-            updateMenuCount();
-        }
-
-        function toggleVisibility(checkbox, index) {
-            menus[index].visible = checkbox.checked;
-            const card = checkbox.closest('.menu-item-box');
-            card.style.opacity = checkbox.checked ? '1' : '0.4';
-        }
-
-        function deleteMenuItem(index) {
-            menus.splice(index, 1);
-            renderMenuList();
-        }
-
-
-
-        addProductButton.addEventListener("click", () => {
-             window.location.href = "./Add_product_manage.html";
-        });
-
-
-
-        renderMenuList();
-    </script>
-</body>
+    </body>
 </html>
