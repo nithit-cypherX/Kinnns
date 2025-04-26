@@ -1,0 +1,144 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KINNNS-SearchingPage</title>
+
+  <!--Import bulma.min.css-->
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="../../node_modules/bulma/css/bulma.min.css"
+    media="screen,projection"
+  />
+
+  <link rel="stylesheet" href="../styles/global.css" />
+  <link rel="stylesheet" href="../styles/searching-page.css" />
+  <script src="../js/global.js" defer></script>
+</head>
+
+<body>
+  <!-- Header Section - Navbar -->
+  <header>
+    <nav
+      id="mainNavbar"
+      class="level navbar is-fixed-top background-secondary-color mb-0"
+    >
+      <!-- Navbar burger -->
+      <p class="level-item">
+        <a
+          class="sidebarToggle navbar-item text-primary-color pt-3 icon is-large"
+        >
+          <i class="link fas fa-3x fa-bars"></i>
+        </a>
+      </p>
+      <!-- Title Name -->
+      <p class="level-item">
+        <a
+          class="link font-primary is-size-1 text-primary-color"
+          href="../../index.html"
+          >KINNNS</a
+        >
+      </p>
+      <!-- Info Icon -->
+      <p class="level-item">
+        <a class="navbar-item text-primary-color pt-4 icon is-large">
+          <i class="link fas fa-3x fa-info-circle"></i>
+        </a>
+      </p>
+    </nav>
+  </header>
+
+  <!-- Sidebar -->
+  <aside id="sidebar" class="sidebar hidden">
+    <ul>
+      <li>
+        <a href="../../index.html"><i class="fas fa-home"></i> Home</a>
+      </li>
+      <li>
+        <a href="./searching.html"><i class="fas fa-search"></i> Search</a>
+      </li>
+      <li>
+        <a href="./team.html"><i class="fas fa-users"></i> Team</a>
+      </li>
+      <li>
+        <a href="./login.html"
+          ><i class="fas fa-address-book"></i> Administrator</a
+        >
+      </li>
+    </ul>
+  </aside>
+
+  <!-- Assuming your navbar is already added at the top -->
+  <section class="section has-background-light">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <!-- Left Image Section -->
+        <div class="column is-half has-text-centered">
+          <figure class="image is-4by3">
+            <img
+              src="../img/your-steak-image.png"
+              alt="Wagyu Dish"
+              style="border-radius: 12px"
+            />
+          </figure>
+        </div>
+
+        <!-- Right Menu Description Section -->
+        <div class="column is-half has-text-left">
+          <h1 class="title is-3 has-text-weight-bold has-text-warning">
+            Course Name
+          </h1>
+          <p class="mb-4">
+            <strong>Our 1829 Espresso</strong> is our seasonal espresso for
+            milk. <br />
+            We source, roast and brew this coffee specifically for an
+            exceptional milk based experience.
+          </p>
+
+          <div class="mb-3">
+            <h2
+              class="subtitle is-5 has-text-weight-bold has-text-warning-dark"
+            >
+              Appetizer
+            </h2>
+            <p>Seared Foie Gras, Lobster Bisque, Oysters Rockefeller</p>
+          </div>
+
+          <div class="mb-3">
+            <h2
+              class="subtitle is-5 has-text-weight-bold has-text-warning-dark"
+            >
+              Main course
+            </h2>
+            <p>Wagyu Beef Tenderloin, Black Cod Miso, Duck à l'Orange</p>
+          </div>
+
+          <div class="mb-3">
+            <h2
+              class="subtitle is-5 has-text-weight-bold has-text-warning-dark"
+            >
+              Dessert
+            </h2>
+            <p>
+              Grand Cru Chocolate Soufflé, Gold-Leaf Tiramisu, Raspberry
+              Champagne Sorbet
+            </p>
+          </div>
+
+          <div
+            class="is-flex is-justify-content-space-between is-align-items-center mt-5"
+          >
+            <span class="has-text-weight-bold is-size-5">Course Price</span>
+            <span class="has-text-weight-bold is-size-5">$199 USD</span>
+          </div>
+
+          <div class="mt-4">
+            <button class="button is-warning is-fullwidth is-medium">
+              Reserve
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>

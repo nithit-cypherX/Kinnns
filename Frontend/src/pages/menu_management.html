@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>KINNNS - Menu Management</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="../styles/global.css" />
+    <link rel="stylesheet" href="../styles/menu_management.css" />
+    <script src="../js/global.js" defer></script>
+    <style>
+        body {
+            background-color: #f9e9df;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .background-light-pink {
+            background-color: #fff7f2;
+        }
+
+        .menu-item-box {
+            background-color: white;
+            border-left: 5px solid #aa3939;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1rem;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .menu-item-content {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .menu-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .button.is-warning {
+            background-color: #fcb900;
+            color: black;
+            font-weight: bold;
+        }
+
+        .checkbox input[type="checkbox"] {
+            transform: scale(1.2);
+            margin-left: 0.5rem;
+        }
+
+        .menu-sidebar {
+            position: fixed;
+            top: 4.5rem;
+            left: 0;
+            width: 180px;
+            height: calc(100vh - 4.5rem);
+            background-color: #4b1f1f;
+            color: #f9e9df;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 1rem 0.5rem;
+            z-index: 10;
+        }
+
+        .menu-sidebar .menu-label a {
+            color: #f9e9df;
+            text-decoration: none;
+            display: block;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin: 1rem 0;
+            padding: 0.5rem 0.75rem;
+            border-left: 3px solid #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        .menu-sidebar .menu-label a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .logout-container {
+            margin-top: auto;
+            padding: 0.5rem;
+        }
+
+        .logout-btn {
+            background-color: #f59e0b;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .menu-item-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .image.is-128x128 {
+            height: 100px;
+            width: 100px;
+            border-radius: 10px;
+            object-fit: cover;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image.is-128x128 img {
+            max-height: 100%;
+            max-width: 100%;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 2rem;
+            border: 1px solid #888;
+            width: 60%;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 0.75rem;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: #000;
+            text-decoration: none;
+        }
+
+
+        .modal-body {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-body form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .modal-body form .field {
+            margin-bottom: 0;
+        }
+
+        .modal-footer {
+            text-align: right;
+        }
+
+        .modal-footer .button {
+            margin-left: 0.75rem;
+            padding: 0.75rem 1.5rem;
+            font-size: 1.1rem;
+        }
+
+    </style>
+</head>
+<body>
+    <aside id="permanentSidebar" class="menu-sidebar">
+        <div class="menu-label" style="font-weight: bold;"><a href="./menu_management.html">DASHBOARD</a></div>
+        <div class="menu-label" style="font-weight: bold;"><a href="./reserve.html">RESERVE</a></div>
+        <div class="logout-container">
+            <button class="button is-warning is-fullwidth logout-btn">Logout</button>
+        </div>
+    </aside>
+
+    <header>
+        <nav id="mainNavbar" class="level navbar is-fixed-top background-secondary-color mb-0">
+            <p class="level-item">
+                <a class="sidebarToggle navbar-item text-primary-color pt-3 icon is-large">
+                    <i class="link fas fa-3x fa-bars"></i>
+                </a>
+            </p>
+            <p class="level-item">
+                <a class="link font-primary is-size-1 text-primary-color" href="../../index.html">KINNNS</a>
+            </p>
+            <p class="level-item">
+                <a class="navbar-item text-primary-color pt-4 icon is-large">
+                    <i class="link fas fa-3x fa-info-circle"></i>
+                </a>
+            </p>
+        </nav>
+    </header>
+
+    <aside id="sidebar" class="sidebar hidden">
+        <ul>
+            <li><a href="../../index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="./searching.html"><i class="fas fa-search"></i> Search</a></li>
+            <li><a href="./team.html"><i class="fas fa-users"></i> Team</a></li>
+            <li><a href="./login.html"><i class="fas fa-address-book"></i> Administrator</a></li>
+        </ul>
+    </aside>
+
+    <div class="columns is-gapless" style="margin-top: 6rem;"> <div class="column is-2"></div>
+
+        <div class="column p-6 background-light-pink">  <div class="is-flex is-justify-content-space-between mb-4">
+                <h1 class="title is-4" style="font-weight: bold;">All Menu List</h1>
+                <button id="add-product-button" class="button is-warning">New Product</button>
+            </div>
+            <h2 class="subtitle" style="font-weight: bold;">Active Menu: <strong id="menuCount">0</strong> Menu</h2>
+
+            <div id="menuList"></div>
+        </div>
+    </div>
+
+    <script>
+        const menus = [
+            { name: "Roasted Duck Breast", image: "../assets/images/sectionTwo_image.png", category: "Main Course", description: "Delicious roasted duck breast." },
+            { name: "Truffle-Infused Chicken Supreme", image: "../assets/images/sectionTwo_image.png", category: "Main Course", description: "Chicken with truffle infusion." },
+            { name: "Sous Vide Chicken with Herb Butter", image: "../assets/images/sectionTwo_image.png", category: "Main Course", description: "Sous vide chicken with herb butter." },
+            { name: "Lobster Thermidor with Garlic Butter", image: "../assets/images/sectionTwo_image.png", category: "Seafood", description: "Lobster Thermidor with garlic butter." }
+        ];
+
+        const menuList = document.getElementById("menuList");
+        const menuCount = document.getElementById("menuCount");
+        const addProductButton = document.getElementById("add-product-button");
+
+
+        function updateMenuCount() {
+            menuCount.textContent = menus.length;
+        }
+
+        function renderMenuList() {
+            menuList.innerHTML = '';
+            menus.forEach((menu, index) => {
+                const item = document.createElement("div");
+                item.className = "box menu-item-box";
+                item.innerHTML = `
+                    <div class="menu-item-content">
+                        <figure class="image is-128x128">
+                            <img  src="${menu.image}" alt="${menu.name}" />
+                        </figure>
+                        <div class="menu-item-text">
+                            <p class="menu-title">${menu.name}</p>
+                            <p class="menu-category">${menu.category}</p>
+                            <p class="menu-description">${menu.description}</p>
+                        </div>
+                    </div>
+                    <div class="menu-item-actions">
+                        <label class="checkbox is-flex is-align-items-center">
+                            Visibility:
+                            <input type="checkbox" class="ml-2" checked onchange="toggleVisibility(this, ${index})">
+                        </label>
+                        <a href="./Add_product_manage.html?edit=${index}" class="button is-medium is-info is-light">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <button class="button is-medium is-danger is-light delete-button" data-index="${index}">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                menuList.appendChild(item);
+
+
+                const deleteButton = item.querySelector('.delete-button');
+
+
+                deleteButton.addEventListener('click', () => {
+                    deleteMenuItem(index);
+                });
+            });
+            updateMenuCount();
+        }
+
+        function toggleVisibility(checkbox, index) {
+            menus[index].visible = checkbox.checked;
+            const card = checkbox.closest('.menu-item-box');
+            card.style.opacity = checkbox.checked ? '1' : '0.4';
+        }
+
+        function deleteMenuItem(index) {
+            menus.splice(index, 1);
+            renderMenuList();
+        }
+
+
+
+        addProductButton.addEventListener("click", () => {
+             window.location.href = "./Add_product_manage.html";
+        });
+
+
+
+        renderMenuList();
+    </script>
+</body>
+</html>
