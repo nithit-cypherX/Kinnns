@@ -302,7 +302,7 @@
             <li><a href="../../index.html"><i class="fas fa-home"></i> Home</a></li>
             <li><a href="./searching.html"><i class="fas fa-search"></i> Search</a></li>
             <li><a href="./team.html"><i class="fas fa-users"></i> Team</a></li>
-            <li><a href="./login.html"><i class="fas fa-address-book\"></i> Administrator</a></li>
+            <li><a href="./login.html"><i class="fas fa-address-book"></i> Administrator</a></li>
         </ul>
     </aside>
 
@@ -345,48 +345,5 @@
             </section>
         </div>
     </div>
-
-    <script>
-        // Simple image preview script
-        const imageUploadInput = document.getElementById('image-upload');
-        const uploadedImagePreview = document.getElementById('uploaded-image');
-
-        if (imageUploadInput && uploadedImagePreview) {
-            imageUploadInput.addEventListener('change', function(event) {
-                const file = event.target.files[0];
-                if (file && (file.type === "image/png" || file.type === "image/jpeg")) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        uploadedImagePreview.src = e.target.result;
-                        uploadedImagePreview.style.display = 'block'; // Show the image element
-                    }
-                    reader.readAsDataURL(file);
-                } else {
-                    // Reset if the file is not valid
-                    uploadedImagePreview.src = '#';
-                    uploadedImagePreview.style.display = 'none';
-                    // Optionally show an error message
-                }
-            });
-        }
-
-        // Add event listeners for buttons if needed (e.g., discard, delete)
-        // Example for discard:
-        // const discardButton = document.querySelector('.discard-button');
-        // if (discardButton) {
-        //    discardButton.addEventListener('click', () => {
-        //        if(confirm('Are you sure you want to discard changes?')) {
-        //             document.getElementById('create-menu-form').reset();
-        //             uploadedImagePreview.src = '#';
-        //             uploadedImagePreview.style.display = 'none';
-        //             // Potentially navigate back or clear form state
-        //        }
-        //    });
-        // }
-
-        // Add form submission logic here (e.g., using fetch API for AJAX)
-
-    </script>
-
 </body>
 </html>
