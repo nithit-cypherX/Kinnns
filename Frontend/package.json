@@ -1,5 +1,17 @@
 {
+  "name": "frontend",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
   "dependencies": {
-    "bulma": "^1.0.3"
+    "bulma": "^1.0.3",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
   }
 }
