@@ -7,11 +7,11 @@
     <title>KINNNS-ProductManagementPage</title>
 
     <!--Import bulma.min.css-->
-    <link type="text/css" rel="stylesheet" href="../../node_modules/bulma/css/bulma.min.css"
+    <link type="text/css" rel="stylesheet" href="node_modules/bulma/css/bulma.min.css"
         media="screen,projection" />
 
-    <link rel="stylesheet" href="../styles/global.css" />
-    <link rel="stylesheet" href="../styles/product_management-page.css" />
+    <link rel="stylesheet" href="src/styles/global.css" />
+    <link rel="stylesheet" href="src/styles/product_management-page.css" />
 
 </head>
 
@@ -25,7 +25,7 @@
                 </a>
             </p>
             <p class="level-item">
-                <a class="link font-primary is-size-1 text-primary-color" href="../../index.html">KINNNS</a>
+                <a class="link font-primary is-size-1 text-primary-color" href="/homepage">KINNNS</a>
             </p>
             <p class="level-item">
                 <a class="navbar-item text-primary-color pt-4 icon is-large">
@@ -48,14 +48,14 @@
                 </div>
                 <!-- Logout Button -->
                 <div>
-                    <button onclick="location.href='../pages/login.html'" class="button is-warning is-fullwidth">
+                    <button id="logout" class="button is-warning is-fullwidth">
                         Logout<i class="fas fa-sign-out-alt"></i>
                     </button>
                 </div>
             </aside>
 
             <!-- Main Content -->
-            <div class="column p-5">
+            <article class="column p-5">
                 <!-- Title -->
                 <h1 class="title has-text-centered">Course Management</h1>
                 <!-- Edit & Add Buttons -->
@@ -66,168 +66,83 @@
                 </div>
 
                 <!-- Cards Column -->
-                <div class="columns is-multiline is-centered">
-                    <!-- Card 1 -->
-                    <div class="column is-4">
-                        <div class="box has-text-centered">
-                            <h2 class="title">Course Name</h2>
-                            <div class="course-image">
-                                <img src="../assets/images/CoursePic1.jpg" alt="Course Image">
-                            </div>
-                            <!-- Category Badges -->
-                            <div class="categories">
-                                <span class="category-badge">Must-Try Course</span>
-                                <span class="category-badge">Premium</span>
-                                <span class="category-badge">Meat</span>
-                            </div>
-                            <!-- Description -->
-                            <p>Poultry Course – A selection of fine poultry dishes made from premium ingredients.
-                            </p>
-                            <br>
-                            <p>Premium Course – An exquisite dining experience featuring the finest ingredients and
-                                flavors</p>
-                            <!-- Yellow Line Divider -->
-                            <div class="yellow-line"></div>
-                            <!-- Price -->
-                            <p class="card-price"><strong>$119 USD</strong></p>
-                        </div>
-                    </div>
-                    <!-- Card 2 -->
-                    <div class="column is-4">
-                        <div class="box has-text-centered">
-                            <h2 class="title">Course Name</h2>
-                            <div class="course-image">
-                                <img src="../assets/images/CoursePic2.jpg" alt="Course Image">
-                            </div>
-                            <!-- Category Badges -->
-                            <div class="categories">
-                                <span class="category-badge">Best Bites</span>
-                                <span class="category-badge">Premium</span>
-                                <span class="category-badge">Meat</span>
-                            </div>
-                            <!-- Description -->
-                            <p>Poultry Course – A selection of fine poultry dishes made from premium ingredients.
-                            </p>
-                            <br>
-                            <p>Premium Course – An exquisite dining experience featuring the finest ingredients and
-                                flavors</p>
-
-                            <!-- Yellow Line Divider -->
-                            <div class="yellow-line"></div>
-                            <!-- Price -->
-                            <p class="card-price"><strong>$159 USD</strong></p>
-                        </div>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div class="column is-4">
-                        <div class="box has-text-centered">
-                            <h2 class="title">Course Name</h2>
-                            <div class="course-image">
-                                <img src="../assets/images/CoursePic3.jpg" alt="Course Image">
-                            </div>
-                            <!-- Category Badges -->
-                            <div class="categories">
-                                <span class="category-badge">Exclusive Picks</span>
-                                <span class="category-badge">Vegan</span>
-                                <span class="category-badge">Premium</span>
-                            </div>
-                            <!-- Description -->
-                            <p>Poultry Course – A selection of fine poultry dishes made from premium ingredients.
-                            </p>
-                            <br>
-                            <p>Premium Course – An exquisite dining experience featuring the finest ingredients and
-                                flavors</p>
-                            <!-- Yellow Line Divider -->
-                            <div class="yellow-line"></div>
-                            <!-- Price -->
-                            <p class="card-price"><strong>$129 USD</strong></p>
-                        </div>
-                    </div>
-
-                    <!-- Card 4 -->
-                    <div class="column is-4">
-                        <div class="box has-text-centered">
-                            <h2 class="title">Course Name</h2>
-                            <div class="course-image">
-                                <img src="../assets/images/CoursePic4.jpg" alt="Course Image">
-                            </div>
-                            <!-- Category Badges -->
-                            <div class="categories">
-                                <span class="category-badge">Poultry</span>
-                                <span class="category-badge">Seasonal</span>
-                                <span class="category-badge">Meat</span>
-                            </div>
-                            <!-- Description -->
-                            <p>Poultry Course – A selection of fine poultry dishes made from premium ingredients.
-                            </p>
-                            <br>
-                            <p>Premium Course – An exquisite dining experience featuring the finest ingredients and
-                                flavors</p>
-                            <!-- Yellow Line Divider -->
-                            <div class="yellow-line"></div>
-                            <!-- Price -->
-                            <p class="card-price"><strong>$199 USD</strong></p>
-                        </div>
-                    </div>
-
-                    <!-- Card 5 -->
-                    <div class="column is-4">
-                        <div class="box has-text-centered">
-                            <h2 class="title">Course Name</h2>
-                            <div class="course-image">
-                                <img src="../assets/images/CoursePic5.jpg" alt="Course Image">
-                            </div>
-                            <!-- Category Badges -->
-                            <div class="categories">
-                                <span class="category-badge">Poultry</span>
-                                <span class="category-badge">Premium</span>
-                                <span class="category-badge">Meat</span>
-                            </div>
-                            <!-- Description -->
-                            <p>Poultry Course – A selection of fine poultry dishes made from premium ingredients.
-                            </p>
-                            <br>
-                            <p>Premium Course – An exquisite dining experience featuring the finest ingredients and
-                                flavors</p>
-                            <!-- Yellow Line Divider -->
-                            <div class="yellow-line"></div>
-                            <!-- Price -->
-                            <p class="card-price"><strong>$149 USD</strong></p>
-                        </div>
-                    </div>
-
-                    <!-- Card 6 -->
-                    <div class="column is-4">
-                        <!-- Card 1 -->
-                        <div class="box has-text-centered">
-                            <h2 class="title">Course Name</h2>
-                            <div class="course-image">
-                                <img src="../assets/images/CoursePic6.jpg" alt="Course Image">
-                            </div>
-                            <!-- Category Badges -->
-                            <div class="categories">
-                                <span class="category-badge">Poultry</span>
-                                <span class="category-badge">Premium</span>
-                                <span class="category-badge">Meat</span>
-                            </div>
-                            <!-- Description -->
-                            <p>Poultry Course – A selection of fine poultry dishes made from premium ingredients.
-                            </p>
-                            <br>
-                            <p>Premium Course – An exquisite dining experience featuring the finest ingredients and
-                                flavors</p>
-                            <!-- Yellow Line Divider -->
-                            <div class="yellow-line"></div>
-                            <!-- Price -->
-                            <p class="card-price"><strong>$99 USD</strong></p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+                <div id="cards" class="columns is-multiline is-centered"></div>
+            </article>
         </div>
     </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            axios.defaults.withCredentials = true;
+
+            // First, check if user is logged in
+            axios.get('http://localhost:3000/check-login')
+                .then(res => {
+                    console.log('✅ Logged in:', res.data);
+                    loadCourses(); // Only load courses if logged in
+                })
+                .catch(err => {
+                    
+                    alert("Sorry You Are Not Allowed To Access This Page");
+                    window.location.href = '/login-page';  // 🚪 Redirect to login page
+                    
+                });
+
+            function loadCourses() {
+                axios.get('http://localhost:3000/courses')
+                    .then(response => {
+                        const courses = response.data;
+                        const cardsContainer = document.getElementById('cards');
+                        cardsContainer.innerHTML = '';
+
+                        courses.forEach((course, index) => {
+                            const cardHTML =
+                                `<div id="card${index + 1}" class="column is-4">
+                            <div class="box has-text-centered">
+                                <h2 class="title">${course.course_name}</h2>
+                                <div class="course-image">
+                                    <img src="${course.imageurl}" alt="Course Image">
+                                </div>
+                                <div>
+                                    <p>${course.course_description}</p>
+                                </div>
+                                <div class="yellow-line"></div>
+                                <p class="card-price"><strong>$${course.price} USD</strong></p>
+                            </div>
+                        </div>`;
+                            cardsContainer.innerHTML += cardHTML;
+                        });
+                    })
+                    .catch(err => {
+                        console.error('🚨 Failed to load courses:', err);
+                    });
+            }
+        });
+
+
+
+        document.getElementById("logout").addEventListener("click", () => {
+
+            axios.get('http://localhost:3000/logout', {
+                withCredentials: true
+            })
+                .then(res => {
+                    window.location.href = '/login-page';
+                    alert(res.data);
+                })
+                .catch(err => {
+                    alert('🚨 Something Wrong');
+                    console.error(err);
+                })
+
+        })
+
+
+
+    </script>
 
 
 </body>

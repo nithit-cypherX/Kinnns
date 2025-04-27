@@ -23,7 +23,6 @@ nav {
 }
 
 .hero-image {
-  background-image: url(../assets/images/hero_image.png);
   background-position: center;
   background-size: cover;
   height: 100vh; /* Full screen height */
@@ -31,7 +30,6 @@ nav {
 }
 
 .sectionTwo-image {
-  background-image: url(../assets/images/sectionTwo_image.png);
   background-position: center;
   background-size: cover;
   height: 100vh;
@@ -127,7 +125,6 @@ nav {
 }
 
 .pageFour-content-image {
-  background-image: url(../assets/images/section4_appetizer.png);
   background-position: center;
   background-size: cover;
   height: 55vh;
@@ -291,7 +288,6 @@ nav {
 
 .footer-section-image {
   align-items: center;
-  background-image: url(../assets/images/footer_image.png);
   background-position: center;
   background-size: cover;
   display: flex;
