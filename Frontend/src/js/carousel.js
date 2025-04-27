@@ -1,20 +1,29 @@
-const container = document.querySelector(".carousel-container");
-const prevBtn = document.getElementById("prev");
-const nextBtn = document.getElementById("next");
+const cards = document.querySelectorAll('.card');
+let current = 1;
 
-let index = 0;
-
-function updateCarousel() {
-    const offset = -index * 100; // Move slides horizontally
-    container.style.transform = `translateX(${offset}%)`;
+function updateCards() {
+  cards.forEach((card, index) => {
+    card.classList.remove('active');
+    card.style.display = (index >= current - 1 && index <= current + 1) ? 'block' : 'none';
+  });
+  cards[current].classList.add('active');
 }
 
-nextBtn.addEventListener("click", () => {
-    index = (index + 1) % 3; // Loop through slides
-    updateCarousel();
-});
+function nextCard() {
+  if (current < cards.length - 1) {
+    current++;
+    updateCards();
+  }
+}
 
-prevBtn.addEventListener("click", () => {
-    index = (index - 1 + 3) % 3; // Loop backward
-    updateCarousel();
-});
+function prevCard() {
+  if (current > 0) {
+    current--;
+    updateCards();
+  }
+}
+
+document.getElementById('next').addEventListener('click', nextCard);
+document.getElementById('prev').addEventListener('click', prevCard);
+
+updateCards();

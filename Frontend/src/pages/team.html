@@ -2,82 +2,97 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KINNNS</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KINNNS - Team Page</title>
 
-    <!--Import bulma.min.css-->
-    <link type="text/css" rel="stylesheet" href="../../node_modules/bulma/css/bulma.min.css"
-        media="screen,projection" />
+  <!-- Bulma CSS -->
+  <link rel="stylesheet" href="../../node_modules/bulma/css/bulma.min.css">
 
-    <link rel="stylesheet" href="../styles/global.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../assets/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="../assets/fontawesome/css/fontawesome.min.css">
 
+  <!-- Global and Page Styles -->
+  <link rel="stylesheet" href="../styles/global.css">
+  <link rel="stylesheet" href="../styles/teamStyle.css">
 
-
+  <!-- Global Sidebar Toggle Script -->
+  <script src="../js/global.js" defer></script>
 </head>
 
 <body>
 
-    <!-- Hero Image section -->
-    <section class="hero is-fullheight">
+  <!-- ✅ Navbar -->
+  <header>
+    <nav id="mainNavbar" class="level navbar is-fixed-top background-secondary-color mb-0">
+      <!-- Navbar burger -->
+      <p class="level-item">
+        <a class="sidebarToggle navbar-item text-primary-color pt-3 icon is-large">
+          <i class="link fas fa-3x fa-bars"></i>
+        </a>
+      </p>
+      <!-- Title Name -->
+      <p class="level-item">
+        <a class="link font-primary is-size-1 text-primary-color" href="../../index.html">KINNNS</a>
+      </p>
+      <!-- Info Icon -->
+      <p class="level-item">
+        <a class="navbar-item text-primary-color pt-4 icon is-large">
+          <i class="link fas fa-3x fa-info-circle"></i>
+        </a>
+      </p>
+    </nav>
+  </header>
 
+  <!-- ✅ Sidebar -->
+  <aside id="sidebar" class="sidebar hidden">
+    <ul>
+      <li><a href="../../index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="./searching.html"><i class="fas fa-search"></i> Search</a></li>
+      <li><a href="./team.html"><i class="fas fa-users"></i> Team</a></li>
+      <li><a href="./login.html"><i class="fas fa-address-book"></i> Administrator</a></li>
+    </ul>
+  </aside>
 
-        <div class="hero-head">
-            <nav id="heroNavbar" class="level is-transparent">
-                <p class="level-item">
-                    <a class="navbar-item text-primary-color pt-4 icon is-large">
-                        <i class="link fas fa-3x fa-bars "></i>
-                    </a>
-                </p>
-                <p class="level-item">
-                    <a class="link font-primary is-size-3"></a>
-                </p>
-                <p class="level-item">
-                    <a class="navbar-item text-primary-color pt-5 icon is-large">
-                        <i class="link fas fa-3x fa-info-circle"></i>
-                    </a>
-                </p>
-            </nav>
+  <!-- ✅ Main Content -->
+  <section class="team-section">
+    <h1 class="title is-2 has-text-weight-bold">TEAM</h1>
+    <div class="carousel">
+      <div class="arrow" id="prev">&#8592;</div>
+  
+      <div class="card" id="card1">
+        <img src="../assets/images/sectionTwo_image.png" alt="Member 1">
+        <h2>Sarach Islam</h2>
+        <p>UX/UI Design</p>
+      </div>
+  
+      <div class="card active" id="card2">
+        <img src="../assets/images/sectionTwo_image.png" alt="Passakorn">
+        <h2>Athip Madnoth</h2>
+        <p>Technical Writer</p>
+      </div>
+  
+      <div class="card" id="card3">
+        <img src="../assets/images/sectionTwo_image.png" alt="Member 3">
+        <h2>Nithit Teeraworawit</h2>
+        <p>Backend</p>
+      </div>
 
-        </div>
-      
-        <div class="hero-body is-justify-content-center">
-            <section class="section">
-                <div class="container has-text-centered">
-                    <h1 class="title">TEAM</h1>
-                    
-                    <div class="carousel">
-                        <button id="prev" class="button is-dark">❮</button>
-                        
-                        <div class="carousel-container">
-                            <div class="carousel-item">
-                                <img src="person1.jpg" alt="Person 1">
-                                <p><strong>Name</strong></p>
-                                <p>Job</p>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="person2.jpg" alt="Person 2">
-                                <p><strong>Passakorn P.</strong></p>
-                                <p>UX/UI Design</p>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="person3.jpg" alt="Person 3">
-                                <p><strong>Name</strong></p>
-                                <p>Job</p>
-                            </div>
-                        </div>
-                        
-                        <button id="next" class="button is-dark">❯</button>
-                    </div>
-                </div>
-            </section>
-        </div>
+      <div class="card" id="card4">
+        <img src="../assets/images/sectionTwo_image.png" alt="Member 4">
+        <h2>Passakorn P.</h2>
+        <p>UX/UI Design</p>
+      </div>
+  
+      <div class="arrow" id="next">&#8594;</div>
+    </div>
+  </section>
+  
 
-    </section>
+  <!-- ✅ Carousel JavaScript -->
+  <script src="../js/carousel.js"></script>
 
-    <script src="../js/carousel.js"></script>
-
-   
 </body>
 
 </html>
