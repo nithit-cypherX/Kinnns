@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KINNNS - Course Management</title>
+
+  <link rel="stylesheet" href="node_modules/bulma/css/bulma.min.css" />
+  <link rel="stylesheet" href="src/styles/global.css" />
+  <link rel="stylesheet" href="src/styles/course_management.css" />
+  <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+  <script src="src/js/global.js" defer></script>
+</head>
+
+<body>
+  <!-- Header Section - Navbar -->
+  <header>
+    <nav id="mainNavbar" class="level navbar is-fixed-top background-secondary-color mb-0">
+      <p class="level-item">
+        <a class="sidebarToggle navbar-item text-primary-color pt-3 icon is-large">
+          <i class="fas fa-bars fa-3x"></i>
+        </a>
+      </p>
+      <p class="level-item">
+        <a class="link font-primary is-size-1 text-primary-color" href="../../index.html">KINNNS</a>
+      </p>
+      <p class="level-item">
+        <a class="navbar-item text-primary-color pt-4 icon is-large">
+          <i class="fas fa-info-circle fa-3x"></i>
+        </a>
+      </p>
+    </nav>
+  </header>
+
+  <!-- Sidebar (collapsible) -->
+  <aside id="sidebar" class="sidebar hidden">
+    <ul>
+      <li><a href="../../index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="./searching.html"><i class="fas fa-search"></i> Search</a></li>
+      <li><a href="./team.html"><i class="fas fa-users"></i> Team</a></li>
+      <li><a href="./login.html"><i class="fas fa-address-book"></i> Administrator</a></li>
+    </ul>
+  </aside>
+
+  <!-- Page Layout -->
+  <section class="hero background-primary-color">
+    <div class="columns mt-6 p-3">
+      <!-- Left Sidebar -->
+      <aside class="column is-2 background-secondary-color px-6 py-5 is-flex is-flex-direction-column is-justify-content-space-between">
+        <div class="menu">
+          <ul class="menu-list">
+            <li><a href="#">DASHBOARD</a></li>
+          </ul>
+        </div>
+        <div>
+          <button id="logout" class="button is-warning is-fullwidth">
+            Logout <i class="fas fa-sign-out-alt"></i>
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <article class="column p-6">
+        <!-- Title -->
+        <h1 class="title has-text-centered">Create New Course</h1>
+        <p class="subtitle is-6 has-text-centered">Design and launch your courses easily!</p>
+
+        <!-- Form Start -->
+        <form id="create-menu-form" class="form-grid">
+          <div class="form-group">
+            <label for="menuName">Menu Name</label>
+            <input type="text" id="menuName" placeholder="Enter menu name..." required>
+          </div>
+
+          <div class="form-group">
+            <label for="category1">Category 1</label>
+            <select id="category1" required></select>
+          </div>
+
+          <div class="form-group">
+            <label for="category2">Category 2</label>
+            <select id="category2" required></select>
+          </div>
+
+          <div class="form-group">
+            <label for="category3">Category 3</label>
+            <select id="category3" required></select>
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / 3;">
+            <label for="description">Description</label>
+            <textarea id="description" placeholder="Enter a description..." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="image-upload">Upload Image</label>
+            <div class="image-upload-container" onclick="document.getElementById('image-upload').click();">
+              <input type="file" id="image-upload" accept="image/png, image/jpeg" style="display: none;">
+              <i class="fas fa-upload fa-2x"></i>
+              <p>Click to upload or drag and drop</p>
+              <p class="small-text">Max 10MB, PNG or JPEG only.</p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="price">Price</label>
+            <input type="text" id="price" placeholder="Enter price..." required>
+          </div>
+
+          <div class="action-buttons" style="grid-column: 1 / 3;">
+            <button type="button" class="button is-danger" onclick="window.history.back();">Cancel</button>
+            <button type="submit" class="button is-success">Save</button>
+          </div>
+        </form>
+        <!-- Form End -->
+      </article>
+    </div>
+  </section>
+
+  <!-- Axios CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <!-- Page Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const courseId = urlParams.get('courseId');
+
+      fetchCategories();
+
+      if (courseId) {
+        axios.get(`http://localhost:3000/courses/${courseId}`)
+          .then(res => {
+            const course = res.data;
+            document.getElementById('menuName').value = course.course_name;
+            document.getElementById('description').value = course.course_description;
+            document.getElementById('category1').value = course.cat_id_1;
+            document.getElementById('category2').value = course.cat_id_2;
+            document.getElementById('category3').value = course.cat_id_3;
+            document.getElementById('price').value = course.price;
+          })
+          .catch(err => {
+            alert('Failed to load course details.');
+          });
+      }
+
+      function fetchCategories() {
+        axios.get('http://localhost:3000/categories')
+          .then(res => {
+            const categories = res.data;
+            const selects = [category1, category2, category3];
+
+            const defaultOption = '<option value="">Select a Category</option>';
+            selects.forEach(select => select.innerHTML = defaultOption);
+
+            categories.forEach(cat => {
+              const option = `<option value="${cat.cat_id}">${cat.cat_name}</option>`;
+              selects.forEach(select => select.innerHTML += option);
+            });
+          })
+          .catch(err => {
+            alert('Failed to load categories.');
+          });
+      }
+
+      document.getElementById("logout").addEventListener("click", () => {
+        axios.get('http://localhost:3000/logout', { withCredentials: true })
+          .then(res => {
+            window.location.href = '/login-page';
+            alert(res.data);
+          })
+          .catch(err => {
+            alert('🚨 Something Wrong');
+          });
+      });
+    });
+  </script>
+
+</body>
+
+</html>
