@@ -3,6 +3,8 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const multer = require('multer');
+const fs = require('fs');
 const db = require('./connectDB');
 
 const port = 3000;
@@ -24,6 +26,17 @@ app.use(cors(corsOptions));
 
 // Serve images as static files.
 app.use('/images', express.static(path.join(__dirname, 'images')));
+
+// Setup multer for image uploads (Save to /images/courses/)
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, path.join(__dirname, 'images/courses'));
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname); // Save with original filename
+    }
+});
+const upload = multer({ storage: storage });
 
 // Handling login Page
 app.post('/login', (req, res) => {
@@ -217,19 +230,191 @@ app.post('/search-courses', (req, res) => {
 // Example backend route
 app.get('/courses/:id', (req, res) => {
     const courseId = req.params.id;
-  
+
     // 👇 Your database query here (example)
     db.query('SELECT * FROM courses WHERE course_id = ?', [courseId], (err, results) => {
-      if (err) {
-        return res.status(500).json({ message: 'Error fetching course' });
-      }
-      if (results.length === 0) {
-        return res.status(404).json({ message: 'Course not found' });
-      }
-      res.json(results[0]); // Return only one course
+        if (err) {
+            return res.status(500).json({ message: 'Error fetching course' });
+        }
+        if (results.length === 0) {
+            return res.status(404).json({ message: 'Course not found' });
+        }
+        res.json(results[0]); // Return only one course
     });
-  });
-  
+});
+
+// 🔥 Update a course
+app.put('/courses/:id', upload.single('image'), (req, res) => {
+    const courseId = req.params.id;
+    const {
+        course_name,
+        course_description,
+        cat_id_1,
+        cat_id_2,
+        cat_id_3,
+        price
+    } = req.body;
+
+    const newImage = req.file ? req.file.filename : null;
+
+    // Step 1: Find the current old image filename
+    db.query('SELECT imageurl FROM courses WHERE course_id = ?', [courseId], (err, results) => {
+        if (err) {
+            console.error('Find old image error:', err);
+            return res.status(500).send('❌ Failed to find old image');
+        }
+
+        if (results.length === 0) {
+            return res.status(404).send('❌ Course not found');
+        }
+
+        const oldImage = results[0].imageurl;
+        const oldImagePath = path.join(__dirname, 'images/courses', oldImage);
+
+        // Step 2: Build dynamic UPDATE query
+        let sql = `UPDATE courses SET 
+            course_name = ?, 
+            course_description = ?, 
+            cat_id_1 = ?, 
+            cat_id_2 = ?, 
+            cat_id_3 = ?, 
+            price = ?`;
+
+        const params = [
+            course_name,
+            course_description,
+            cat_id_1 || null,
+            cat_id_2 || null,
+            cat_id_3 || null,
+            price
+        ];
+
+        if (newImage) {
+            sql += `, imageurl = ?`;
+            params.push(newImage);
+        }
+
+        sql += ` WHERE course_id = ?`;
+        params.push(courseId);
+
+        // Step 3: Update the course
+        db.query(sql, params, (err, result) => {
+            if (err) {
+                console.error('Update error:', err);
+                return res.status(500).send('❌ Failed to update course');
+            }
+
+            // Step 4: If a new image was uploaded, delete old image
+            if (newImage && oldImage) {
+                fs.access(oldImagePath, fs.constants.F_OK, (err) => {
+                    if (!err) {
+                        fs.unlink(oldImagePath, (err) => {
+                            if (err) {
+                                console.error('❌ Failed to delete old image:', err);
+                            } else {
+                                console.log('✅ Old image deleted successfully:', oldImage);
+                            }
+                        });
+                    } else {
+                        console.warn('⚠️ Old image not found, skip delete:', oldImage);
+                    }
+                });
+            }
+
+            res.send('✅ Course updated successfully');
+        });
+    });
+});
+
+
+// 🔥 Add a new course
+app.post('/courses', upload.single('image'), (req, res) => {
+    const {
+        course_name,
+        course_description,
+        app_id,
+        main_id,
+        dessert_id,
+        cat_id_1,
+        cat_id_2,
+        cat_id_3,
+        price
+    } = req.body;
+
+    const imageurl = req.file ? req.file.filename : null;
+
+    const sql = `INSERT INTO courses 
+    (course_name, course_description, app_id, main_id, dessert_id, cat_id_1, cat_id_2, cat_id_3, price, imageurl) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+
+    const params = [
+        course_name,
+        course_description,
+        app_id || null,
+        main_id || null,
+        dessert_id || null,
+        cat_id_1 || null,
+        cat_id_2 || null,
+        cat_id_3 || null,
+        price,
+        imageurl
+    ];
+
+    db.query(sql, params, (err, result) => {
+        if (err) {
+            console.error('Insert error:', err);
+            return res.status(500).send('❌ Failed to add new course');
+        }
+        res.send('✅ New course added successfully');
+    });
+});
+
+
+// 🔥 Delete a course (and its image)
+app.delete('/courses/:id', (req, res) => {
+    const courseId = req.params.id;
+
+    // Step 1: Find the course image first
+    db.query('SELECT imageurl FROM courses WHERE course_id = ?', [courseId], (err, results) => {
+        if (err) {
+            console.error('Query error:', err);
+            return res.status(500).send('❌ Failed to find course');
+        }
+        if (results.length === 0) {
+            return res.status(404).send('❌ Course not found');
+        }
+
+        const imageFile = results[0].imageurl;
+        const imagePath = path.join(__dirname, 'images/courses', imageFile);
+
+        // Step 2: Delete the course record
+        db.query('DELETE FROM courses WHERE course_id = ?', [courseId], (err, result) => {
+            if (err) {
+                console.error('Delete error:', err);
+                return res.status(500).send('❌ Failed to delete course');
+            }
+
+            // Step 3: Check and delete the image file
+            fs.access(imagePath, fs.constants.F_OK, (err) => {
+                if (err) {
+                    console.warn('⚠️ Image file not found, skipping delete:', imageFile);
+                } else {
+                    fs.unlink(imagePath, (err) => {
+                        if (err) {
+                            console.error('❌ Error deleting image file:', err);
+                        } else {
+                            console.log('✅ Image file deleted:', imageFile);
+                        }
+                    });
+                }
+            });
+
+            res.send('✅ Course and image deleted successfully');
+        });
+    });
+});
+
+
 
 
 // Handle invalid routes
