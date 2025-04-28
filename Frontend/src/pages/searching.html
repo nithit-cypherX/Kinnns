@@ -8,11 +8,13 @@
 
     <!--Import bulma.min.css-->
     <link type="text/css" rel="stylesheet" href="node_modules/bulma/css/bulma.min.css" media="screen,projection" />
-
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="src/assets/fontawesome/css/all.min.css">
+    <!-- Global and Page Styles -->
     <link rel="stylesheet" href="src/styles/global.css" />
     <link rel="stylesheet" href="src/styles/searching-page.css" />
+    <!-- Global Sidebar Toggle Script -->
     <script src="src/js/global.js" defer></script>
-
 </head>
 
 <body>
@@ -27,7 +29,7 @@
             </p>
             <!-- Title Name -->
             <p class="level-item">
-                <a class="link font-primary is-size-1 text-primary-color" href="home-page">KINNNS</a>
+                <a class="link font-primary is-size-1 text-primary-color" href="/home-page">KINNNS</a>
             </p>
             <!-- Info Icon -->
             <p class="level-item">
@@ -38,13 +40,13 @@
         </nav>
     </header>
 
-    <!-- Sidebar -->
+    <!-- Sidebar (Collapsible) -->
     <aside id="sidebar" class="sidebar hidden">
         <ul>
-            <li><a href="../../index.html"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="./searching.html"><i class="fas fa-search"></i> Search</a></li>
-            <li><a href="./team.html"><i class="fas fa-users"></i> Team</a></li>
-            <li><a href="./login.html"><i class="fas fa-address-book"></i> Administrator</a></li>
+            <li><a href="/home-page"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="/searching-page"><i class="fas fa-search"></i> Search</a></li>
+            <li><a href="/team-page"><i class="fas fa-users"></i> Team</a></li>
+            <li><a href="/login-page"><i class="fas fa-address-book"></i> Administrator</a></li>
         </ul>
     </aside>
 
@@ -67,7 +69,8 @@
                                     method="post">
                                     <div class="control">
                                         <div class="select">
-                                            <select id="search-criteria" name="search_choice" class="background-secondary-color text-primary-color">
+                                            <select id="search-criteria" name="search_choice"
+                                                class="background-secondary-color text-primary-color">
                                                 <option value="" disabled selected>Search by...</option>
                                                 <option value="name">Course Name</option>
                                                 <option value="price">Price</option>
@@ -158,7 +161,7 @@
                 }
 
                 courses.forEach((course, index) => {
-                            const cardHTML = `
+                    const cardHTML = `
                         <div id="card${index + 1}" class="column is-4">
                             <a href="#" class="box-link">
                                 <div class="box has-text-centered">

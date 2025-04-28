@@ -8,9 +8,12 @@
 
     <!--Import bulma.min.css-->
     <link type="text/css" rel="stylesheet" href="node_modules/bulma/css/bulma.min.css" media="screen,projection" />
-
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="src/assets/fontawesome/css/all.min.css">
+    <!-- Global and Page Styles -->
     <link rel="stylesheet" href="src/styles/global.css" />
     <link rel="stylesheet" href="src/styles/admin_dashboard.css" />
+    <!-- Global Sidebar Toggle Script -->
     <script src="src/js/global.js" defer></script>
 </head>
 
@@ -36,8 +39,8 @@
             </p>
         </nav>
     </header>
-
-    <!-- Sidebar -->
+    
+    <!-- Sidebar (Collapsible) -->
     <aside id="sidebar" class="sidebar hidden">
         <ul>
             <li><a href="/home-page"><i class="fas fa-home"></i> Home</a></li>
@@ -69,7 +72,7 @@
             <article class="column p-5">
                 <!-- Title -->
                 <h1 class="title has-text-centered">Course Management</h1>
-                <!-- Edit & Add Buttons -->
+                <!-- Add Button -->
                 <div class="buttons is-flex is-align-items-center is-justify-content-right mb-5">
                     <button class="button is-medium"><i class="fas fa-plus"></i>Add</button>
                 </div>
@@ -144,7 +147,7 @@
                     });
             }
 
-            
+
 
         });
 

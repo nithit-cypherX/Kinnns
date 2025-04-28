@@ -1,0 +1,119 @@
+.menu {
+  margin-top: 20px;
+  font-family: var(--font-heading);
+}
+
+.menu-list li {
+  margin-top: 10px;
+}
+
+.menu-list a {
+  background-color: transparent;
+  color: var(--primary-color);
+  display: block;
+  font-size: 24px;
+  padding: 10px 0;
+  text-align: left;
+  letter-spacing: 0.2rem;
+}
+
+.menu a:hover {
+  text-decoration: underline;
+}
+
+.title {
+  color: var(--header-color);
+  font-family: var(--font-heading);
+  font-size: 60px;
+}
+
+.menu-list-container {
+  background-color: #f9f6f1;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.menu-item-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.menu-details {
+  flex-grow: 1;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.menu-title {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 4px;
+  color: var(--secondary-color);
+}
+
+.menu-category {
+  font-size: 16px;
+  color: var(--secondary-color);
+  margin-bottom: 2px;
+}
+
+.menu-description {
+  font-size: 14px;
+  color: var(--secondary-color);
+}
+
+.menu-item p {
+  margin-left: 20px;
+  font-family: var(--font-heading);
+  font-size: 20px;
+}
+
+.edit-icon {
+  color: var(--secondary-color);
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.edit-icon:hover {
+  color: var(--primary-color); /* example: bright color on hover */
+  transform: scale(1.2);
+}
+
+.button.is-medium {
+  align-items: center;
+  background-color: var(--secondary-color);
+  border: none;
+  color: var(--header-color);
+  display: inline-flex;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.button.is-warning {
+  font-family: var(--font-heading);
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background-color: var(--primary-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  color: white;
+  transform: translateY(-4px);
+}
