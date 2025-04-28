@@ -222,3 +222,26 @@ h2 {
   font-size: 0.75rem;
   color: gray;
 }
+
+
+.preview-image-container {
+  border: 1px dashed #ccc;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px;
+  cursor: default;
+  text-align: center;
+  transition: border-color 0.3s ease;
+}
+
+/* Make the preview image smaller and nicely fit */
+.preview-image-container img {
+  max-width: 100%;
+  max-height: 220px;
+  object-fit: contain;
+}
