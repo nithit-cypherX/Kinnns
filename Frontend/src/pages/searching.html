@@ -7,12 +7,11 @@
     <title>KINNNS-SearchingPage</title>
 
     <!--Import bulma.min.css-->
-    <link type="text/css" rel="stylesheet" href="../../node_modules/bulma/css/bulma.min.css"
-        media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="node_modules/bulma/css/bulma.min.css" media="screen,projection" />
 
-    <link rel="stylesheet" href="../styles/global.css" />
-    <link rel="stylesheet" href="../styles/searching-page.css" />
-    <script src="../js/global.js" defer></script>
+    <link rel="stylesheet" href="src/styles/global.css" />
+    <link rel="stylesheet" href="src/styles/searching-page.css" />
+    <script src="src/js/global.js" defer></script>
 
 </head>
 
@@ -28,7 +27,7 @@
             </p>
             <!-- Title Name -->
             <p class="level-item">
-                <a class="link font-primary is-size-1 text-primary-color" href="../../index.html">KINNNS</a>
+                <a class="link font-primary is-size-1 text-primary-color" href="home-page">KINNNS</a>
             </p>
             <!-- Info Icon -->
             <p class="level-item">
@@ -53,213 +52,147 @@
         <div class="columns mt-6 p-3 ">
             <!-- Sidebar using Bulma -->
             <aside class="column is-2 background-secondary-color px-6 py-5">
-                <div class="menu">
-                    <!-- List of Special Packs -->
-                    <p class="menu-label">Discover Delicious</p>
-                    <ul class="menu-list">
-                        <li><label><input type="checkbox"> Best Bites</label></li>
-                        <li><label><input type="checkbox"> Exclusive Picks</label></li>
-                        <li><label><input type="checkbox"> Must-Try Course</label></li>
-                    </ul>
-                    <!-- List of Price Range -->
-                    <p class="menu-label">Price Range</p>
-                    <ul class="menu-list">
-                        <li><label><input type="checkbox"> $ 0 - 100 USD</label></li>
-                        <li><label><input type="checkbox"> $ 100 - 200 USD</label></li>
-                        <li><label><input type="checkbox"> $ 200 - 300 USD</label></li>
-                    </ul>
-                    <!-- List of Category -->
-                    <p class="menu-label">Category</p>
-                    <ul class="menu-list">
-                        <li><label><input type="checkbox"> Fusion</label></li>
-                        <li><label><input type="checkbox"> Meat</label></li>
-                        <li><label><input type="checkbox"> Poultry</label></li>
-                        <li><label><input type="checkbox"> Premium</label></li>
-                        <li><label><input type="checkbox"> Seasonal</label></li>
-                        <li><label><input type="checkbox"> Sea Food</label></li>
-                        <li><label><input type="checkbox"> Vegan</label></li>
-
-                    </ul>
-                </div>
             </aside>
             <!-- Main Content -->
             <div class="column p-5">
                 <!-- Title -->
                 <h1 class="title has-text-centered">Searching Page</h1>
+
+                <!-- 🧡 Search Form - Centered Top -->
+                <section class="section">
+                    <div class="container">
+                        <div class="columns is-centered">
+                            <div class="column is-half">
+                                <form id="search-form" class="field has-addons" style="justify-content: center;"
+                                    method="post">
+                                    <div class="control">
+                                        <div class="select">
+                                            <select id="search-criteria" name="search_choice" class="background-secondary-color text-primary-color">
+                                                <option value="" disabled selected>Search by...</option>
+                                                <option value="name">Course Name</option>
+                                                <option value="price">Price</option>
+                                                <option value="category">Category</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="control is-expanded">
+                                        <input id="search-value" class="input" type="text"
+                                            placeholder="Enter your search..." name="search_value">
+                                    </div>
+                                    <div class="control">
+                                        <button class="button background-secondary-color" type="submit">
+                                            <span class="icon">
+                                                <i class="fas fa-search text-primary-color"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- Cards Column -->
-                <div class="columns is-multiline is-centered">
-                    <!-- Card 1 -->
-                    <div class="column is-4">
-                        <a href="#" class="box-link">
-                            <div class="box has-text-centered">
-                                <h2 class="title">Course Name</h2>
-                                <div class="course-image">
-                                    <img src="../assets/images/CoursePic1.jpg" alt="Course Image">
-                                </div>
-                                <!-- Category Badges -->
-                                <div class="categories">
-                                    <span class="category-badge">Must-Try Course</span>
-                                    <span class="category-badge">Premium</span>
-                                    <span class="category-badge">Meat</span>
-                                </div>
-                                <!-- Description -->
-                                <p>Poultry Course – A selection of fine poultry dishes made from premium ingredients.
-                                </p>
-                                <br>
-                                <p>Premium Course – An exquisite dining experience featuring the finest ingredients and
-                                    flavors</p>
-                                <!-- Yellow Line Divider -->
-                                <div class="yellow-line"></div>
-                                <!-- Price -->
-                                <p class="card-price"><strong>$119 USD</strong></p>
-                            </div>
-                        </a>
-                    </div>
+                <div id="cards" class="columns is-multiline is-centered"></div>
 
-                    <!-- Card 2 -->
-                    <div class="column is-4">
-                        <a href="#" class="box-link">
-                            <div class="box has-text-centered">
-                                <h2 class="title">Course Name</h2>
-                                <div class="course-image">
-                                    <img src="../assets/images/CoursePic2.jpg" alt="Course Image">
-                                </div>
-                                <!-- Category Badges -->
-                                <div class="categories">
-                                    <span class="category-badge">Best Bites</span>
-                                    <span class="category-badge">Premium</span>
-                                    <span class="category-badge">Meat</span>
-                                </div>
-                                <!-- Description -->
-                                <p>Poultry Course – A selection of fine poultry dishes made from premium ingredients.
-                                </p>
-                                <br>
-                                <p>Premium Course – An exquisite dining experience featuring the finest ingredients and
-                                    flavors</p>
-
-                                <!-- Yellow Line Divider -->
-                                <div class="yellow-line"></div>
-                                <!-- Price -->
-                                <p class="card-price"><strong>$159 USD</strong></p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div class="column is-4">
-                        <a href="#" class="box-link">
-                            <div class="box has-text-centered">
-                                <h2 class="title">Course Name</h2>
-                                <div class="course-image">
-                                    <img src="../assets/images/CoursePic3.jpg" alt="Course Image">
-                                </div>
-                                <!-- Category Badges -->
-                                <div class="categories">
-                                    <span class="category-badge">Exclusive Picks</span>
-                                    <span class="category-badge">Vegan</span>
-                                    <span class="category-badge">Premium</span>
-                                </div>
-                                <!-- Description -->
-                                <p>Poultry Course – A selection of fine poultry dishes made from premium ingredients.
-                                </p>
-                                <br>
-                                <p>Premium Course – An exquisite dining experience featuring the finest ingredients and
-                                    flavors</p>
-                                <!-- Yellow Line Divider -->
-                                <div class="yellow-line"></div>
-                                <!-- Price -->
-                                <p class="card-price"><strong>$129 USD</strong></p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <!-- Card 4 -->
-                    <div class="column is-4">
-                        <a href="#" class="box-link">
-                            <div class="box has-text-centered">
-                                <h2 class="title">Course Name</h2>
-                                <div class="course-image">
-                                    <img src="../assets/images/CoursePic4.jpg" alt="Course Image">
-                                </div>
-                                <!-- Category Badges -->
-                                <div class="categories">
-                                    <span class="category-badge">Poultry</span>
-                                    <span class="category-badge">Seasonal</span>
-                                    <span class="category-badge">Meat</span>
-                                </div>
-                                <!-- Description -->
-                                <p>Poultry Course – A selection of fine poultry dishes made from premium ingredients.
-                                </p>
-                                <br>
-                                <p>Premium Course – An exquisite dining experience featuring the finest ingredients and
-                                    flavors</p>
-                                <!-- Yellow Line Divider -->
-                                <div class="yellow-line"></div>
-                                <!-- Price -->
-                                <p class="card-price"><strong>$199 USD</strong></p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <!-- Card 5 -->
-                    <div class="column is-4">
-                        <a href="#" class="box-link">
-                            <div class="box has-text-centered">
-                                <h2 class="title">Course Name</h2>
-                                <div class="course-image">
-                                    <img src="../assets/images/CoursePic5.jpg" alt="Course Image">
-                                </div>
-                                <!-- Category Badges -->
-                                <div class="categories">
-                                    <span class="category-badge">Poultry</span>
-                                    <span class="category-badge">Premium</span>
-                                    <span class="category-badge">Meat</span>
-                                </div>
-                                <!-- Description -->
-                                <p>Poultry Course – A selection of fine poultry dishes made from premium ingredients.
-                                </p>
-                                <br>
-                                <p>Premium Course – An exquisite dining experience featuring the finest ingredients and
-                                    flavors</p>
-                                <!-- Yellow Line Divider -->
-                                <div class="yellow-line"></div>
-                                <!-- Price -->
-                                <p class="card-price"><strong>$149 USD</strong></p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <!-- Card 6 -->
-                    <div class="column is-4">
-                        <a href="#" class="box-link">
-                            <div class="box has-text-centered">
-                                <h2 class="title">Course Name</h2>
-                                <div class="course-image">
-                                    <img src="../assets/images/CoursePic6.jpg" alt="Course Image">
-                                </div>
-                                <!-- Category Badges -->
-                                <div class="categories">
-                                    <span class="category-badge">Poultry</span>
-                                    <span class="category-badge">Premium</span>
-                                    <span class="category-badge">Meat</span>
-                                </div>
-                                <!-- Description -->
-                                <p>Poultry Course – A selection of fine poultry dishes made from premium ingredients.
-                                </p>
-                                <br>
-                                <p>Premium Course – An exquisite dining experience featuring the finest ingredients and
-                                    flavors</p>
-                                <!-- Yellow Line Divider -->
-                                <div class="yellow-line"></div>
-                                <!-- Price -->
-                                <p class="card-price"><strong>$99 USD</strong></p>
-                            </div>
-                        </a>
-                    </div>
-
-                </div>
             </div>
     </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCourses(); // Load all courses initially
+
+            document.getElementById('search-form').addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const searchChoice = document.getElementById('search-criteria').value;
+                const searchValue = document.getElementById('search-value').value.trim();
+
+                if (!searchValue) {
+                    loadCourses();
+                    return;
+                }
+
+                axios.post('http://localhost:3000/search-courses', {
+                    search_choice: searchChoice,
+                    search_value: searchValue
+                })
+                    .then(response => {
+                        const courses = response.data.map(course => ({
+                            ...course,
+                            imageurl: `http://localhost:3000/images/courses/${course.imageurl}`
+                        }));
+
+                        if (courses.length === 0) {
+                            alert('😥 No courses found!');
+                            clearCards();
+                        } else {
+                            loadCourses(courses);
+                        }
+                    })
+                    .catch(err => {
+                        console.error('🚨 Search failed:', err);
+                    });
+            });
+
+            function loadCourses(courses = null) {
+                const cardsContainer = document.getElementById('cards');
+                cardsContainer.innerHTML = '';
+
+                if (!courses) {
+                    axios.get('http://localhost:3000/courses')
+                        .then(response => {
+                            loadCourses(response.data);
+                        })
+                        .catch(err => {
+                            console.error('🚨 Failed to load courses:', err);
+                        });
+                    return;
+                }
+
+                if (courses.length === 0) {
+                    clearCards();
+                    return;
+                }
+
+                courses.forEach((course, index) => {
+                            const cardHTML = `
+                        <div id="card${index + 1}" class="column is-4">
+                            <a href="#" class="box-link">
+                                <div class="box has-text-centered">
+                                    <h2 class="title">${course.course_name}</h2>
+                                    <div class="course-image">
+                                        <img src="${course.imageurl}" alt="Course Image">
+                                    </div>
+                                    <div class="categories">
+                                        ${course.category_1_name ? `<span class="category-badge">${course.category_1_name}</span>` : ''}
+                                        ${course.category_2_name ? `<span class="category-badge">${course.category_2_name}</span>` : ''}
+                                        ${course.category_3_name ? `<span class="category-badge">${course.category_3_name}</span>` : ''}
+                                    </div>
+                                    <p>${course.course_description}</p>
+                                    <div class="yellow-line"></div>
+                                    <p class="card-price"><strong>$${course.price} USD</strong></p>
+                                </div>
+                            </a>
+                        </div>
+                    `;
+                    cardsContainer.innerHTML += cardHTML;
+                });
+            }
+
+            function clearCards() {
+                const cardsContainer = document.getElementById('cards');
+                cardsContainer.innerHTML = `
+                    <div class="has-text-centered">
+                        <h2 class="title is-4 mt-6">No courses found.</h2>
+                    </div>
+                `;
+            }
+        });
+
+    </script>
 
 
 </body>
