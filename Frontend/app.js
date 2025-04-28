@@ -55,6 +55,11 @@ router.get('/team-page', (req, res) =>{
     res.sendFile(path.join(__dirname, '../Frontend/src/pages/team.html'));
 });
 
+router.get('/course-detail-page', (req, res) =>{
+    console.log(`Request at ${req.url}`);
+    res.sendFile(path.join(__dirname, '../Frontend/src/pages/course_detail.html'));
+});
+
 // Handle invalid routes
 router.use((req, res) => {
     console.log(`Request at ${req.url}`);
