@@ -2,28 +2,24 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KINNNS - Team Page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KINNNS-Team Page</title>
 
   <!-- Bulma CSS -->
-  <link rel="stylesheet" href="../../node_modules/bulma/css/bulma.min.css">
-
+  <link rel="stylesheet" href="node_modules/bulma/css/bulma.min.css" />
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../assets/fontawesome/css/all.min.css">
-  <link rel="stylesheet" href="../assets/fontawesome/css/fontawesome.min.css">
-
+  <link rel="stylesheet" href="src/assets/fontawesome/css/all.min.css" />
   <!-- Global and Page Styles -->
-  <link rel="stylesheet" href="../styles/global.css">
-  <link rel="stylesheet" href="../styles/teamStyle.css">
-
-  <!-- Global Sidebar Toggle Script -->
-  <script src="../js/global.js" defer></script>
+  <link rel="stylesheet" href="src/styles/global.css" />
+  <link rel="stylesheet" href="src/styles/team-page.css" />
+  <!-- Global Sidebar Toggle and Scripts -->
+  <script src="src/js/global.js" defer></script>
+  <script src="src/js/carousel.js" defer></script>
 </head>
 
 <body>
-
-  <!-- ✅ Navbar -->
+  <!-- Header Section - Navbar -->
   <header>
     <nav id="mainNavbar" class="level navbar is-fixed-top background-secondary-color mb-0">
       <!-- Navbar burger -->
@@ -34,7 +30,7 @@
       </p>
       <!-- Title Name -->
       <p class="level-item">
-        <a class="link font-primary is-size-1 text-primary-color" href="../../index.html">KINNNS</a>
+        <a class="link font-primary is-size-1 text-primary-color" href="/home-page">KINNNS</a>
       </p>
       <!-- Info Icon -->
       <p class="level-item">
@@ -45,54 +41,143 @@
     </nav>
   </header>
 
-  <!-- ✅ Sidebar -->
+  <!-- Sidebar (Collapsible) -->
   <aside id="sidebar" class="sidebar hidden">
     <ul>
-      <li><a href="../../index.html"><i class="fas fa-home"></i> Home</a></li>
-      <li><a href="./searching.html"><i class="fas fa-search"></i> Search</a></li>
-      <li><a href="./team.html"><i class="fas fa-users"></i> Team</a></li>
-      <li><a href="./login.html"><i class="fas fa-address-book"></i> Administrator</a></li>
+      <li><a href="/home-page"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="/searching-page"><i class="fas fa-search"></i> Search</a></li>
+      <li><a href="/team-page"><i class="fas fa-users"></i> Team</a></li>
+      <li><a href="/login-page"><i class="fas fa-address-book"></i> Administrator</a></li>
     </ul>
   </aside>
 
-  <!-- ✅ Main Content -->
-  <section class="team-section">
-    <h1 class="title is-2 has-text-weight-bold">TEAM</h1>
-    <div class="carousel">
-      <div class="arrow" id="prev">&#8592;</div>
-  
-      <div class="card" id="card1">
-        <img src="../assets/images/sectionTwo_image.png" alt="Member 1">
-        <h2>Sarach Islam</h2>
-        <p>UX/UI Design</p>
-      </div>
-  
-      <div class="card active" id="card2">
-        <img src="../assets/images/sectionTwo_image.png" alt="Passakorn">
-        <h2>Athip Madnoth</h2>
-        <p>Technical Writer</p>
-      </div>
-  
-      <div class="card" id="card3">
-        <img src="../assets/images/sectionTwo_image.png" alt="Member 3">
-        <h2>Nithit Teeraworawit</h2>
-        <p>Backend</p>
-      </div>
+  <!-- Main Content -->
+  <section class="team-section section background-primary-color">
+    <div class="container">
+      <h1 class="title is-2 has-text-centered">Team Member</h1>
 
-      <div class="card" id="card4">
-        <img src="../assets/images/sectionTwo_image.png" alt="Member 4">
-        <h2>Passakorn P.</h2>
-        <p>UX/UI Design</p>
+      <div class="carousel columns is-multiline">
+        <!-- Left Arrow -->
+        <div class="arrow" id="prev">
+          <span class="icon is-large has-text-danger">
+            <i class="fas fa-chevron-left fa-2x"></i>
+          </span>
+        </div>
+
+        <!-- Team Member 1 -->
+        <div class="column is-one-quarter card-wrapper">
+          <div class="card team-card" id="card1">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img src="src/assets/images/app_no3.jpg" alt="Sarach" />
+              </figure>
+            </div>
+            <div class="card-content">
+              <p class="title is-5">Sarach Islam</p>
+              <p class="subtitle is-6">UX/UI Design</p>
+              <p class="content">Athip manages the documentation and ensures all tech specs are up-to-date.</p>
+              <!-- Social Icons -->
+              <div class="social-icons mt-3">
+                <a href="https://github.com/maomidmao
+                " target="_blank" class="icon is-medium has-text-dark">
+                  <i class="fab fa-github fa-lg"></i>
+                </a>
+                <a href="https://www.instagram.com/sarach.i/" target="_blank" class="icon is-medium has-text-danger">
+                  <i class="fab fa-instagram fa-lg"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team Member 2 -->
+        <div class="column is-one-quarter card-wrapper">
+          <div class="card team-card active" id="card2">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img src="src/assets/images/app_no1.jpg" alt="Athip" />
+              </figure>
+            </div>
+            <div class="card-content">
+              <p class="title is-5">Athip Madnoth</p>
+              <p class="subtitle is-6">Technical Writer</p>
+              <p class="content">Athip manages the documentation and ensures all tech specs are up-to-date.</p>
+              <!-- Social Icons -->
+              <div class="social-icons mt-3">
+                <a href="https://github.com/AthipMadnoth	
+                " target="_blank" class="icon is-medium has-text-dark">
+                  <i class="fab fa-github fa-lg"></i>
+                </a>
+                <a href="https://www.instagram.com/athipmadnoth/" target="_blank"
+                  class="icon is-medium has-text-danger">
+                  <i class="fab fa-instagram fa-lg"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team Member 3 -->
+        <div class="column is-one-quarter card-wrapper">
+          <div class="card team-card" id="card3">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img src="src/assets/images/main_no8.jpg" alt="Nithit" />
+              </figure>
+            </div>
+            <div class="card-content">
+              <p class="title is-5">Nithit Teeraworawit</p>
+              <p class="subtitle is-6">Backend</p>
+              <p class="content">Athip manages the documentation and ensures all tech specs are up-to-date.</p>
+              <!-- Social Icons -->
+              <div class="social-icons mt-3">
+                <a href="https://github.com/nithit-cypherX
+                " target="_blank" class="icon is-medium has-text-dark">
+                  <i class="fab fa-github fa-lg"></i>
+                </a>
+                <a href="https://www.instagram.com/ethaholic/" target="_blank" class="icon is-medium has-text-danger">
+                  <i class="fab fa-instagram fa-lg"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team Member 4 -->
+        <div class="column is-one-quarter card-wrapper">
+          <div class="card team-card" id="card4">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img src="src/assets/images/section3_image2.png" alt="Passakorn" />
+              </figure>
+            </div>
+            <div class="card-content">
+              <p class="title is-5">Passakorn P.</p>
+              <p class="subtitle is-6">UX/UI Design</p>
+              <p class="content">Athip manages the documentation and ensures all tech specs are up-to-date.</p>
+              <!-- Social Icons -->
+              <div class="social-icons mt-3">
+                <a href="https://github.com/Paikub123456
+                " target="_blank" class="icon is-medium has-text-dark">
+                  <i class="fab fa-github fa-lg"></i>
+                </a>
+                <a href="https://www.instagram.com/pai_psk/" target="_blank" class="icon is-medium has-text-danger">
+                  <i class="fab fa-instagram fa-lg"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Arrow -->
+        <div class="arrow" id="next">
+          <span class="icon is-large has-text-danger">
+            <i class="fas fa-chevron-right fa-2x"></i>
+          </span>
+        </div>
       </div>
-  
-      <div class="arrow" id="next">&#8594;</div>
     </div>
   </section>
-  
-
-  <!-- ✅ Carousel JavaScript -->
-  <script src="../js/carousel.js"></script>
-
 </body>
 
 </html>

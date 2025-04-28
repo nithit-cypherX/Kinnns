@@ -1,344 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>KINNNS - Menu Management</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link rel="stylesheet" href="../styles/global.css" />
-    <link rel="stylesheet" href="../styles/menu_management.css" />
-    <script src="../js/global.js" defer></script>
-    <style>
-        /* Basic body styling */
-        body {
-            background-color: #f9e9df; /* Light pink background */
-            font-family: 'Segoe UI', sans-serif; /* Default font */
-        }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KINNNS-MenuManagementPage</title>
 
-        /* Light pink background utility class */
-        .background-light-pink {
-            background-color: #fff7f2;
-        }
-
-        /* Styling for individual menu item containers */
-        .menu-item-box {
-            background-color: white; /* White background for the box */
-            border-left: 5px solid #aa3939; /* Dark red left border */
-            border-radius: 10px; /* Rounded corners */
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); /* Subtle shadow */
-            margin-bottom: 1rem; /* Space below each item */
-            padding: 1rem; /* Padding inside the box */
-            display: flex; /* Use flexbox for layout */
-            align-items: center; /* Vertically align items */
-            justify-content: space-between; /* Space out content and actions */
-        }
-
-        /* Container for menu item image and text */
-        .menu-item-content {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem; /* Space between image and text */
-            flex-grow: 1; /* Allow content to take available space */
-        }
-
-        /* Menu item title styling */
-        .menu-title {
-            font-weight: 600; /* Semi-bold */
-            font-size: 1.1rem;
-            margin: 0; /* Remove default margins */
-        }
-
-        /* Warning button style override */
-        .button.is-warning {
-            background-color: #fcb900; /* Specific yellow */
-            color: black;
-            font-weight: bold;
-        }
-
-        /* Checkbox styling */
-        .checkbox input[type="checkbox"] {
-            transform: scale(1.2); /* Make checkbox slightly larger */
-            margin-left: 0.5rem; /* Space to the left */
-        }
-
-        /* Fixed sidebar styling */
-        .menu-sidebar {
-            position: fixed; /* Keep sidebar fixed */
-            top: 4.5rem; /* Position below the navbar (assuming navbar height) */
-            left: 0;
-            width: 180px; /* Fixed width */
-            height: calc(100vh - 4.5rem); /* Full height minus navbar */
-            background-color: #4b1f1f; /* Dark brown background */
-            color: #f9e9df; /* Light text color */
-            display: flex;
-            flex-direction: column; /* Stack items vertically */
-            justify-content: space-between; /* Push logout to bottom */
-            padding: 1rem 0.5rem; /* Padding top/bottom and left/right */
-            z-index: 10; /* Ensure sidebar is above content */
-        }
-
-        /* Sidebar link styling */
-        .menu-sidebar .menu-label a {
-            color: #f9e9df;
-            text-decoration: none;
-            display: block; /* Make links take full width */
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin: 1rem 0; /* Vertical margin */
-            padding: 0.5rem 0.75rem; /* Padding */
-            border-left: 3px solid #ffffff; /* White left border */
-            letter-spacing: 0.5px; /* Slight letter spacing */
-        }
-
-        /* Sidebar link hover effect */
-        .menu-sidebar .menu-label a:hover {
-            background-color: rgba(255, 255, 255, 0.1); /* Subtle highlight on hover */
-        }
-
-        /* Logout button container */
-        .logout-container {
-            /* margin-top: auto; REMOVED - justify-content handles this now */
-            padding: 0.5rem; /* Padding around the button */
-        }
-
-        /* Logout button styling */
-        .logout-btn {
-            background-color: #f59e0b; /* Amber color */
-            font-size: 0.9rem;
-            font-weight: bold;
-            color: white;
-        }
-
-        /* Container for action buttons (visibility, edit, delete) */
-        .menu-item-actions {
-            display: flex;
-            gap: 1rem; /* Space between action items */
-            align-items: center;
-        }
-
-        /* Menu item image container */
-        .image.is-128x128 { /* Using Bulma class but overriding size */
-            height: 100px; /* Fixed height */
-            width: 100px; /* Fixed width */
-            border-radius: 10px; /* Rounded corners */
-            object-fit: cover; /* Ensure image covers the area */
-            overflow: hidden; /* Hide parts of image outside the container */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Menu item image */
-        .image.is-128x128 img {
-            max-height: 100%; /* Ensure image fits height */
-            max-width: 100%; /* Ensure image fits width */
-        }
-
-        /* Modal Styles (Hidden by default) */
-        .modal {
-            display: none; /* Hidden initially */
-            position: fixed; /* Stay in place */
-            z-index: 1000; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-        }
-
-        /* Modal Content Box */
-        .modal-content {
-            background-color: #fefefe; /* White background */
-            margin: 10% auto; /* 10% from top, centered horizontally */
-            padding: 2rem;
-            border: 1px solid #888; /* Gray border */
-            width: 60%; /* Modal width */
-            border-radius: 10px; /* Rounded corners */
-            position: relative; /* Needed for absolute positioning of close button */
-        }
-
-        /* Modal Header */
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            border-bottom: 1px solid #ddd; /* Separator line */
-            padding-bottom: 0.75rem;
-        }
-
-        .modal-header h2 {
-            margin: 0;
-            font-size: 1.5rem;
-        }
-
-        /* Close Button ('x') */
-        .close-button {
-            position: absolute; /* Position relative to modal-content */
-            top: 15px;
-            right: 15px;
-            color: #aaa; /* Light gray */
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .close-button:hover,
-        .close-button:focus {
-            color: #000; /* Black on hover/focus */
-            text-decoration: none;
-        }
-
-        /* Modal Body (for form content) */
-        .modal-body {
-            margin-bottom: 1.5rem;
-        }
-
-        .modal-body form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem; /* Space between form fields */
-        }
-
-        /* Remove default bottom margin from Bulma fields inside modal */
-        .modal-body form .field {
-            margin-bottom: 0;
-        }
-
-        /* Modal Footer (for action buttons) */
-        .modal-footer {
-            text-align: right; /* Align buttons to the right */
-        }
-
-        .modal-footer .button {
-            margin-left: 0.75rem; /* Space between buttons */
-            padding: 0.75rem 1.5rem; /* Larger padding */
-            font-size: 1.1rem; /* Larger font size */
-        }
-
-    </style>
+    <!-- Bulma, FontAwesome, CSS -->
+    <link rel="stylesheet" href="node_modules/bulma/css/bulma.min.css" />
+    <link rel="stylesheet" href="src/assets/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="src/styles/global.css" />
+    <link rel="stylesheet" href="src/styles/menu_management.css" />
+    <script src="src/js/global.js" defer></script>
 </head>
-<body>
-    <aside id="permanentSidebar" class="menu-sidebar">
-         <div>
-            <div class="menu-label" style="font-weight: bold;"><a>DASHBOARD</a></div>
-            <div class="menu-label" style="font-weight: bold;"><a href="./reserve.html">RESERVE</a></div>
-        </div>
-        <div class="logout-container">
-            <button class="button is-warning is-fullwidth logout-btn">Logout</button>
-        </div>
-    </aside>
 
+<body>
+    <!-- Header Section - Navbar -->
     <header>
         <nav id="mainNavbar" class="level navbar is-fixed-top background-secondary-color mb-0">
+            <!-- Navbar burger -->
             <p class="level-item">
                 <a class="sidebarToggle navbar-item text-primary-color pt-3 icon is-large">
-                    <i class="link fas fa-3x fa-bars"></i> </a>
+                    <i class="link fas fa-3x fa-bars"></i>
+                </a>
             </p>
+            <!-- Title Name -->
             <p class="level-item">
-                <a class="link font-primary is-size-1 text-primary-color" href="../../index.html">KINNNS</a>
+                <a class="link font-primary is-size-1 text-primary-color" href="/home-page">KINNNS</a>
             </p>
+            <!-- Info Icon -->
             <p class="level-item">
                 <a class="navbar-item text-primary-color pt-4 icon is-large">
-                    <i class="link fas fa-3x fa-info-circle"></i> </a>
+                    <i class="link fas fa-3x fa-info-circle"></i>
+                </a>
             </p>
         </nav>
     </header>
 
+    <!-- Sidebar (Collapsible) -->
     <aside id="sidebar" class="sidebar hidden">
         <ul>
-            <li><a href="../../index.html"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="./searching.html"><i class="fas fa-search"></i> Search</a></li>
-            <li><a href="./team.html"><i class="fas fa-users"></i> Team</a></li>
-            <li><a href="./login.html"><i class="fas fa-address-book"></i> Administrator</a></li>
+            <li><a href="/home-page"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="/searching-page"><i class="fas fa-search"></i> Search</a></li>
+            <li><a href="/team-page"><i class="fas fa-users"></i> Team</a></li>
+            <li><a href="/login-page"><i class="fas fa-address-book"></i> Administrator</a></li>
         </ul>
     </aside>
 
-    <div class="columns is-gapless" style="margin-top: 6rem;"> <div class="column is-2"></div> <div class="column p-6 background-light-pink">
-            <div class="is-flex is-justify-content-space-between mb-4">
-                <h1 class="title is-4" style="font-weight: bold;">All Menu List</h1>
-                <a id="add-product-button" href="./Add_product_manage.html" class="button is-warning">New Product</a>
-            </div>
-            <h2 class="subtitle" style="font-weight: bold;">Active Menu: <strong id="menuCount">0</strong> Menu</h2>
+    <!-- Main Content -->
+    <section class="hero background-primary-color">
+        <div class="columns mt-6 p-3">
+            <!-- Sidebar -->
+            <aside
+                class="column is-2 background-secondary-color px-6 py-5 is-flex is-flex-direction-column is-justify-content-space-between">
+                <div class="menu">
+                    <ul class="menu-list">
+                        <li><a href="/admin-dashboard-page">DASHBOARD</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <button id="logout" class="button is-warning is-fullwidth">
+                        Logout<i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </aside>
 
-            <div id="menuList">
-                <div class="box menu-item-box">
-                    <div class="menu-item-content">
-                        <figure class="image is-128x128">
-                            <img src="../assets/images/sectionTwo_image.png" alt="Roasted Duck Breast"
-                                 onerror="this.onerror=null; this.src='https://placehold.co/100x100/f9e9df/4b1f1f?text=Image';" />
-                        </figure>
-                        <div class="menu-item-text">
-                            <p class="menu-title">Roasted Duck Breast</p>
+            <!-- Menu Management Table -->
+            <article class="column p-5">
+                <div class="is-flex is-justify-content-space-between is-align-items-center mb-5">
+                    <!-- Title -->
+                    <h1 class="title has-text-centered">All Menu List</h1>
+                    <!-- Add Buttons -->
+                    <button class="button is-medium">
+                        <i class="fas fa-plus"></i> New Product
+                    </button>
+                </div>
+
+                <!-- Menu List -->
+                <div class="menu-list-container">
+                    <!-- Menu 1 -->
+                    <div class="menu-item">
+                        <img src="src/assets/images/app_no3.jpg" alt="Roasted Duck" class="menu-item-image">
+
+                        <div class="menu-details">
+                            <p class="menu-title">Miso-Butter Ribeye Steak :</p>
                             <p class="menu-category">Main Course</p>
-                            <p class="menu-description">Delicious roasted duck breast.</p>
+                            <p class="menu-description">Chargrilled ribeye finished with umami-rich miso butter, served
+                                with roasted garlic mash and charred broccolini.</p>
                         </div>
+                        <!-- Edit Button -->
+                        <a class="icon edit-icon"><i class="fas fa-edit"></i></a>
                     </div>
-                    <div class="menu-item-actions">
-                        <label class="checkbox is-flex is-align-items-center">
-                            Visibility:
-                            <input type="checkbox" class="ml-2" checked >
-                        </label>
-                        <a href="./Add_product_manage.html?edit=0" class="button is-medium is-info is-light">
-                            <i class="fas fa-edit"></i> </a>
-                        </div>
-                </div>
-                </div>
-        </div>
-    </div>
+                    <!-- Menu 2 -->
+                    <div class="menu-item">
+                        <img src="src/assets/images/app_no1.jpg" alt="Roasted Duck" class="menu-item-image">
 
-    <div id="productModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modalTitle">Add New Product</h2>
-                <span class="close-button">&times;</span> </div>
-            <div class="modal-body">
-                <form id="productForm">
-                    <div class="field">
-                        <label class="label">Product Name</label>
-                        <div class="control">
-                            <input class="input" type="text" placeholder="e.g., Grilled Salmon" required>
+                        <div class="menu-details">
+                            <p class="menu-title">Korean Bulgogi Steak Bowl :</p>
+                            <p class="menu-category">Main Course</p>
+                            <p class="menu-description">Sliced marinated beef ribeye over jasmine rice with kimchi,
+                                pickled daikon, a soft egg, and sesame soy glaze.</p>
                         </div>
+                        <!-- Edit Button -->
+                        <a class="icon edit-icon"><i class="fas fa-edit"></i></a>
                     </div>
-                     <div class="field">
-                        <label class="label">Category</label>
-                        <div class="control">
-                            <div class="select is-fullwidth">
-                              <select>
-                                <option>Appetizer</option>
-                                <option>Main Course</option>
-                                <option>Dessert</option>
-                                <option>Beverage</option>
-                              </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label class="label">Description</label>
-                        <div class="control">
-                            <textarea class="textarea" placeholder="Describe the product..."></textarea>
-                        </div>
-                    </div>
-                     <div class="field">
-                        <label class="label">Image URL</label>
-                        <div class="control">
-                            <input class="input" type="url" placeholder="https://example.com/image.jpg">
-                        </div>
-                    </div>
-                     <div class="field">
-                        <label class="label">Price</label>
-                        <div class="control">
-                            <input class="input" type="number" step="0.01" placeholder="e.g., 15.99">
-                        </div>
-                    </div>
-                    </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="button close-button-alt">Cancel</button> <button type="submit" form="productForm" class="button is-warning">Save Product</button> </div>
-        </div>
-    </div>
+                    <!-- Menu 3 -->
+                    <div class="menu-item">
+                        <img src="src/assets/images/main_no8.jpg" alt="Roasted Duck" class="menu-item-image">
 
-    </body>
+                        <div class="menu-details">
+                            <p class="menu-title">Truffle Mushroom & Prosciutto Pizza :</p>
+                            <p class="menu-category">Main Course</p>
+                            <p class="menu-description">Thin-crust pizza with wild mushrooms, mozzarella, prosciutto,
+                                arugula, and a drizzle of truffle oil.</p>
+                        </div>
+                        <!-- Edit Button -->
+                        <a class="icon edit-icon"><i class="fas fa-edit"></i></a>
+                    </div>
+
+                    <!-- Menu 4 -->
+                    <div class="menu-item">
+                        <img src="src/assets/images/section3_image2.png" alt="Roasted Duck" class="menu-item-image">
+
+                        <div class="menu-details">
+                            <p class="menu-title">Surf & Turf Sushi Roll :</p>
+                            <p class="menu-category">Main Course</p>
+                            <p class="menu-description">Grilled steak, tempura shrimp, and avocado roll topped with
+                                torched spicy mayo and sweet soy glaze.</p>
+                        </div>
+                        <!-- Edit Button -->
+                        <a class="icon edit-icon"><i class="fas fa-edit"></i></a>
+                    </div>
+                    <!-- Menu 5 -->
+                    <div class="menu-item">
+                        <img src="src/assets/images/app_no1.jpg" alt="Roasted Duck" class="menu-item-image">
+
+                        <div class="menu-details">
+                            <p class="menu-title">Lobster Ramen Carbonara :</p>
+                            <p class="menu-category">Main Course</p>
+                            <p class="menu-description">Creamy pasta-ramen fusion with poached lobster tail, onsen egg,
+                                nori flakes, and crispy pancetta.</p>
+                        </div>
+                        <!-- Edit Button -->
+                        <a class="icon edit-icon"><i class="fas fa-edit"></i></a>
+                    </div>
+
+                </div>
+            </article>
+        </div>
+    </section>
+</body>
+
 </html>

@@ -1,12 +1,18 @@
-const cards = document.querySelectorAll('.card');
+const cards = document.querySelectorAll('.card-wrapper'); // Updated: target wrapper not inner card
 let current = 1;
 
 function updateCards() {
-  cards.forEach((card, index) => {
-    card.classList.remove('active');
-    card.style.display = (index >= current - 1 && index <= current + 1) ? 'block' : 'none';
+  cards.forEach((wrapper, index) => {
+    const card = wrapper.querySelector('.team-card');
+    const isVisible = index >= current - 1 && index <= current + 1;
+
+    wrapper.style.display = isVisible ? 'block' : 'none';
+    card.classList.toggle('active', index === current);
   });
-  cards[current].classList.add('active');
+
+  // hide arrows at edges
+  document.getElementById('prev').style.visibility = current === 0 ? 'hidden' : 'visible';
+  document.getElementById('next').style.visibility = current === cards.length - 1 ? 'hidden' : 'visible';
 }
 
 function nextCard() {
@@ -26,4 +32,10 @@ function prevCard() {
 document.getElementById('next').addEventListener('click', nextCard);
 document.getElementById('prev').addEventListener('click', prevCard);
 
-updateCards();
+// allow arrow key navigation
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight') nextCard();
+  if (e.key === 'ArrowLeft') prevCard();
+});
+
+updateCards(); // Initial setup

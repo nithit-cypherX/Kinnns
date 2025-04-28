@@ -8,8 +8,10 @@
 
   <!--Import bulma.min.css-->
   <link type="text/css" rel="stylesheet" href="node_modules/bulma/css/bulma.min.css" media="screen,projection" />
+  <!-- Global and Page Styles -->
   <link rel="stylesheet" href="src/styles/global.css" />
   <link rel="stylesheet" href="src/styles/index.css" />
+  <!-- Global Sidebar Toggle Script -->
   <script src="src/js/index.js" defer></script>
   <script src="src/js/global.js" defer></script>
 </head>
@@ -26,7 +28,7 @@
       </p>
       <!-- Title Name -->
       <p class="level-item">
-        <a class="link font-primary is-size-1 text-primary-color" href="/homepage">KINNNS</a>
+        <a class="link font-primary is-size-1 text-primary-color" href="#hero-page">KINNNS</a>
       </p>
       <!-- Info Icon -->
       <p class="level-item">
@@ -40,10 +42,10 @@
   <!-- Sidebar -->
   <aside id="sidebar" class="sidebar hidden">
     <ul>
-      <li><a href="./index.html"><i class="fas fa-home"></i> Home</a></li>
-      <li><a href="./src/pages/searching.html"><i class="fas fa-search"></i> Search</a></li>
-      <li><a href="./src/pages/team.html"><i class="fas fa-users"></i> Team</a></li>
-      <li><a href="./src/pages/login.html"><i class="fas fa-address-book"></i> Administrator</a></li>
+      <li><a href="/home-page"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="/searching-page"><i class="fas fa-search"></i> Search</a></li>
+      <li><a href="/team-page"><i class="fas fa-users"></i> Team</a></li>
+      <li><a href="/login-page"><i class="fas fa-address-book"></i> Administrator</a></li>
     </ul>
   </aside>
 
@@ -104,8 +106,7 @@
       <div class="pageThree-content">
         <!-- Left: Images  -->
         <div class="pageThree-img-box">
-          <img id="carouselImage" alt="steak"
-            class="section3-carousel-image" onclick="nextImage()" />
+          <img id="carouselImage" alt="steak" class="section3-carousel-image" onclick="nextImage()" />
         </div>
 
         <!-- Right: Text Box -->
@@ -206,7 +207,7 @@
                 <p>Plum tomato, cream cheese and basil bagel</p>
                 <p>Açaí bowl (v) Coconut yoghurt, berries, chia seeds, banana, goji berries, bee pollen</p>
               </div>
-              <button onclick="location.href='./src/pages/searching.html'" class="pageFive-reserve-button">RESERVE
+              <button onclick="location.href='/searching-page'" class="pageFive-reserve-button">RESERVE
                 NOW</button>
             </div>
 
@@ -224,7 +225,7 @@
                 <p>Plum tomato, cream cheese and basil bagel</p>
                 <p>Açaí bowl (v) Coconut yoghurt, berries, chia seeds, banana, goji berries, bee pollen</p>
               </div>
-              <button onclick="location.href='./src/pages/searching.html'" class="pageFive-reserve-button">RESERVE
+              <button onclick="location.href='/searching-page'" class="pageFive-reserve-button">RESERVE
                 NOW</button>
             </div>
 
@@ -242,7 +243,7 @@
                 <p>Plum tomato, cream cheese and basil bagel</p>
                 <p>Açaí bowl (v) Coconut yoghurt, berries, chia seeds, banana, goji berries, bee pollen</p>
               </div>
-              <button onclick="location.href='./src/pages/searching.html'" class="pageFive-reserve-button">RESERVE
+              <button onclick="location.href='/searching-page'" class="pageFive-reserve-button">RESERVE
                 NOW</button>
             </div>
           </div>
