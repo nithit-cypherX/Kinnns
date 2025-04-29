@@ -36,7 +36,19 @@ const storage = multer.diskStorage({
         cb(null, file.originalname); // Save with original filename
     }
 });
-const upload = multer({ storage: storage });
+
+const upload= multer({ storage: storage });
+
+const storageMenu = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, path.join(__dirname, 'images/menues'));
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname); // Save with original filename
+    }
+});
+
+const uploadMenu = multer({ storage: storageMenu });
 
 // Handling login Page
 app.post('/login', (req, res) => {
@@ -415,6 +427,144 @@ app.delete('/courses/:id', (req, res) => {
 });
 
 
+//
+app.get('/menues/:id', (req, res) => {
+    const courseId = req.params.id;
+
+    // 👇 Your database query here (example)
+    db.query('CALL GetCourseDetailsJSON(?);', [courseId], (err, results) => {
+        if (err) {
+            return res.status(500).json({ message: 'Error fetching menue' });
+        }
+        if (results.length === 0) {
+            return res.status(404).json({ message: 'Menue not found' });
+        }
+        // console.log('✅ DB Results:', results); // 👈 ADD THIS
+        const course = results[0][0]; // 👈 safely take first record
+        res.json(course);
+        // Return only one course
+    });
+});
+
+
+
+// fetch all menu
+app.get('/menu_detail/:menuId', (req, res) => {
+    const { menuId } = req.params;
+    const { type } = req.query; // Example: ?type=appertizer
+
+    let procedureCall = '';
+
+    if (type === 'appertizer') {
+        procedureCall = `CALL get_appertizer_by_id(?)`;
+    } else if (type === 'main') {
+        procedureCall = `CALL get_main_by_id(?)`;
+    } else if (type === 'dessert') {
+        procedureCall = `CALL get_dessert_by_id(?)`;
+    } else {
+        return res.status(400).send('❌ Invalid type. Must be "appertizer", "main", or "dessert".');
+    }
+
+    db.query(procedureCall, [menuId], (err, results) => {
+        if (err) {
+            console.error('DB error:', err);
+            return res.status(500).send('❌ Failed to fetch menu item.');
+        }
+
+        res.json(results[0]); // ✅ results[0] because CALL returns array inside array
+    });
+});
+
+
+// handle insert new menu
+app.post('/menu-detail/:type', uploadMenu.single('image'), async (req, res) => {
+    const { type } = req.params;
+    const { body, file } = req;
+
+    try {
+        let query = '';
+        let values = [];
+
+        if (type === 'mains') {
+            query = "INSERT INTO mains (main_name, main_desc, imageurl) VALUES (?, ?, ?)";
+            values = [body.main_name, body.main_desc, file ? file.filename : null];
+        } else if (type === 'desserts') {
+            query = "INSERT INTO desserts (dessert_name, dessert_desc, imageurl) VALUES (?, ?, ?)";
+            values = [body.dessert_name, body.dessert_desc, file ? file.filename : null];
+        } else if (type === 'appertizers') {
+            query = "INSERT INTO appertizers (appertizer_name, appertizer_desc, imageurl) VALUES (?, ?, ?)";
+            values = [body.appertizer_name, body.appertizer_desc, file ? file.filename : null];
+        } else {
+            return res.status(400).json({ message: 'Invalid menu type' });
+        }
+
+        db.query(query, values);
+        res.status(201).json({ message: `${type} created successfully!` });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server Error' });
+    }
+});
+
+
+// handle update existing menu
+app.put('/menu-detail/:type/:id', uploadMenu.single('image'), async (req, res) => {
+    const { type, id } = req.params;
+    const { body, file } = req;
+
+    try {
+        let query = '';
+        let values = [];
+
+        if (type === 'mains') {
+            query = "UPDATE mains SET main_name = ?, main_desc = ?, imageurl = ? WHERE main_id = ?";
+            values = [body.main_name, body.main_desc, file ? file.filename : body.old_image, id];
+        } else if (type === 'desserts') {
+            query = "UPDATE desserts SET dessert_name = ?, dessert_desc = ?, imageurl = ? WHERE dessert_id = ?";
+            values = [body.dessert_name, body.dessert_desc, file ? file.filename : body.old_image, id];
+        } else if (type === 'appertizers') {
+            query = "UPDATE appertizers SET appertizer_name = ?, appertizer_desc = ?, imageurl = ? WHERE appertizer_id = ?";
+            values = [body.appertizer_name, body.appertizer_desc, file ? file.filename : body.old_image, id];
+        } else {
+            return res.status(400).json({ message: 'Invalid menu type' });
+        }
+
+        db.query(query, values);
+        res.json({ message: `${type} updated successfully!` });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server Error' });
+    }
+});
+
+
+
+app.delete('/menu-detail/:type/:id', async (req, res) => {
+    const { type, id } = req.params;
+
+    try {
+        let query = '';
+
+        if (type === 'mains') {
+            query = "DELETE FROM mains WHERE main_id = ?";
+        } else if (type === 'desserts') {
+            query = "DELETE FROM desserts WHERE dessert_id = ?";
+        } else if (type === 'appertizers') {
+            query = "DELETE FROM appertizers WHERE appertizer_id = ?";
+        } else {
+            return res.status(400).json({ message: 'Invalid menu type' });
+        }
+
+        db.query(query, [id]);
+        res.json({ message: `${type} deleted successfully!` });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server Error' });
+    }
+});
 
 
 // Handle invalid routes
