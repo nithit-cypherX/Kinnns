@@ -66,13 +66,12 @@ nav {
 }
 
 .pageTwo-body {
-  font-size: 24px;
-  font-weight: 300;
+  font-size: 28px;
+  font-weight: 500;
   line-height: 47px;
   margin-left: 167px;
   margin-top: 25px;
-  width: 695px;
-  word-wrap: break-word;
+  width: 50vw
 }
 
 .pageThree-title {
@@ -99,10 +98,14 @@ nav {
   align-items: center;
   border-radius: 20px;
   display: flex;
-  font-size: 28px;
+  font-size: 24px;
   height: 70vh;
   padding-inline: 60px;
   width: 40vw;
+}
+
+.pageThree-description-box strong{
+  color: var(--primary-color);
 }
 
 .section3-carousel-image {

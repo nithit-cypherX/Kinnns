@@ -1,0 +1,93 @@
+.image-container {
+  position: relative;
+}
+
+.course-image {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  object-position: center;
+  transition: opacity 0.5s ease;
+  border-radius: 10px;
+}
+
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-50%) scale(1.1); /* grow slightly */
+}
+
+.title.is-2, 
+.title.is-4 {
+  color: var(--header-color);
+  font-family: var(--font-heading);
+}
+
+.title.is-4 {
+  margin: 0;
+  font-size: 28px;
+}
+
+p.subtitle.is-5 {
+  font-size: 24px;
+  font-family: var(--font-heading);
+  text-align: justify;
+}
+
+.column p {
+  color: var(--secondary-color);
+  font-size: 24px;
+  text-align: justify;
+}
+
+.yellow-line {
+  border: none;
+  height: 4px;
+  background-color: var(--header-color);
+  border-radius: 2px;
+}
+
+p.course_price {
+  font-size: 32px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+.button.is-primary.is-medium {
+  background-color: var(--secondary-color);
+  border-radius: 8px;
+  color: var(--header-color);
+  font-family: var(--font-heading);
+  font-size: 36px;
+  height: 4rem;
+  letter-spacing: 2px;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  transition: all 0.3s ease;
+}
+
+.button.is-primary.is-medium:hover {
+  background-color: var(--header-color);
+  color: var(--secondary-color);
+  transform: scale(1.05);
+}
+
+.nav-button.is-left {
+  left: 10px;
+}
+
+.nav-button.is-right {
+  right: 10px;
+}
