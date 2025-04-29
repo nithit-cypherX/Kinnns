@@ -118,6 +118,7 @@
                     return;
                 }
 
+                // set search criteria and send to backend route
                 axios.post('http://localhost:3000/search-courses', {
                     search_choice: searchChoice,
                     search_value: searchValue
@@ -160,6 +161,7 @@
                     return;
                 }
 
+                // create course element
                 courses.forEach((course, index) => {
                     const cardHTML = `
                         <div id="card${index + 1}" class="column is-4">
@@ -185,6 +187,7 @@
                 });
             }
 
+            // handle no courses found
             function clearCards() {
                 const cardsContainer = document.getElementById('cards');
                 cardsContainer.innerHTML = `

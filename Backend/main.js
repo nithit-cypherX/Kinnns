@@ -39,6 +39,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+// Setup multer for image uploads (Save to /images/menues/)
 const storageMenu = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, path.join(__dirname, 'images/menues'));
@@ -72,6 +73,7 @@ app.post('/login', (req, res) => {
     })
 });
 
+// Handle Valid user
 app.get('/check-login', (req, res) => {
     const user = req.cookies.user;
     if (user) {
@@ -81,6 +83,8 @@ app.get('/check-login', (req, res) => {
     }
 });
 
+
+// Handle log-out logic
 app.get('/logout', (req, res) => {
     res.clearCookie('user', {
         httpOnly: true,
@@ -90,6 +94,8 @@ app.get('/logout', (req, res) => {
     res.send('✅ Logged out successfully');
 })
 
+
+// Route to get all courses
 app.get('/courses', (req, res) => {
     const query_course = 'CALL GetAllCoursesWithCategories();';
     db.query(query_course, (err, results) => {
@@ -98,19 +104,19 @@ app.get('/courses', (req, res) => {
             return res.status(500).send('❌ Failed to fetch courses');
         }
 
-        const courses = results[0]; // ✅ Only take the first result set (the real courses)
+        const courses = results[0]; // Only take the first result set (the real courses)
 
         const setImageURL = courses.map(course => ({
             ...course,
             imageurl: `http://localhost:3000/images/courses/${course.imageurl}`
         }));
 
-        res.json(setImageURL); // ✅ send back clean array
+        res.json(setImageURL); //  send back clean array
     });
 });
 
 
-// ✅ Route to get all categories
+//  Route to get all categories
 app.get('/categories', (req, res) => {
     const query = 'SELECT * FROM categories';
 
@@ -125,7 +131,7 @@ app.get('/categories', (req, res) => {
 });
 
 
-// ✅ Route to filter courses by selected categories and selected price
+//  Route to filter courses by selected categories and selected price
 // app.post('/filter-courses', (req, res) => {
 //     const selectedCategories = req.body.categories || [];
 //     const selectedPrices = req.body.prices || [];
@@ -185,6 +191,7 @@ app.get('/categories', (req, res) => {
 //     });
 // });
 
+// Route to search course by selected name , categories , or price
 app.post('/search-courses', (req, res) => {
     const { search_choice, search_value } = req.body;
 
@@ -239,7 +246,7 @@ app.post('/search-courses', (req, res) => {
 });
 
 
-// Example backend route
+// Route to get specific courses detail
 app.get('/courses/:id', (req, res) => {
     const courseId = req.params.id;
 
@@ -427,7 +434,7 @@ app.delete('/courses/:id', (req, res) => {
 });
 
 
-//
+//Route to get all menues
 app.get('/menues/:id', (req, res) => {
     const courseId = req.params.id;
 
@@ -439,8 +446,8 @@ app.get('/menues/:id', (req, res) => {
         if (results.length === 0) {
             return res.status(404).json({ message: 'Menue not found' });
         }
-        // console.log('✅ DB Results:', results); // 👈 ADD THIS
-        const course = results[0][0]; // 👈 safely take first record
+        // console.log('✅ DB Results:', results); 
+        const course = results[0][0]; // 
         res.json(course);
         // Return only one course
     });
@@ -448,7 +455,7 @@ app.get('/menues/:id', (req, res) => {
 
 
 
-// fetch all menu
+// router to fectch specific menu details
 app.get('/menu_detail/:menuId', (req, res) => {
     const { menuId } = req.params;
     const { type } = req.query; // Example: ?type=appertizer
@@ -540,7 +547,7 @@ app.put('/menu-detail/:type/:id', uploadMenu.single('image'), async (req, res) =
 });
 
 
-
+// handle delete menu
 app.delete('/menu-detail/:type/:id', async (req, res) => {
     const { type, id } = req.params;
 
@@ -567,6 +574,7 @@ app.delete('/menu-detail/:type/:id', async (req, res) => {
 });
 
 
+// Router to get course detail in course-detail-page
 app.get('/course_detail/:id', (req, res) => {
     const courseId = req.params.id;
 
@@ -582,6 +590,7 @@ app.get('/course_detail/:id', (req, res) => {
     });
 });
 
+// Fecth top 3 course from database to display in home-page
 app.get('/topcourse', (req, res) => {
 
     db.query('CALL GetTop3Courses()',(err, results) => {
@@ -600,6 +609,8 @@ app.use((req, res) => {
     res.status(404).send('Invalid Path');
 });
 
+
+// Starting server 
 app.listen(port, () => {
     console.log(`🚀 Backend Server running on port ${port}`);
 });

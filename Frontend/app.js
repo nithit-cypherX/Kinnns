@@ -11,20 +11,20 @@ app.use(express.urlencoded({ extended: true }));
 // Middleware: Serve static frontend files
 app.use(express.static(path.join(__dirname, '../Frontend')));
 
-// Router: For switching pages if needed
+// Router: For switching pages 
 const router = express.Router();
 app.use(router);
 
 
 router.get('/home-page', (req, res) => {
-    console.log(`Request at ${req.url}`);  // Correct the template string here
-    res.sendFile(path.join(__dirname, '../Frontend/index.html'));  // Correct path
+    console.log(`Request at ${req.url}`);  
+    res.sendFile(path.join(__dirname, '../Frontend/index.html')); 
 });
 
 
 router.get('/login-page', (req,res) =>{
-    console.log(`Request at ${req.url}`);  // Correct the template string here
-    res.sendFile(path.join(__dirname, '../Frontend/src/pages/login.html'));  // Correct path
+    console.log(`Request at ${req.url}`);  
+    res.sendFile(path.join(__dirname, '../Frontend/src/pages/login.html')); 
 })
 
 router.get('/admin-dashboard-page', (req, res) => {

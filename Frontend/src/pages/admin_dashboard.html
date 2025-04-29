@@ -103,6 +103,7 @@
 
                 });
 
+                
 
             function loadCourses() {
                 axios.get('http://localhost:3000/courses')
@@ -152,7 +153,7 @@
         });
 
 
-
+        // handle logout logic and clear cookies
         document.getElementById("logout").addEventListener("click", () => {
 
             axios.get('http://localhost:3000/logout', {
@@ -169,6 +170,7 @@
 
         });
 
+        // redirect page to /course-management-page
         document.getElementById('addCourse').addEventListener('click', () => {
             window.location.href = '/course-management-page';
         });

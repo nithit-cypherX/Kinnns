@@ -112,7 +112,7 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
   <script>
-    let images = []; // ✅ Declare images here
+    let images = [];
     let currentImage = 0;
 
     function showImage(index) {
@@ -138,6 +138,7 @@
       const urlParams = new URLSearchParams(window.location.search);
       const courseId = urlParams.get('courseId');
 
+      // fetch specific course details
       if (courseId) {
         axios.get(`http://localhost:3000/course_detail/${courseId}`)
           .then(res => {
@@ -166,6 +167,7 @@
       }
     });
 
+    // redirect to searching-page
     document.getElementById('back').addEventListener('click', () => {
       window.location.href = '/searching-page';
     });

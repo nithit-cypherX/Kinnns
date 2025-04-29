@@ -93,6 +93,7 @@
 
             axios.defaults.withCredentials = true;
 
+            // check valid user
             axios.get('http://localhost:3000/check-login')
                 .then(res => {
                     console.log('✅ Logged in:', res.data);
@@ -111,10 +112,11 @@
                 return;
             }
 
+            // fetch all menues from specific course 
             if (courseId) {
                 axios.get(`http://localhost:3000/menues/${courseId}`)
                     .then(res => {
-                        // console.log('✅ Course data received:', res.data); // 👈 ADD THIS
+                        // console.log('✅ Course data received:', res.data);
                         const course = res.data;
                         const menuList = document.getElementById('menu_list');
                         menuList.innerHTML = ''; // Clear old content
@@ -131,10 +133,10 @@
                             if (item.jsonDetail) {
 
                                 const details = item.jsonDetail;
-                                // console.log('🔍 Details Object:', details); // 👈 Add this to check!
+                                // console.log('🔍 Details Object:', details); 
 
                                 if (details && Object.keys(details).length > 0) {
-                                    // ✅ Set correct values
+                                    
                                     const name = details.name || 'Unknown Name';
                                     const description = details.description || 'No description available.';
                                     const id = details.id;
@@ -142,7 +144,7 @@
                                         ? `http://localhost:3000/images/menues/${details.imageurl}`
                                         : ''; // fallback image
 
-                                    // ✅ Create one card per detail
+                                    // Create one card per detail
                                     const itemHTML = `
                                     <div class="menu-item">
                                         <img src="${imageUrl}" alt="${name}" class="menu-item-image">
@@ -159,7 +161,7 @@
                                     </div>
                                     `;
 
-                                    // ✅ Add to menu list
+                                    // Add to menu list
                                     menuList.innerHTML += itemHTML;
                                 }
                             }
@@ -172,6 +174,7 @@
                     });
             }
 
+            // handle redirect to menu_management
             document.addEventListener('click', (event) => {
                 if (event.target.closest('.editMenuButton')) {
                     const urlParams = new URLSearchParams(window.location.search);

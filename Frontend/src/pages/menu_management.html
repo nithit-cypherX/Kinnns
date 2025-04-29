@@ -140,15 +140,15 @@
         });
         
       const urlParams = new URLSearchParams(window.location.search);
-      const menuId = urlParams.get('menuId'); // 🛠 Get menuId instead of courseId
+      const menuId = urlParams.get('menuId'); // 
       const menuType = urlParams.get('type');
 
       fetchCategories();
 
-      if (menuId && menuType) { // 🛠 Check both menuId and menuType
+      if (menuId && menuType) { // Check both menuId and menuType
         axios.get(`http://localhost:3000/menu_detail/${menuId}?type=${menuType}`)
           .then(res => {
-            const menu = res.data[0]; // <-- fix here too!
+            const menu = res.data[0]; 
             document.getElementById('menuName').value = menu.menu_name;
             document.getElementById('description').value = menu.menu_desc;
             document.getElementById('menuType').value = menuType;
@@ -170,7 +170,7 @@
       function fetchCategories() {
         const categories = [
           { value: "main", text: "Main" },
-          { value: "appertizer", text: "Appertizer" }, // Fixed spelling here
+          { value: "appertizer", text: "Appertizer" }, 
           { value: "dessert", text: "Dessert" }
         ];
 
@@ -186,6 +186,7 @@
       }
 
 
+      // hadle logout logic and clear cookies
       document.getElementById("logout").addEventListener("click", () => {
         axios.get('http://localhost:3000/logout', { withCredentials: true })
           .then(res => {
@@ -197,7 +198,7 @@
           });
       });
 
-      // 🌟 NEW: Handle Save menu(Create or Update)
+      // NEW: Handle Save menu(Create or Update)
       document.getElementById('create-menu-form').addEventListener('submit', async (e) => {
         e.preventDefault();
 
@@ -211,7 +212,7 @@
         formData.append(`${menuType}_desc`, desc);
         if (image) formData.append('image', image);
 
-        const isEdit = !!menuId; // 👈 change menuId to Boolean TRUE/FALSE
+        const isEdit = !!menuId; 
         const apiUrl = isEdit
           ? `http://localhost:3000/menu-detail/${menuType}s/${menuId}`
           : `http://localhost:3000/${menuType}s`;
@@ -235,7 +236,7 @@
 
 
 
-      // 🌟 Handle Delete Course
+      // Handle Delete Course
       document.getElementById('delete-button').addEventListener('click', async () => {
         if (!menuId || !menuType) {
           alert('❌ No menu to delete.');
@@ -274,6 +275,7 @@
 
     });
 
+    // redirect to menu-dashboard
     document.getElementById('cancel').addEventListener('click', () => {
       const urlParams = new URLSearchParams(window.location.search);
       const courseId = urlParams.get('courseId');
