@@ -1,7 +1,6 @@
-
 .team-section {
   text-align: center;
-  padding-top: 100px; 
+  padding-top: 100px;
   min-height: 100vh;
 }
 
@@ -16,11 +15,10 @@
 .card {
   padding: 15px;
   border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   background-color: #fff5e1;
   text-align: center;
   transition: transform 0.3s;
-
 }
 
 .carousel {
@@ -30,12 +28,12 @@
   flex-wrap: nowrap;
 }
 
-.card p{
+.card p {
   color: var(--secondary-color);
 }
 
-.card p.content{
-  text-align: justify;
+.card p.content {
+  text-align: left;
 }
 
 .arrow {
