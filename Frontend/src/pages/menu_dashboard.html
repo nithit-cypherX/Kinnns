@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KINNNS-MenuManagementPage</title>
+
+    <!-- Bulma, FontAwesome, CSS -->
+    <link rel="stylesheet" href="node_modules/bulma/css/bulma.min.css" />
+    <link rel="stylesheet" href="src/assets/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="src/styles/global.css" />
+    <link rel="stylesheet" href="src/styles/menu_management.css" />
+    <script src="src/js/global.js" defer></script>
+</head>
+
+<body>
+    <!-- Header Section - Navbar -->
+    <header>
+        <nav id="mainNavbar" class="level navbar is-fixed-top background-secondary-color mb-0">
+            <!-- Navbar burger -->
+            <p class="level-item">
+                <a class="sidebarToggle navbar-item text-primary-color pt-3 icon is-large">
+                    <i class="link fas fa-3x fa-bars"></i>
+                </a>
+            </p>
+            <!-- Title Name -->
+            <p class="level-item">
+                <a class="link font-primary is-size-1 text-primary-color" href="/home-page">KINNNS</a>
+            </p>
+            <!-- Info Icon -->
+            <p class="level-item">
+                <a class="navbar-item text-primary-color pt-4 icon is-large">
+                    <i class="link fas fa-3x fa-info-circle"></i>
+                </a>
+            </p>
+        </nav>
+    </header>
+
+    <!-- Sidebar (Collapsible) -->
+    <aside id="sidebar" class="sidebar hidden">
+        <ul>
+            <li><a href="/home-page"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="/searching-page"><i class="fas fa-search"></i> Search</a></li>
+            <li><a href="/team-page"><i class="fas fa-users"></i> Team</a></li>
+            <li><a href="/login-page"><i class="fas fa-address-book"></i> Administrator</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <section class="hero background-primary-color">
+        <div class="columns mt-6 p-3">
+            <!-- Sidebar -->
+            <aside
+                class="column is-2 background-secondary-color px-6 py-5 is-flex is-flex-direction-column is-justify-content-space-between">
+                <div class="menu">
+                    <ul class="menu-list">
+                        <li><a href="/admin-dashboard-page">DASHBOARD</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <button id="logout" class="button is-warning is-fullwidth">
+                        Logout<i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Menu Management Table -->
+            <article id="menu" class="column p-5">
+                <div class="is-flex is-justify-content-space-between is-align-items-center mb-5">
+                    <!-- Title -->
+                    <h1 class="title has-text-centered">All Menu List</h1>
+                    <!-- Add Buttons -->
+                    <button id="addMenu" class="button is-medium">
+                        <i class="fas fa-plus"></i> New Menu
+                    </button>
+                </div>
+
+                <!-- Menu List -->
+                <div id="menu_list" class="menu-list-container"></div>
+
+
+            </article>
+        </div>
+    </section>
+
+    <!-- Axios CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const courseId = urlParams.get('courseId');
+
+            if (!courseId) {
+                alert('❌ No Course ID found in URL!');
+                return;
+            }
+
+            if (courseId) {
+                axios.get(`http://localhost:3000/menues/${courseId}`)
+                    .then(res => {
+                        // console.log('✅ Course data received:', res.data); // 👈 ADD THIS
+                        const course = res.data;
+                        const menuList = document.getElementById('menu_list');
+                        menuList.innerHTML = ''; // Clear old content
+
+                        // 👉 Create an array with each category
+                        const categories = [
+                            { jsonDetail: course.appetizer_details, type: 'appertizer' },
+                            { jsonDetail: course.main_details, type: 'main' },
+                            { jsonDetail: course.dessert_details, type: 'dessert' }
+                        ];
+
+                        // 👉 Loop through each category
+                        categories.forEach(item => {
+                            if (item.jsonDetail) {
+
+                                const details = item.jsonDetail;
+                                // console.log('🔍 Details Object:', details); // 👈 Add this to check!
+
+                                if (details && Object.keys(details).length > 0) {
+                                    // ✅ Set correct values
+                                    const name = details.name || 'Unknown Name';
+                                    const description = details.description || 'No description available.';
+                                    const id = details.id;
+                                    const imageUrl = details.imageurl
+                                        ? `http://localhost:3000/images/menues/${details.imageurl}`
+                                        : ''; // fallback image
+
+                                    // ✅ Create one card per detail
+                                    const itemHTML = `
+                                    <div class="menu-item">
+                                        <img src="${imageUrl}" alt="${name}" class="menu-item-image">
+
+                                        <div class="menu-details">
+                                            <h3 class="menu-title">${name} :</h3>
+                                            <p class="menu-category"><strong>${item.type}</strong></p>
+                                            <p class="menu-description">${description}</p>
+                                        </div>
+
+                                        <button class="editMenuButton" data-id="${id}" data-type="${item.type}">
+                                        <a class="icon edit-icon"><i class="fas fa-edit"></i></a>
+                                        </button>
+                                    </div>
+                                    `;
+
+                                    // ✅ Add to menu list
+                                    menuList.innerHTML += itemHTML;
+                                }
+                            }
+                        });
+
+                    })
+                    .catch(err => {
+                        console.error('🚨 Failed to load course details:', err);
+                        alert('Failed to load course details.');
+                    });
+            }
+
+            document.addEventListener('click', (event) => {
+                if (event.target.closest('.editMenuButton')) {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const courseId = urlParams.get('courseId');
+                    const button = event.target.closest('.editMenuButton');
+                    const id = button.getAttribute('data-id');
+                    const menuType = button.getAttribute('data-type');
+
+                    location.assign(`/menu-management-page?courseId=${courseId}&menuId=${id}&type=${menuType}`);
+                }
+            });
+
+
+
+        });
+
+
+        document.getElementById('addMenu').addEventListener('click', () => {
+            const usedTypes = [];
+
+            document.querySelectorAll('.editMenuButton').forEach(button => {
+                const menuType = button.getAttribute('data-type');
+                usedTypes.push(menuType);
+            });
+
+            const allTypes = ['appertizer', 'main', 'dessert'];
+            const availableTypes = allTypes.filter(type => !usedTypes.includes(type));
+
+            if (availableTypes.length === 0) {
+                alert('🚫 All menu types have already been added!');
+                return;
+            }
+
+            const typeToAdd = availableTypes[0];
+            const urlParams = new URLSearchParams(window.location.search);
+            const courseId = urlParams.get('courseId');
+
+            location.assign(`/menu-management-page?courseId=${courseId}&type=${typeToAdd}`);
+        });
+
+    </script>
+</body>
+
+</html>

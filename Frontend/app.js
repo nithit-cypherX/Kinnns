@@ -50,6 +50,12 @@ router.get('/menu-management-page', (req, res) =>{
 });
 
 
+router.get('/menu-dashboard-page', (req, res) =>{
+    console.log(`Request at ${req.url}`);
+    res.sendFile(path.join(__dirname, '../Frontend/src/pages/menu_dashboard.html'));
+});
+
+
 router.get('/team-page', (req, res) =>{
     console.log(`Request at ${req.url}`);
     res.sendFile(path.join(__dirname, '../Frontend/src/pages/team.html'));

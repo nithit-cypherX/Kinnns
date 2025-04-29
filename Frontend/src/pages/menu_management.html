@@ -15,143 +15,261 @@
     <link rel="stylesheet" href="src/styles/menu_management.css" />
     <!-- Global Sidebar Toggle Script -->
     <script src="src/js/global.js" defer></script>
+
 </head>
 
 <body>
-    <!-- Header Section - Navbar -->
-    <header>
-        <nav id="mainNavbar" class="level navbar is-fixed-top background-secondary-color mb-0">
-            <!-- Navbar burger -->
-            <p class="level-item">
-                <a class="sidebarToggle navbar-item text-primary-color pt-3 icon is-large">
-                    <i class="link fas fa-3x fa-bars"></i>
-                </a>
-            </p>
-            <!-- Title Name -->
-            <p class="level-item">
-                <a class="link font-primary is-size-1 text-primary-color" href="/home-page">KINNNS</a>
-            </p>
-            <!-- Info Icon -->
-            <p class="level-item">
-                <a class="navbar-item text-primary-color pt-4 icon is-large">
-                    <i class="link fas fa-3x fa-info-circle"></i>
-                </a>
-            </p>
-        </nav>
-    </header>
+  <!-- Header Section - Navbar -->
+  <header>
+    <nav id="mainNavbar" class="level navbar is-fixed-top background-secondary-color mb-0">
+      <p class="level-item">
+        <a class="sidebarToggle navbar-item text-primary-color pt-3 icon is-large">
+          <i class="fas fa-bars fa-3x"></i>
+        </a>
+      </p>
+      <p class="level-item">
+        <a class="link font-primary is-size-1 text-primary-color" href="../../index.html">KINNNS</a>
+      </p>
+      <p class="level-item">
+        <a class="navbar-item text-primary-color pt-4 icon is-large">
+          <i class="fas fa-info-circle fa-3x"></i>
+        </a>
+      </p>
+    </nav>
+  </header>
 
-    <!-- Sidebar (Collapsible) -->
-    <aside id="sidebar" class="sidebar hidden">
-        <ul>
-            <li><a href="/home-page"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="/searching-page"><i class="fas fa-search"></i> Search</a></li>
-            <li><a href="/team-page"><i class="fas fa-users"></i> Team</a></li>
-            <li><a href="/login-page"><i class="fas fa-address-book"></i> Administrator</a></li>
-        </ul>
-    </aside>
+  <!-- Sidebar (Collapsible) -->
+  <aside id="sidebar" class="sidebar hidden">
+    <ul>
+      <li><a href="../../index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="./searching.html"><i class="fas fa-search"></i> Search</a></li>
+      <li><a href="./team.html"><i class="fas fa-users"></i> Team</a></li>
+      <li><a href="./login.html"><i class="fas fa-address-book"></i> Administrator</a></li>
+    </ul>
+  </aside>
 
-    <!-- Main Content -->
-    <section class="hero background-primary-color">
-        <div class="columns mt-6 p-3">
-            <!-- Sidebar -->
-            <aside
-                class="column is-2 background-secondary-color px-6 py-5 is-flex is-flex-direction-column is-justify-content-space-between">
-                <div class="menu">
-                    <ul class="menu-list">
-                        <li><a href="/admin-dashboard-page">DASHBOARD</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <button id="logout" class="button is-warning is-fullwidth">
-                        Logout<i class="fas fa-sign-out-alt"></i>
-                    </button>
-                </div>
-            </aside>
-
-            <!-- Menu Management Table -->
-            <article class="column p-5">
-                <div class="is-flex is-justify-content-space-between is-align-items-center mb-5">
-                    <!-- Title -->
-                    <h1 class="title has-text-centered">All Menu List</h1>
-                    <!-- Add Buttons -->
-                    <button class="button is-medium">
-                        <i class="fas fa-plus"></i> New Product
-                    </button>
-                </div>
-
-                <!-- Menu List -->
-                <div class="menu-list-container">
-                    <!-- Menu 1 -->
-                    <div class="menu-item">
-                        <img src="src/assets/images/app_no3.jpg" alt="Roasted Duck" class="menu-item-image">
-
-                        <div class="menu-details">
-                            <p class="menu-title">Miso-Butter Ribeye Steak :</p>
-                            <p class="menu-category">Main Course</p>
-                            <p class="menu-description">Chargrilled ribeye finished with umami-rich miso butter, served
-                                with roasted garlic mash and charred broccolini.</p>
-                        </div>
-                        <!-- Edit Button -->
-                        <a class="icon edit-icon"><i class="fas fa-edit"></i></a>
-                    </div>
-                    <!-- Menu 2 -->
-                    <div class="menu-item">
-                        <img src="src/assets/images/app_no1.jpg" alt="Roasted Duck" class="menu-item-image">
-
-                        <div class="menu-details">
-                            <p class="menu-title">Korean Bulgogi Steak Bowl :</p>
-                            <p class="menu-category">Main Course</p>
-                            <p class="menu-description">Sliced marinated beef ribeye over jasmine rice with kimchi,
-                                pickled daikon, a soft egg, and sesame soy glaze.</p>
-                        </div>
-                        <!-- Edit Button -->
-                        <a class="icon edit-icon"><i class="fas fa-edit"></i></a>
-                    </div>
-                    <!-- Menu 3 -->
-                    <div class="menu-item">
-                        <img src="src/assets/images/main_no8.jpg" alt="Roasted Duck" class="menu-item-image">
-
-                        <div class="menu-details">
-                            <p class="menu-title">Truffle Mushroom & Prosciutto Pizza :</p>
-                            <p class="menu-category">Main Course</p>
-                            <p class="menu-description">Thin-crust pizza with wild mushrooms, mozzarella, prosciutto,
-                                arugula, and a drizzle of truffle oil.</p>
-                        </div>
-                        <!-- Edit Button -->
-                        <a class="icon edit-icon"><i class="fas fa-edit"></i></a>
-                    </div>
-
-                    <!-- Menu 4 -->
-                    <div class="menu-item">
-                        <img src="src/assets/images/section3_image2.png" alt="Roasted Duck" class="menu-item-image">
-
-                        <div class="menu-details">
-                            <p class="menu-title">Surf & Turf Sushi Roll :</p>
-                            <p class="menu-category">Main Course</p>
-                            <p class="menu-description">Grilled steak, tempura shrimp, and avocado roll topped with
-                                torched spicy mayo and sweet soy glaze.</p>
-                        </div>
-                        <!-- Edit Button -->
-                        <a class="icon edit-icon"><i class="fas fa-edit"></i></a>
-                    </div>
-                    <!-- Menu 5 -->
-                    <div class="menu-item">
-                        <img src="src/assets/images/app_no1.jpg" alt="Roasted Duck" class="menu-item-image">
-
-                        <div class="menu-details">
-                            <p class="menu-title">Lobster Ramen Carbonara :</p>
-                            <p class="menu-category">Main Course</p>
-                            <p class="menu-description">Creamy pasta-ramen fusion with poached lobster tail, onsen egg,
-                                nori flakes, and crispy pancetta.</p>
-                        </div>
-                        <!-- Edit Button -->
-                        <a class="icon edit-icon"><i class="fas fa-edit"></i></a>
-                    </div>
-
-                </div>
-            </article>
+  <!-- Page Layout -->
+  <section class="hero background-primary-color">
+    <div class="columns mt-6 p-3">
+      <!-- Left Sidebar -->
+      <aside
+        class="column is-2 background-secondary-color px-6 py-5 is-flex is-flex-direction-column is-justify-content-space-between">
+        <div class="menu">
+          <ul class="menu-list">
+            <li><a href="#">DASHBOARD</a></li>
+          </ul>
         </div>
-    </section>
+        <div>
+          <button id="logout" class="button is-warning is-fullwidth">
+            Logout <i class="fas fa-sign-out-alt"></i>
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <article class="column p-6">
+        <!-- Title -->
+        <h1 class="title has-text-centered">Create New Menu</h1>
+        <p class="subtitle is-6 has-text-centered">Design and launch your courses easily!</p>
+
+        <!-- Form Start -->
+        <form id="create-menu-form" class="form-grid">
+          <div class="form-group">
+            <label for="menuName">Menu Name</label>
+            <input type="text" id="menuName" placeholder="Enter menu name..." required>
+          </div>
+
+          <div class="form-group">
+            <label for="menuType">Menu Type</label>
+            <select id="menuType" required></select>
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / 3;">
+            <label for="description">Description</label>
+            <textarea id="description" placeholder="Enter a description..." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="image-upload">Upload Image</label>
+            <div class="image-upload-container" onclick="document.getElementById('image-upload').click();">
+              <input type="file" id="image-upload" accept="image/png, image/jpeg" style="display: none;">
+              <i class="fas fa-upload fa-2x"></i>
+              <p>Click to upload or drag and drop</p>
+              <p class="small-text">Max 10MB, PNG or JPEG only.</p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Preview Image</label>
+            <div class="preview-image-container">
+              <img id="preview-image" src="" alt="Preview" style="display: none;">
+            </div>
+          </div>
+
+
+          <div class="action-buttons" style="grid-column: 1 / 3;">
+            <button id="cancel" type="button"
+              class="button background-secondary-color text-primary-color">Cancel</button>
+            <button type="button" id="delete-button" class="button is-danger">Delete</button>
+            <button type="submit" class="button is-success">Save</button>
+
+          </div>
+        </form>
+        <!-- Form End -->
+      </article>
+    </div>
+  </section>
+
+  <!-- Axios CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <!-- Page Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const menuId = urlParams.get('menuId'); // 🛠 Get menuId instead of courseId
+      const menuType = urlParams.get('type');
+
+      fetchCategories();
+
+      if (menuId && menuType) { // 🛠 Check both menuId and menuType
+        axios.get(`http://localhost:3000/menu_detail/${menuId}?type=${menuType}`)
+          .then(res => {
+            const menu = res.data[0]; // <-- fix here too!
+            document.getElementById('menuName').value = menu.menu_name;
+            document.getElementById('description').value = menu.menu_desc;
+            document.getElementById('menuType').value = menuType;
+
+            if (menu.imageurl) {
+              const previewImage = document.getElementById('preview-image');
+              previewImage.src = `http://localhost:3000/images/menues/${menu.imageurl}`;
+              previewImage.style.display = 'block';
+            }
+          })
+          .catch(err => {
+            console.error(err);
+            alert('Failed to load menu details.');
+          });
+      }
+
+
+
+      function fetchCategories() {
+        const categories = [
+          { value: "main", text: "Main" },
+          { value: "appertizer", text: "Appertizer" }, // Fixed spelling here
+          { value: "dessert", text: "Dessert" }
+        ];
+
+        const select = document.getElementById('menuType');
+        select.innerHTML = '<option value="">Select a Category</option>'; // Reset options first
+
+        categories.forEach(cat => {
+          const option = document.createElement('option');
+          option.value = cat.value;
+          option.textContent = cat.text;
+          select.appendChild(option);
+        });
+      }
+
+
+      document.getElementById("logout").addEventListener("click", () => {
+        axios.get('http://localhost:3000/logout', { withCredentials: true })
+          .then(res => {
+            window.location.href = '/login-page';
+            alert(res.data);
+          })
+          .catch(err => {
+            alert('🚨 Something Wrong');
+          });
+      });
+
+      // 🌟 NEW: Handle Save menu(Create or Update)
+      document.getElementById('create-menu-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('menuName').value;
+        const desc = document.getElementById('description').value;
+        const imageInput = document.getElementById('image-upload');
+        const image = imageInput.files.length > 0 ? imageInput.files[0] : null;
+
+        const formData = new FormData();
+        formData.append(`${menuType}_name`, name);
+        formData.append(`${menuType}_desc`, desc);
+        if (image) formData.append('image', image);
+
+        const isEdit = !!menuId; // 👈 change menuId to Boolean TRUE/FALSE
+        const apiUrl = isEdit
+          ? `http://localhost:3000/menu-detail/${menuType}s/${menuId}`
+          : `http://localhost:3000/${menuType}s`;
+
+        const method = isEdit ? 'put' : 'post';
+
+        try {
+          await axios({
+            method: method,
+            url: apiUrl,
+            data: formData,
+            headers: { 'Content-Type': 'multipart/form-data' }
+          });
+
+          alert(`✅ ${menuType} ${isEdit ? 'updated' : 'created'} successfully!`);
+        } catch (err) {
+          console.error(err);
+          alert(`❌ Failed to save ${menuType}.`);
+        }
+      });
+
+
+
+      // 🌟 Handle Delete Course
+      document.getElementById('delete-button').addEventListener('click', async () => {
+        if (!menuId || !menuType) {
+          alert('❌ No menu to delete.');
+          return;
+        }
+
+        const confirmDelete = confirm(`⚠️ Are you sure you want to delete this ${menuType}?`);
+        if (!confirmDelete) return;
+
+        try {
+          await axios.delete(`http://localhost:3000/menu-detail/${menuType}s/${menuId}`);
+          alert(`✅ ${menuType} deleted successfully!`);
+          window.location.href = '/admin-dashboard-page';
+        } catch (err) {
+          console.error(err);
+          alert(`❌ Failed to delete ${menuType}.`);
+        }
+      });
+
+
+
+      // Handle Image Preview
+      document.getElementById('image-upload').addEventListener('change', function (event) {
+        const previewImage = document.getElementById('preview-image');
+        const file = event.target.files[0];
+
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            previewImage.src = e.target.result;
+            previewImage.style.display = 'block';
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+    });
+
+    document.getElementById('cancel').addEventListener('click', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const courseId = urlParams.get('courseId');
+      window.location.href = `/menu-dashboard-page?courseId=${courseId}`;
+    });
+
+  </script>
+
+
 </body>
 
 </html>

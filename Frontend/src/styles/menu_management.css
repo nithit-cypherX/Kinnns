@@ -117,3 +117,8 @@
   color: white;
   transform: translateY(-4px);
 }
+
+#menu {
+  min-height: 100vh; /* at least 60% of the screen height */
+
+}
