@@ -121,4 +121,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Auto-select Appetizer on page load
   document.querySelector('[data-category="appetizer"]').click();
+
+  axios.get(`http://localhost:3000/topcourse`)
+    .then(res => {
+      const courses = res.data; // this is now an array of 3 courses
+      const container = document.getElementById('reservation_card');
+
+      container.innerHTML = ''; // Clear old content
+
+      courses.forEach(course => {
+        const card = document.createElement('div');
+        card.className = 'pageFive-reservation-card';
+        card.innerHTML = `
+        <p class="pageFive-card-title">${course.course_name}</p>
+        <p class="pageFive-card-price">$${parseFloat(course.price).toFixed(2)} / Person</p>
+        <div class="pageFive-card-category">
+          <h4>Detail</h4>
+          <p>${course.course_description}</p>
+        </div>
+        <button class="pageFive-reserve-button" onclick="location.href='/course-detail-page?courseId=${course.course_id}'">
+          RESERVE NOW
+        </button>
+      `;
+        container.appendChild(card);
+      });
+    })
+    .catch(err => {
+      console.error(err);
+    });
+
+
 });

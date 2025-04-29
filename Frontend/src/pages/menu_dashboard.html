@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="node_modules/bulma/css/bulma.min.css" />
     <link rel="stylesheet" href="src/assets/fontawesome/css/all.min.css" />
     <link rel="stylesheet" href="src/styles/global.css" />
-    <link rel="stylesheet" href="src/styles/menu_management.css" />
+    <link rel="stylesheet" href="src/styles/menu_dashboard.css" />
     <script src="src/js/global.js" defer></script>
 </head>
 
@@ -90,6 +90,19 @@
     <script>
 
         document.addEventListener('DOMContentLoaded', () => {
+
+            axios.defaults.withCredentials = true;
+
+            axios.get('http://localhost:3000/check-login')
+                .then(res => {
+                    console.log('✅ Logged in:', res.data);
+                })
+                .catch(err => {
+
+                    alert("Sorry You Are Not Allowed To Access This Page");
+                    window.location.href = '/login-page';  // 🚪 Redirect to login page
+                });
+
             const urlParams = new URLSearchParams(window.location.search);
             const courseId = urlParams.get('courseId');
 
@@ -198,6 +211,22 @@
 
             location.assign(`/menu-management-page?courseId=${courseId}&type=${typeToAdd}`);
         });
+
+        document.getElementById("logout").addEventListener("click", () => {
+
+            axios.get('http://localhost:3000/logout', {
+                withCredentials: true
+            })
+                .then(res => {
+                    window.location.href = '/login-page';
+                    alert(res.data);
+                })
+                .catch(err => {
+                    alert('🚨 Something Wrong');
+                    console.error(err);
+                })
+
+        })
 
     </script>
 </body>

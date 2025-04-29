@@ -195,63 +195,22 @@
     <div>
       <div class="pageFive-section-wrapper">
         <h1 class="pageFive-title text-header-color font-header">Reservation</h1>
-        <div class="pageFive-content-box">
-          <div class="pageFive-reservation-cards">
+        <div class="pageFive-content-box mb-3">
+          <div id="reservation_card" class="pageFive-reservation-cards">
 
             <!-- Standard Card -->
-            <div class="pageFive-reservation-card">
-              <h3 class="pageFive-card-title">Standard</h3>
-              <p class="pageFive-card-price">500$/Person</p>
+            <div class="pageFive-reservation-card" >
+              <h3 id="courseName" class="pageFive-card-title">Standard</h3>
+              <p id="price" class="pageFive-card-price">500$/Person</p>
               <div class="pageFive-card-category">
-                <h4>Toasted</h4>
-                <p>Lobster, bacon and avocado brioche roll</p>
-                <p>Smoked salmon and cream cheese bagel</p>
+                <h4>Detail</h4>
+                <p id="courseDescription">Lobster, bacon and avocado brioche roll</p>
               </div>
-              <div class="pageFive-card-category">
-                <h4>Healthy</h4>
-                <p>Plum tomato, cream cheese and basil bagel</p>
-                <p>Açaí bowl (v) Coconut yoghurt, berries, chia seeds, banana, goji berries, bee pollen</p>
-              </div>
-              <button onclick="location.href='/searching-page'" class="pageFive-reserve-button">RESERVE
-                NOW</button>
+                <button class="pageFive-reserve-button" onclick="location.href='/course-detail-page?courseId=${course.course_id}'"> RESERVE NOW</button>
             </div>
 
-            <!-- Gold Card -->
-            <div class="pageFive-reservation-card">
-              <h3 class="pageFive-card-title">Gold</h3>
-              <p class="pageFive-card-price">1000$/Person</p>
-              <div class="pageFive-card-category">
-                <h4>Toasted</h4>
-                <p>Lobster, bacon and avocado brioche roll</p>
-                <p>Smoked salmon and cream cheese bagel</p>
-              </div>
-              <div class="pageFive-card-category">
-                <h4>Healthy</h4>
-                <p>Plum tomato, cream cheese and basil bagel</p>
-                <p>Açaí bowl (v) Coconut yoghurt, berries, chia seeds, banana, goji berries, bee pollen</p>
-              </div>
-              <button onclick="location.href='/searching-page'" class="pageFive-reserve-button">RESERVE
-                NOW</button>
-            </div>
-
-            <!-- Platinum Card -->
-            <div class="pageFive-reservation-card">
-              <h3 class="pageFive-card-title">Platinum</h3>
-              <p class="pageFive-card-price">1500$/Person</p>
-              <div class="pageFive-card-category">
-                <h4>Toasted</h4>
-                <p>Lobster, bacon and avocado brioche roll</p>
-                <p>Smoked salmon and cream cheese bagel</p>
-              </div>
-              <div class="pageFive-card-category">
-                <h4>Healthy</h4>
-                <p>Plum tomato, cream cheese and basil bagel</p>
-                <p>Açaí bowl (v) Coconut yoghurt, berries, chia seeds, banana, goji berries, bee pollen</p>
-              </div>
-              <button onclick="location.href='/searching-page'" class="pageFive-reserve-button">RESERVE
-                NOW</button>
-            </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -282,6 +241,8 @@
     </footer>
   </section>
 
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  
 </body>
 
 </html>

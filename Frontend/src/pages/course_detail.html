@@ -56,11 +56,11 @@
   <section class="hero is-fullheight background-primary-color" style="padding-top: 6rem;">
     <div class="hero-body">
       <div class="container">
-        <div class="columns is-vcentered is-variable is-8">
+        <div id="hero" class="columns is-vcentered is-variable is-8">
 
           <!-- Image Section -->
-          <div class="column is-half has-text-centered">
-            <div class="image-container">
+          <div class="column is-half">
+            <div id="image" class="image-container has-text-centered">
               <!-- button left side -->
               <button class="button is-white nav-button is-left" onclick="prevImage()">
                 <i class="fas fa-chevron-left"></i>
@@ -72,44 +72,47 @@
                 <i class="fas fa-chevron-right"></i>
               </button>
             </div>
+            <button id="back" class="button is-primary is-medium mt-6 has-text-left">Back</button>
           </div>
 
-          <!-- Details Section -->
-          <div class="column is-half">
-            <h1 class="title is-2">Umami Journey</h1>
-            <p class="subtitle is-5">An explosion of savory flavors across Japanese and Western fusion.
+
+          <div id="section" class="column is-half">
+            <!-- Details Mock Section that I want to show in section id -->
+            <h1 id="courseName" class="title is-2"></h1>
+            <p id="courseDescription" class="subtitle is-5">
             </p>
 
             <div class="content">
               <h2 class="title is-4">Appetizer</h2>
-              <p>Truffle Fries with Parmesan & Garlic Aioli</p>
+              <p id="appetizer"></p>
 
               <h2 class="title is-4">Main Course</h2>
-              <p>Miso-Butter Ribeye Steak</p>
+              <p id="main"></p>
 
               <h2 class="title is-4">Dessert</h2>
-              <p>Miso Caramel Cheesecake</p>
+              <p id="dessert"></p>
 
               <hr class="yellow-line">
             </div>
 
             <div class="mt-5">
               <p class="course_price text-header-color">Course Price</p>
-              <p class="is-size-3 font-header">$199 USD</p>
+              <p id="price" class="is-size-3 font-header"></p>
             </div>
             <button class="button is-primary is-medium is-fullwidth mt-5">Reserve</button>
           </div>
+
         </div>
+
       </div>
     </div>
   </section>
 
+  <!-- Axios CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
   <script>
-    const images = [
-      '../assets/images/app_no1.jpg',
-      '../assets/images/main_no1.jpg',
-      '../assets/images/dessert_no1.jpg'
-    ];
+    let images = []; // ✅ Declare images here
     let currentImage = 0;
 
     function showImage(index) {
@@ -132,9 +135,43 @@
     }
 
     document.addEventListener('DOMContentLoaded', function () {
-      showImage(currentImage);
+      const urlParams = new URLSearchParams(window.location.search);
+      const courseId = urlParams.get('courseId');
+
+      if (courseId) {
+        axios.get(`http://localhost:3000/course_detail/${courseId}`)
+          .then(res => {
+            const course = res.data;
+            document.getElementById('courseName').textContent = course.course_name;
+            document.getElementById('courseDescription').textContent = course.course_description;
+            document.getElementById('appetizer').textContent = course.app_name;
+            document.getElementById('main').textContent = course.main_name;
+            document.getElementById('dessert').textContent = course.dessert_name;
+            document.getElementById('price').textContent = `$${parseFloat(course.price).toFixed(2)} USD`;
+
+            images.length = 0;
+            images.push(
+              `http://localhost:3000/images/courses/${course.imageurl}`,
+              `http://localhost:3000/images/menues/${course.app_imageurl}`,
+              `http://localhost:3000/images/menues/${course.main_imageurl}`,
+              `http://localhost:3000/images/menues/${course.dessert_imageurl}`
+            );
+
+            currentImage = 0;
+            showImage(currentImage);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      }
     });
+
+    document.getElementById('back').addEventListener('click', () => {
+      window.location.href = '/searching-page';
+    });
+
   </script>
+
 
 </body>
 

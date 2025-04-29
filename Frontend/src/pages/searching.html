@@ -163,7 +163,7 @@
                 courses.forEach((course, index) => {
                     const cardHTML = `
                         <div id="card${index + 1}" class="column is-4">
-                            <a href="#" class="box-link">
+                            <a href="/course-detail-page?courseId=${course.course_id}" class="box-link" onclick="window.location.href = this.href; return false;">
                                 <div class="box has-text-centered">
                                     <h2 class="title">${course.course_name}</h2>
                                     <div class="course-image">

@@ -37,7 +37,7 @@ const storage = multer.diskStorage({
     }
 });
 
-const upload= multer({ storage: storage });
+const upload = multer({ storage: storage });
 
 const storageMenu = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -566,6 +566,34 @@ app.delete('/menu-detail/:type/:id', async (req, res) => {
     }
 });
 
+
+app.get('/course_detail/:id', (req, res) => {
+    const courseId = req.params.id;
+
+    db.query('CALL GetCourseFullDetailsSimple(?)', [courseId], (err, results) => {
+        if (err) {
+            console.error('Error fetching course:', err);
+            return res.status(500).json({ error: 'Failed to fetch course details.' });
+        }
+
+        // results[0] is the first result set (array of rows)
+        const courseData = results[0][0]; // assuming one row
+        res.json(courseData);
+    });
+});
+
+app.get('/topcourse', (req, res) => {
+
+    db.query('CALL GetTop3Courses()',(err, results) => {
+        if (err) {
+            console.error('Error fetching course:', err);
+            return res.status(500).json({ error: 'Failed to fetch course details.' });
+        }
+        // results[0] is the first result set (array of rows)
+        const courseData = results[0]; // assuming one row
+        res.json(courseData);
+    });
+});
 
 // Handle invalid routes
 app.use((req, res) => {

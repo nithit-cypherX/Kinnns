@@ -1,124 +1,247 @@
-.menu {
-  margin-top: 20px;
-  font-family: var(--font-heading);
+/* === General === */
+body {
+  background-color: #fef5ef; /* Light pink background for warmth */
+  font-family: var(--font-heading, 'Segoe UI', sans-serif);
 }
 
-.menu-list li {
-  margin-top: 10px;
+/* === Titles and Headings === */
+.title {
+  color: var(--header-color, #4b1f1f);
+  font-family: var(--font-heading, 'Segoe UI', sans-serif);
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.75rem;
+  color: var(--secondary-color, #4b1f1f);
+  font-family: var(--font-heading, 'Segoe UI', sans-serif);
+}
+
+/* === Menu Sidebar === */
+.menu-sidebar {
+  position: fixed;
+  top: 4.5rem;
+  left: 0;
+  width: 180px;
+  height: calc(100vh - 4.5rem);
+  background-color: #4b1f1f;
+  color: #f9e9df;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem 0.5rem;
+  z-index: 10;
+}
+
+.menu-sidebar a {
+  color: #f9e9df;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 1rem 0;
+  padding: 0.5rem 0.75rem;
+  border-left: 2px solid #ffffff;
+  display: block;
+}
+
+.menu-sidebar a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* === Regular Menu List (if needed) === */
+.menu {
+  margin-top: 20px;
 }
 
 .menu-list a {
   background-color: transparent;
-  color: var(--primary-color);
+  color: var(--primary-color, #4b1f1f);
   display: block;
-  font-size: 24px;
+  font-size: 1.5rem;
   padding: 10px 0;
   text-align: left;
-  letter-spacing: 0.2rem;
+  letter-spacing: 0.1rem;
 }
 
-.menu a:hover {
+.menu-list a:hover {
   text-decoration: underline;
 }
 
-.title {
-  color: var(--header-color);
-  font-family: var(--font-heading);
-  font-size: 60px;
+/* === Box Containers === */
+.box {
+  background-color: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 2rem 1rem;
 }
 
-.menu-list-container {
-  background-color: #f9f6f1;
-  padding: 20px;
-  border-radius: 8px;
+.box.has-text-centered h2 {
+  font-size: 1.75rem;
 }
 
-.menu-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 0;
-  border-bottom: 1px solid #ccc;
+/* === Course Images === */
+.course-image {
+  border-radius: 10px;
+  height: 28vh;
+  margin-bottom: 10px;
+  overflow: hidden;
+  width: 100%;
 }
 
-.menu-item-image {
-  width: 80px;
-  height: 80px;
+.course-image img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  object-position: center;
+}
+
+/* === Categories === */
+.categories {
+  margin-bottom: 6px;
+}
+
+.category-badge {
+  background-color: var(--secondary-color, #4b1f1f);
   border-radius: 8px;
+  color: var(--primary-color, #f9e9df);
+  display: inline-block;
+  font-family: var(--font-heading, 'Segoe UI', sans-serif);
+  font-size: 1rem;
+  margin: 4px 6px;
+  padding: 6px 12px;
 }
 
-.menu-details {
-  flex-grow: 1;
-  margin-left: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+/* === Yellow Divider Line === */
+.yellow-line {
+  border-bottom: 3px solid #ffc107;
+  margin: 20px 0;
+  width: 100%;
 }
 
-.menu-title {
-  font-family: var(--font-heading);
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 4px;
-  color: var(--secondary-color);
-}
-
-.menu-category {
-  font-size: 16px;
-  color: var(--secondary-color);
-  margin-bottom: 2px;
-}
-
-.menu-description {
-  font-size: 14px;
-  color: var(--secondary-color);
-}
-
-.menu-item p {
-  margin-left: 20px;
-  font-family: var(--font-heading);
-  font-size: 20px;
-}
-
-.edit-icon {
-  color: var(--secondary-color);
-  font-size: 24px;
-  cursor: pointer;
-  transition: transform 0.2s ease, color 0.2s ease;
-}
-
-.edit-icon:hover {
-  color: var(--primary-color); /* example: bright color on hover */
-  transform: scale(1.2);
-}
-
-.button.is-medium {
+/* === Buttons === */
+.button {
   align-items: center;
-  background-color: var(--secondary-color);
+  background-color: var(--secondary-color, #4b1f1f);
   border: none;
-  color: var(--header-color);
+  color: #f9e9df;
   display: inline-flex;
-  font-family: var(--font-heading);
-  font-size: 16px;
+  font-family: var(--font-heading, 'Segoe UI', sans-serif);
+  font-size: 1rem;
   gap: 8px;
+  padding: 10px 20px;
+  border-radius: 8px;
   transition: all 0.3s ease;
-}
-
-.button.is-warning {
-  font-family: var(--font-heading);
-  gap: 8px;
-  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .button:hover {
-  background-color: var(--primary-color);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-  color: white;
+  background-color: var(--primary-color, #f59e0b);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   transform: translateY(-4px);
 }
 
-#menu {
-  min-height: 100vh; /* at least 60% of the screen height */
+/* Special Buttons */
+.button.is-warning {
+  background-color: #f59e0b;
+}
 
+.button.is-danger {
+  background-color: #e11d48;
+}
+
+.button.is-success {
+  background-color: #16a34a;
+}
+
+/* === Form Styling === */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem 3rem;
+  margin-top: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-group textarea {
+  min-height: 200px;
+}
+
+/* === Image Upload Area === */
+.image-upload-container {
+  border: 1px dashed #ccc;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px;
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 0.3s ease;
+}
+
+.image-upload-container:hover {
+  border-color: #aaa;
+}
+
+.upload-preview {
+  width: 100px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+/* === Action Buttons Group === */
+.action-buttons {
+  margin-top: 3rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+/* === Small Helper Text === */
+.small-text {
+  font-size: 0.75rem;
+  color: gray;
+}
+
+
+.preview-image-container {
+  border: 1px dashed #ccc;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px;
+  cursor: default;
+  text-align: center;
+  transition: border-color 0.3s ease;
+}
+
+/* Make the preview image smaller and nicely fit */
+.preview-image-container img {
+  max-width: 100%;
+  max-height: 220px;
+  object-fit: contain;
 }
