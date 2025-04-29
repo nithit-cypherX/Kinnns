@@ -199,14 +199,15 @@
           <div id="reservation_card" class="pageFive-reservation-cards">
 
             <!-- Standard Card -->
-            <div class="pageFive-reservation-card" >
+            <div class="pageFive-reservation-card">
               <h3 id="courseName" class="pageFive-card-title">Standard</h3>
               <p id="price" class="pageFive-card-price">500$/Person</p>
               <div class="pageFive-card-category">
                 <h4>Detail</h4>
                 <p id="courseDescription">Lobster, bacon and avocado brioche roll</p>
               </div>
-                <button class="pageFive-reserve-button" onclick="location.href='/course-detail-page?courseId=${course.course_id}'"> RESERVE NOW</button>
+              <button class="pageFive-reserve-button"
+                onclick="location.href='/course-detail-page?courseId=${course.course_id}'"> RESERVE NOW</button>
             </div>
 
           </div>
@@ -229,6 +230,14 @@
           <p>+66 63 123 1101</p>
         </div>
       </div>
+      <!-- Google Maps Embed -->
+      <div style="margin: 1rem 0;">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.666588405003!2d100.52913827582438!3d13.74437868666825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29edc36487737%3A0x6f77a3c5428e06de!2sSiam%20Square%20Soi%2011!5e0!3m2!1sen!2sth!4v1714389103481!5m2!1sen!2sth"
+          width="100%" height="300" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
       <!-- Bottom Part-->
       <div class="footer-page-bottom">
         <div class="footer-page-left">
@@ -242,7 +251,7 @@
   </section>
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  
+
 </body>
 
 </html>
